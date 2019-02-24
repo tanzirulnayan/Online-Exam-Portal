@@ -184,6 +184,27 @@ function checkCPASS(c9)
 	}
 }
 
+function checkupFile(c10)
+{
+		 var wrn = document.getElementById("wrn10");
+
+    var fileName = c10.value;
+    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+
+    if(ext != "png" && ext != "PNG" && ext != "JPEG" && ext != "jpeg" && ext != "jpg" && ext != "JPG")
+    {
+        wrn.innerHTML = "*Select an Valid Image";
+        c10.style.borderColor= "red";
+        v = false;
+    }
+    else
+    {
+      wrn.innerHTML = "";
+      c10.style.borderColor= "";
+      v = true;
+    }
+}
+
 
 function allOK()
 {
