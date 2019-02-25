@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+</head>
+<body>
+	<h1> Delete Page</h1>  
+	<a href="/home">Back</a> |
+	<a href="/logout">logout</a>
+
+	<table width="300px" >
+		<tr>
+			<td width="35%">Name</td>
+			<td width="2%">:</td>
+			<td><%=username%></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td width="2%">:</td>
+			<td><%=password%></td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td width="2%">:</td>
+			<td><%=type%></td>
+		</tr>
+	</table>
+	<br><br>
+	<b>Are you sure? This can't be undone of you click confirm!</b>
+
+	<form method="post">
+			<input type="hidden" name="uid" value="<%=id%>"/>
+			<input type="submit" name="delete" value="Confirm"/>
+	</form>
+
+</body>
+</html>

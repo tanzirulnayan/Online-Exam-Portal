@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+</head>
+<body>
+	<h1> Edit Page</h1>  
+	<a href="/home">Back</a> |
+	<a href="/logout">logout</a>
+
+<br>
+	<form method="post">
+	<table width="300px" >
+		<tr>
+			<td width="35%">Name</td>
+			<td width="2%">:</td>
+			<td><input type="text" name="uname" value="<%=username%>"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td width="2%">:</td>
+			<td><input type="text" name="password" value="<%=password%>"></td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td width="2%">:</td>
+			<td><input type="text" name="type" value="<%=type%>"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td width="2%"></td>
+			<td><input type="submit" name="update" value="Update"></td>
+		</tr>
+	</table>
+	</form>
+</body>
+</html>
