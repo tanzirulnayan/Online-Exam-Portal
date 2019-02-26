@@ -1,18 +1,12 @@
 var express = require('express');
+var mysql = require('mysql');
 var router = express.Router();
 
-
-//ROUTES
-
-router.get('/', function(req, res){
-	req.session.un = null;
+router.get('/', (req, res)=>{
+	
+	req.session.name = null;
 	res.redirect('/login');
+
 });
 
 module.exports = router;
-
-
-
-
-
-

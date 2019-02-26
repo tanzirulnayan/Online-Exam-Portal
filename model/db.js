@@ -7,52 +7,57 @@ var config = {
 	database: 'onlineexamportal'
 };
 
-var con = "";
+//var connection = "";
 
 function getConnection(callback){
-	con = mysql.createConnection(config);
-	con.connect(function(err){
+	connection = mysql.createConnection(config);
+	connection.connect(function(err){
 		if(err){
-			console.log('connection error: '+err.stack);
-		}else{
-			console.log('connection id: '+con.threadId);
+			console.log(err.stack);
 		}
-	});	
+		console.log('connection id is: '+ connection.threadId);
+	});
 
-	callback(con);
+	callback(connection);
 }
 
-
-module.exports = {
-	getResults: function(sql, callback){
+module.exports= {
+	getResult: function(sql, callback){		
 		getConnection(function(connection){
-			connection.query(sql, function(err, results){
-
-				if(err){
+			connection.query(sql, function(err, result){		
+		
+			if(err){
 					callback([]);
 				}else{
-					callback(results);
+					callback(result);
 				}
 			});
 
-			connection.end(function(err){
+			connection.end(function(error){
 				console.log('connection ending ...');
+				//console.log('connection ending ...');
 			});
 		});
 	},
-	execute: function(sql, callback){
+	execute: function(sql, callback){		
 		getConnection(function(connection){
-			connection.query(sql, function(err, status){
+			connection.query(sql, function(err, status){		
+		
 				if(err){
-					callback(status);
+					callback(false);
 				}else{
 					callback(status);
 				}
 			});
 
-			connection.end(function(err){
+			connection.end(function(error){
 				console.log('connection ending ...');
+				//console.log('connection ending ...');
 			});
 		});
 	}
-};
+}
+
+
+
+

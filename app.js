@@ -1,47 +1,41 @@
 //DECLARATION
-var express  		= require('express');
-var login 			= require('./controllers/login');
-var home 			= require('./controllers/home');
-var logout 			= require('./controllers/logout');
+var express 		= require('express');
 var bodyParser 		= require('body-parser');
 var exSession 		= require('express-session');
 var cookieParser 	= require('cookie-parser');
-var app 			= express();
-
+var login			= require('./controllers/login');
+var home			= require('./controllers/home');
+var logout			= require('./controllers/logout');
+var app  			= express();
+var port 			= 3000;
 
 //CONFIGURATION
 app.set('view engine', 'ejs');
 
-
 //MIDDLEWARES
+app.use(exSession({secret: 'my top secret code', saveUninitialized: true, resave: false}));
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(exSession({secret: 'my top secret', saveUninitialized: true, resave: false}));
 app.use(cookieParser());
 app.use('/login', login);
 app.use('/home', home);
 app.use('/logout', logout);
-app.use('/assets', express.static('ext'))
 
 //ROUTES
-app.get('/', (req, res)=> res.send('index page'));
-
-
-//SERVER STARTUP
-app.listen(3000, function(){
-	console.log('server started at 3000...');
+app.get('/', (req,res)=>res.send('Index page'));
+app.get('/setCookie', (req,res)=>{
+	res.cookie('cookie1', 'first cookie');
+	res.send("done");
 });
 
-app.get('/setCookie', (req, res)=>{
-	res.cookie('cookie1', 'this is my first cookie');
-	res.send('done!');
-});
-
-app.get('/viewCookie', (req, res)=>{
-	//console.log(res.cookie['cookie1']);
+app.get('/viewCookie', (req,res)=>{
 	res.send(req.cookies['cookie1']);
 });
 
-app.get('/rmCookie', (req, res)=>{
+app.get('/rmCookie', (req,res)=>{
 	res.clearCookie('cookie1');
-	res.send('removed!');
+	res.send('Done');
 });
+
+
+//SERVER STARTUP
+app.listen(port, ()=>console.log('server started at'+port+"..."));

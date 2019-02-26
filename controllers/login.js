@@ -2,35 +2,26 @@ var express = require('express');
 var userModel = require.main.require('./model/user-model');
 var router = express.Router();
 
-//ROUTES
-router.get('/', function(req, res){
+router.get('/', (req, res)=>{
 	res.render('login/index');
 });
 
-router.post('/', function(req, res){
-			
-		var user = {
-			uname: req.body.uname,
-			password: req.body.password
-		};
-
-		userModel.validate(user, function(result){
-			if(result != ""){
-				req.session.un = req.body.uname;
-				req.session.uid = result.id;
-
-				res.redirect('/home');
-			}else{
-				res.redirect('/login');
-			}		
-		});
-		//console.log(results);
+router.post('/', (req, res)=>{
+	
+	var user ={
+		uname : req.body.uname,
+		password : req.body.password
+	};
+	
+	userModel.validate(user, function(result){
+		if(result.length > 0){
+			req.session.name = req.body.uname;
+			req.session.uid = result[0].U_ID;
+			res.redirect('/home');
+		}else{
+			res.render("login/index");
+		}
+	});
 });
 
 module.exports = router;
-
-
-
-
-
-

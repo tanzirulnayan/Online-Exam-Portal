@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>test</title>
+	<title>Profile Page</title>
 </head>
 <body>
-	<h1> Profile Page</h1>  
-	<a href="/home">Back</a> |
-	<a href="/logout">logout</a>
 
-	<table width="300px" >
+<h1>Profile</h1> 
+
+	<a href="/home">Back</a> |
+	<a href="/logout">logout</a> 
+	<br>
+	<br>
+
+	<table border="0" width="300px" >
 		<tr>
-			<td width="35%">Name</td>
+			<td width="35%">User Name</td>
 			<td width="2%">:</td>
-			<td><%=username%></td>
+			<td><%=U_ID%></td>
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td width="2%">:</td>
-			<td><%=password%></td>
+			<td>:</td>
+			<td><%=U_PASSWORD%></td>
 		</tr>
 		<tr>
 			<td>Type</td>
-			<td width="2%">:</td>
-			<td><%=type%></td>
+			<td>:</td>
+			<td><%=U_TYPE%></td>
 		</tr>
 	</table>
 
