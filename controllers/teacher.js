@@ -1,5 +1,7 @@
 var express = require('express');
 var userModel = require.main.require('./model/user-model');
+var teacherModel = require.main.require('./model/teacher-model');
+var studentModel = require.main.require('./model/student-model');
 var router = express.Router();
 
 router.get('*', function(req, res, next){
@@ -22,7 +24,6 @@ router.get('/userlist', (req, res)=>{
 	
 	userModel.getAll(function(results){
 		if(results.length > 0){
-			console.log("User List : "+results);
 			var user = {
 				name: req.session.uId,
 				uList: results
@@ -34,8 +35,7 @@ router.get('/userlist', (req, res)=>{
 
 router.get('/profile', (req, res)=>{
 
-	userModel.get(req.session.uid, function(result){
-		console.log("Profile "+result);
+	teacherModel.get(req.session.uId, function(result){
 		if(result.length > 0){
 			res.render('teacher/profile', result[0]);
 		}

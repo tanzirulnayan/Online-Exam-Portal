@@ -20,6 +20,7 @@ app.use('/login', login);
 app.use('/teacher', teacher);
 app.use('/logout', logout);
 app.use('/assets', express.static('ext'));
+app.use('/pictures', express.static('images'));
 
 //ROUTES
 app.get('/', (req,res)=>res.send('Index page'));
