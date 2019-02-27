@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use('/login', login);
 app.use('/home', home);
 app.use('/logout', logout);
+app.use('/assets', express.static('ext'));
 
 //ROUTES
 app.get('/', (req,res)=>res.send('Index page'));

@@ -3,8 +3,8 @@ var db = require('./db');
 module.exports={
 
 	get: function(teacherId, callback){
-		var sql = "select * from teachers where T_ID = '"+teacherId+"'";
-		db.getResult(sql, function(result){
+		var sql = "select * from teachers where T_ID = ?";
+		db.getResult(sql, [teacherId], function(result){
 			callback(result);
 		});
 	},
@@ -15,20 +15,22 @@ module.exports={
 		});
 	},
 	insert: function(teacher, callback){
-		var sql = "insert into teachers values ('"+teacher.teacherId+"','"+teacher.teacherName+"','"+teacher.teacherEmail+"', '"+teacher.teacherAddress+"', '"+teacher.teacherMobile+"', '"+teacher.teacherImage+"')";
-		db.execute(sql, function(status){
+		var sql = "insert into teachers values ( ?, ?, ?, ?, ?, ?)";
+		
+		db.execute(sql, [teacher.teacherId, teacher.teacherName, teacher.teacherEmail, teacher.teacherAddress, teacher.teacherMobile, teacher.teacherImage], function(status){
 			callback(status);
 		});
 	},
 	update: function(teacher, callback){
-		var sql = "update teachers set T_ID = '"+teacher.teacherId+"', T_NAME = '"+teacher.teacherName+"', T_EMAIL ='"+teacher.teacherEmail+"', T_ADDRESS ='"+teacher.teacherAddress+"', T_MOBILE ='"+teacher.teacherMobile+"', T_IMAGE ='"+teacher.teacherImage+"' where T_ID ='"+teacher.teacherId+"'";
-		db.execute(sql, function(status){
+		var sql = "update teachers set T_ID = ?, T_NAME = ?, T_EMAIL = ?, T_ADDRESS = ?, T_MOBILE = ?, T_IMAGE = ? where T_ID = ?";
+		
+		db.execute(sql, [teacher.teacherId, teacher.teacherName, teacher.teacherEmail, teacher.teacherAddress, teacher.teacherMobile, teacher.teacherImage, teacher.teacherId], function(status){
 			callback(status);
 		});
 	},
 	delete: function(teacherId, callback){
-		var sql = "delete from teachers where T_ID = '"+teacherId+"'";
-		db.execute(sql, function(status){
+		var sql = "delete from teachers where T_ID = ?";
+		db.execute(sql, [teacherId], function(status){
 			callback(status);
 		});
 	},

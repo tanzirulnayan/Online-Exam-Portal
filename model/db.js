@@ -7,8 +7,6 @@ var config = {
 	database: 'onlineexamportal'
 };
 
-//var connection = "";
-
 function getConnection(callback){
 	connection = mysql.createConnection(config);
 	connection.connect(function(err){
@@ -22,37 +20,55 @@ function getConnection(callback){
 }
 
 module.exports= {
-	getResult: function(sql, callback){		
+	getResult: function(sql, params, callback){		
 		getConnection(function(connection){
-			connection.query(sql, function(err, result){		
-		
-			if(err){
-					callback([]);
-				}else{
-					callback(result);
-				}
-			});
 
+			if(params == ""){
+				connection.query(sql, function(err, result){				
+				if(err){
+						callback([]);
+					}else{
+						callback(result);
+					}
+				});
+			}else{
+				connection.query(sql, params, function(err, result){				
+				if(err){
+						callback([]);
+					}else{
+						callback(result);
+					}
+				});
+			}
 			connection.end(function(error){
 				console.log('connection ending ...');
-				//console.log('connection ending ...');
 			});
 		});
 	},
-	execute: function(sql, callback){		
+	execute: function(sql, params, callback){		
 		getConnection(function(connection){
-			connection.query(sql, function(err, status){		
-		
-				if(err){
-					callback(false);
-				}else{
-					callback(status);
-				}
-			});
 
+			if(params == ""){
+				connection.query(sql, function(err, status){		
+			
+					if(err){
+						callback(false);
+					}else{
+						callback(status);
+					}
+				});
+			}else{
+				connection.query(sql, params, function(err, status){		
+			
+					if(err){
+						callback(false);
+					}else{
+						callback(status);
+					}
+				});
+			}
 			connection.end(function(error){
 				console.log('connection ending ...');
-				//console.log('connection ending ...');
 			});
 		});
 	}
