@@ -16,7 +16,22 @@ router.post('/', (req, res)=>{
 	userModel.validate(user, function(result){
 		if(result.length > 0){
 			req.session.uId = req.body.uname;
-			res.redirect('/teacher');
+			if(result[0].U_TYPE == "TEACHER" && result[0].U_STATUS == "ACTIVE")
+			{
+				res.redirect('/teacher');
+			}
+			else if(result[0].U_TYPE == "STUDENT" && result[0].U_STATUS == "ACTIVE")
+			{
+				res.redirect('/student');
+			}
+			else if(result[0].U_TYPE == "ADMIN" && result[0].U_STATUS == "ACTIVE")
+			{
+				res.redirect('/admin');
+			}
+			else
+			{
+				res.render("login/index");
+			}
 		}else{
 			res.render("login/index");
 		}
