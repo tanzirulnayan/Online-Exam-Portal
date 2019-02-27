@@ -15,9 +15,8 @@ router.post('/', (req, res)=>{
 	
 	userModel.validate(user, function(result){
 		if(result.length > 0){
-			req.session.name = req.body.uname;
-			req.session.uid = result[0].U_ID;
-			res.redirect('/teacherHome');
+			req.session.uId = req.body.uname;
+			res.redirect('/teacher');
 		}else{
 			res.render("login/index");
 		}

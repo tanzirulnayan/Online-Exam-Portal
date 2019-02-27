@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', (req, res)=>{
 	
-	req.session.name = null;
+	req.session.uId = null;
 	res.redirect('/login');
 
 });
