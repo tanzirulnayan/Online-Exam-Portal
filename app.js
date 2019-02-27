@@ -4,7 +4,7 @@ var bodyParser 		= require('body-parser');
 var exSession 		= require('express-session');
 var cookieParser 	= require('cookie-parser');
 var login			= require('./controllers/login');
-var home			= require('./controllers/home');
+var teacherHome			= require('./controllers/teacherHome');
 var logout			= require('./controllers/logout');
 var app  			= express();
 var port 			= 3000;
@@ -17,7 +17,7 @@ app.use(exSession({secret: 'my top secret code', saveUninitialized: true, resave
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use('/login', login);
-app.use('/home', home);
+app.use('/teacherHome', teacherHome);
 app.use('/logout', logout);
 app.use('/assets', express.static('ext'));
 

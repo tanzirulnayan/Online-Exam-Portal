@@ -6,7 +6,7 @@
 <body>
 	<h1>User List</h1>
 
-	<a href="/home">Back</a> |
+	<a href="/teacherHome">Back</a> |
 	<a href="/logout">logout</a> 
 	<br>
 	<br>
@@ -25,8 +25,8 @@
 			<td><%= uList[i].U_PASSWORD %></td>
 			<td><%= uList[i].U_TYPE %></td>
 			<td>
-				<a href="/home/edit/<%= uList[i].id %>">Edit</a> |
-				<a href="/home/delete/<%= uList[i].id %>">Delete</a> 
+				<a href="/teacherHome/edit/<%= uList[i].id %>">Edit</a> |
+				<a href="/teacherHome/delete/<%= uList[i].id %>">Delete</a> 
 			</td>
 		</tr>
 		<% } %>

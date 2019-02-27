@@ -9,7 +9,7 @@ router.get('/', (req, res)=>{
 router.post('/', (req, res)=>{
 	
 	var user ={
-		uname : req.body.uname,
+		userId : req.body.uname,
 		password : req.body.password
 	};
 	
@@ -17,7 +17,7 @@ router.post('/', (req, res)=>{
 		if(result.length > 0){
 			req.session.name = req.body.uname;
 			req.session.uid = result[0].U_ID;
-			res.redirect('/home');
+			res.redirect('/teacherHome');
 		}else{
 			res.render("login/index");
 		}

@@ -14,7 +14,7 @@ router.get('/', (req, res)=>{
 		var user = {
 			name: req.session.name
 		};
-		res.render('home/index', user);
+		res.render('teacherHome/index', user);
 });	
 
 
@@ -27,7 +27,7 @@ router.get('/userlist', (req, res)=>{
 				name: req.session.name,
 				uList: results
 			};
-			res.render('home/userlist', user);
+			res.render('teacherHome/userlist', user);
 		}
 	});	
 });
@@ -37,13 +37,13 @@ router.get('/profile', (req, res)=>{
 	userModel.get(req.session.uid, function(result){
 		console.log("Profile "+result);
 		if(result.length > 0){
-			res.render('home/profile', result[0]);
+			res.render('teacherHome/profile', result[0]);
 		}
 	});	
 });
 
 router.get('/adduser', (req, res)=>{
-	res.render('home/adduser');
+	res.render('teacherHome/adduser');
 });	
 
 router.post('/adduser', (req, res)=>{
@@ -56,9 +56,9 @@ router.post('/adduser', (req, res)=>{
 	
 	userModel.insert(user, function(success){
 		if(success){
-			res.redirect('/home/userlist');
+			res.redirect('/teacherHome/userlist');
 		}else{
-			res.render("/home/adduser");
+			res.render("/teacherHome/adduser");
 		}
 	});
 });
@@ -67,9 +67,9 @@ router.get('/edit/:id', (req, res)=>{
 
 	userModel.get(req.params.id, function(result){
 		if(result.length >0 ){
-			res.render('home/edit', result[0]);
+			res.render('teacherHome/edit', result[0]);
 		}else{
-			res.redirect('/home/userlist');
+			res.redirect('/teacherHome/userlist');
 		}
 	});
 });	
@@ -85,9 +85,9 @@ router.post('/edit/:id', (req, res)=>{
 	
 	userModel.update(user, function(success){
 		if(success){
-			res.redirect('/home/userlist');
+			res.redirect('/teacherHome/userlist');
 		}else{
-			res.render("/home/edit/"+req.params.id);
+			res.render("/teacherHome/edit/"+req.params.id);
 		}
 	});
 });
@@ -96,9 +96,9 @@ router.get('/delete/:id', (req, res)=>{
 
 	userModel.get(req.params.id, function(result){
 		if(result.length >0 ){
-			res.render('home/delete', result[0]);
+			res.render('teacherHome/delete', result[0]);
 		}else{
-			res.redirect('/home/userlist');
+			res.redirect('/teacherHome/userlist');
 		}
 	});
 });	
@@ -107,9 +107,9 @@ router.post('/delete/:id', (req, res)=>{
 	
 	userModel.delete(req.params.id, function(success){
 		if(success){
-			res.redirect('/home/userlist');
+			res.redirect('/teacherHome/userlist');
 		}else{
-			res.redirect("/home/delete/"+req.params.id);
+			res.redirect("/teacherHome/delete/"+req.params.id);
 		}
 	});
 });
