@@ -16,7 +16,7 @@ module.exports={
 	},
 	insert: function(student, callback){
         var sql = "insert into students values ( ?, ?, ?, ?, ?, ?)";
-		db.execute(sql, [student.studentId, student.studentName, student.studentEmail, student.studentDOB, student.studentAddress, student.studentImage], function(status){
+		db.execute(sql, [student.userId , student.studentName, student.studentEmail, student.studentDOB, student.studentAddress, student.studentImage], function(status){
 			callback(status);
 		});
 	},

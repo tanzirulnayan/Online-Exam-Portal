@@ -4,6 +4,7 @@ var bodyParser 		= require('body-parser');
 var exSession 		= require('express-session');
 var cookieParser 	= require('cookie-parser');
 var login			= require('./controllers/login');
+var signup			= require('./controllers/signup');
 var teacher			= require('./controllers/teacher');
 var logout			= require('./controllers/logout');
 var app  			= express();
@@ -17,6 +18,7 @@ app.use(exSession({secret: 'my top secret code', saveUninitialized: true, resave
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use('/login', login);
+app.use('/signup', signup);
 app.use('/teacher', teacher);
 app.use('/logout', logout);
 app.use('/assets', express.static('ext'));
@@ -24,6 +26,8 @@ app.use('/pictures', express.static('images'));
 
 //ROUTES
 app.get('/', (req,res)=>res.send('Index page'));
+
+
 app.get('/setCookie', (req,res)=>{
 	res.cookie('cookie1', 'first cookie');
 	res.send("done");
@@ -40,4 +44,4 @@ app.get('/rmCookie', (req,res)=>{
 
 
 //SERVER STARTUP
-app.listen(port, ()=>console.log('server started at'+port+"..."));
+app.listen(port, ()=>console.log('server started at '+port+" ..."));
