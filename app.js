@@ -2,6 +2,8 @@
 var express 		= require('express');
 var bodyParser 		= require('body-parser');
 var exSession 		= require('express-session');
+var path			= require('path');
+var multer 			= require('multer');
 var cookieParser 	= require('cookie-parser');
 var login			= require('./controllers/login');
 var signup			= require('./controllers/signup');
@@ -17,6 +19,15 @@ app.set('view engine', 'ejs');
 app.use(exSession({secret: 'my top secret code', saveUninitialized: true, resave: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+var storage = multer.diskStorage({
+	destination: './images/',
+	filename   : function(req,file,cb){
+		cb(null , "image_"+Date.now()+path.extname(file.originalname));
+	}
+});
+app.use(multer({
+	storage:storage
+}).single('imageFile'));
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/teacher', teacher);
