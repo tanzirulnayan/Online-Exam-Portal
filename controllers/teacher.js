@@ -113,4 +113,8 @@ router.post('/delete/:id', (req, res)=>{
 		}
 	});
 });
+
+router.get('/support', (req, res)=>{
+	res.render('teacher/support');
+});	
 module.exports = router;
