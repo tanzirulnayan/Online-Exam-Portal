@@ -5,18 +5,10 @@ var studentModel 	= require.main.require('./model/student-model');
 var router 			= express.Router();
 
 router.get('/', (req, res)=>{
-	res.render('signup/index');
+	res.render('signup/student');
 });
 
-router.post('/', (req, res)=>{
-	
-
-
-	// console.log(res.req.file.filename);
-	// console.log(res.req.file.destination);
-	// var destination = res.req.file.destination;
-	// var studentImage = 
-	// console.log(studentImage);
+router.post('/', (req, res)=>{	
 
 	var  user ={
 		studentName 		:req.body.fname,
@@ -26,30 +18,30 @@ router.post('/', (req, res)=>{
 		userId 				:req.body.uname,
 		password 			:req.body.pass,
 		type 				:req.body.types,
-		studentImage		:res.req.file.destination+res.req.file.filename
+		studentImage		:res.req.file.destination + res.req.file.filename
 	};
 
-	// userModel.insert(user, function(success){
-	// 	if(success){
-	// 		res.redirect('/login');
-	// 	}
-	// 	else{
-
-	// 		res.redirect('/signup');
-			
-	// 	}
-	// });
-
-	studentModel.insert(user, function(success){
+	userModel.insert(user, function(success){
 		if(success){
-			res.redirect('/login');
+			studentModel.insert(user, function(success){
+				if(success){
+					res.redirect('/login');
+				}
+				else{
+					console.log(req.body.imageFile);
+					res.redirect('/signup');
+					console.log(user.studentImage);
+				}
+			});
 		}
 		else{
-			console.log(req.body.imageFile);
+
 			res.redirect('/signup');
-			console.log(user.studentImage);
+			
 		}
 	});
+
+
 
 	
 	
