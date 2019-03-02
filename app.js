@@ -7,6 +7,7 @@ var multer 			= require('multer');
 var cookieParser 	= require('cookie-parser');
 var login			= require('./controllers/login');
 var signup			= require('./controllers/signup');
+var student			= require('./controllers/student');
 var teacher			= require('./controllers/teacher');
 var logout			= require('./controllers/logout');
 var app  			= express();
@@ -30,13 +31,16 @@ app.use(multer({
 }).single('imageFile'));
 app.use('/login', login);
 app.use('/signup', signup);
+app.use('/student', student);
 app.use('/teacher', teacher);
 app.use('/logout', logout);
 app.use('/assets', express.static('ext'));
 app.use('/pictures', express.static('images'));
 
 //ROUTES
-app.get('/', (req,res)=>res.send('Index page'));
+app.get('/', (req, res)=>{
+	res.render('landingPage/index');
+});
 
 
 app.get('/setCookie', (req,res)=>{
