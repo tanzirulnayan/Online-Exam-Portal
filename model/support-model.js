@@ -3,8 +3,8 @@ var db = require('./db');
 module.exports={
     get: function(teacherId, callback){
 		var sql = "select * from support where T_ID = ?";
-		db.getResult(sql, [teacherId], function(result){
-			callback(result);
+		db.getResult(sql, [teacherId], function(results){
+			callback(results);
 		});
 	},
 	getAll: function(callback){

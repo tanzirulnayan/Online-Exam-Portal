@@ -63,11 +63,14 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+                <form method="POST">
 					<table align="center" border="0" width="100%" >
 							<tr>
 								<td >User Name</td>
 								<td width="2%">:</td>
-								<td><%=T_ID%></td>
+								<td>
+                                    <%=T_ID%>
+                                </td>
 								<td rowspan="5">
 									<img align="right" src="/pictures/nayan.png" alt="tough guy" height="200px" width="200px"/>
 								</td>
@@ -75,39 +78,41 @@
 							<tr>
 								<td>Name</td>
 								<td>:</td>
-								<td><%=T_NAME%></td>
+								<td>
+                                    <input class="input100" type="text" value="<%=T_NAME%>" name="teacherName"/>
+                                </td>
 							</tr>
 							<tr>
 								<td>Email</td>
 								<td>:</td>
-								<td><%=T_EMAIL%></td>
+								<td>
+                                    <input class="input100" type="text" value="<%=T_EMAIL%>" name="teacherEmail"/>
+                                </td>
 							</tr>
 							<tr>
 								<td>Address</td>
 								<td>:</td>
-								<td><%=T_ADDRESS%></td>
+                                <td>
+                                    <input class="input100" type="text" value="<%=T_ADDRESS%>" name="teacherAddress"/>
+                                </td>
 							</tr>
 							<tr>
 								<td>Mobile Number</td>
 								<td>:</td>
-								<td><%=T_MOBILE%></td>
+                                <td>
+                                    <input class="input100" type="text" value="<%=T_MOBILE%>" name="teacherMobile"/>
+                                </td>
 							</tr>
 							<tr>
 								<td></td>
 								<td></td>
 								<td>
-									<button class="login100-form-btn" onclick="editProfile()">Edit Profile</button>
-									
+                                    <button class="login100-form-btn" onclick="editProfile()">Edit Profile</button>
+                                    <input class="login100-form-btn" type="submit" value="Save"/>
 								</td>
 							</tr>
-							<tr>
-								<td></td>
-								<td>
-										<div height="200px" width="100%"></div>
-								</td>
-								<td></td>
-							</tr>
-						</table>
+                        </table>
+                    </form>
 			</div>
 		</div>
 	</div>

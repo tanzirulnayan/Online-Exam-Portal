@@ -1,7 +1,9 @@
 var express = require('express');
+var dateTime = require('date-time');
 var userModel = require.main.require('./model/user-model');
 var teacherModel = require.main.require('./model/teacher-model');
 var studentModel = require.main.require('./model/student-model');
+var supportModel = require.main.require('./model/support-model');
 var router = express.Router();
 
 router.get('*', function(req, res, next){
@@ -41,6 +43,17 @@ router.get('/profile', (req, res)=>{
 		}
 	});	
 });
+
+router.get('/profile/edit', (req, res)=>{
+
+	teacherModel.get(req.session.uId, function(result){
+		if(result.length >0 ){
+			res.render('teacher/editProfile', result[0]);
+		}else{
+			res.redirect('/profile');
+		}
+	});
+});	
 
 router.get('/adduser', (req, res)=>{
 	res.render('teacher/adduser');
@@ -116,5 +129,21 @@ router.post('/delete/:id', (req, res)=>{
 
 router.get('/support', (req, res)=>{
 	res.render('teacher/support');
+});
+
+router.post('/support', (req, res)=>{
+	var support ={
+		teacherId : req.session.uId,
+		supportText : req.body.supportText,
+		supportTime : new Date(),
+		supportStatus : "PENDING"
+	};
+	supportModel.insert(support, function(success){
+		if(success){
+			res.redirect('/teacher');
+		}else{
+			res.redirect('/teacher/support');
+		}
+	});
 });	
 module.exports = router;
