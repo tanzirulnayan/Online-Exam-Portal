@@ -170,4 +170,42 @@ router.post('/support', (req, res)=>{
 		}
 	});
 });	
+
+router.get('/account', (req, res)=>{
+	res.render('teacher/account');
+});
+
+router.post('/account', (req, res)=>{
+	var user ={
+		userId : req.session.uId,
+		password : req.body.oldPassword
+	};
+
+	userModel.validate(user, function(result){
+		if(result.length > 0){
+			if(result[0].U_TYPE == "TEACHER" && result[0].U_STATUS == "ACTIVE")
+			{
+				if(req.body.newPassword == req.body.conPassword){
+					var updateUser={
+						userId : req.session.uId,
+						password : req.body.newPassword,
+						type : "TEACHER",
+						status : "ACTIVE"
+					};
+					console.log("before update");
+					userModel.update(updateUser, function(success){
+						if(success){
+							res.redirect('/teacher');
+						}else{
+							res.redirect("/teacher/account");
+						}
+					});
+				}
+			}
+		}else{
+			res.redirect("/teacher/account");
+		}
+	});
+});
+
 module.exports = router;
