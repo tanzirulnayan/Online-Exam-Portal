@@ -63,14 +63,16 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-                <form method="POST">
+        <form method="POST">
 					<table align="center" border="0" width="100%" >
 							<tr>
-								<td >User Name</td>
+								<td width="25%">User Name</td>
 								<td width="2%">:</td>
-								<td>
-                                    <%=T_ID%>
-                                </td>
+								<td width="60%">
+										<div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+												<%=T_ID%>
+										</div>
+                </td>
 								<td rowspan="5">
 									<img align="right" src="/pictures/nayan.png" alt="tough guy" height="200px" width="200px"/>
 								</td>
@@ -79,40 +81,53 @@
 								<td>Name</td>
 								<td>:</td>
 								<td>
-                                    <input class="input100" type="text" value="<%=T_NAME%>" name="teacherName"/>
-                                </td>
+										<div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+												<input class="input100" type="text" value="<%=T_NAME%>" name="teacherName"/>
+												<span class="focus-input100"></span>
+										</div>
+                </td>
 							</tr>
 							<tr>
 								<td>Email</td>
 								<td>:</td>
 								<td>
-                                    <input class="input100" type="text" value="<%=T_EMAIL%>" name="teacherEmail"/>
-                                </td>
+										<div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+												<input class="input100" type="text" value="<%=T_EMAIL%>" name="teacherEmail"/>
+												<span class="focus-input100"></span>
+										</div>
+                </td>
 							</tr>
 							<tr>
 								<td>Address</td>
 								<td>:</td>
-                                <td>
-                                    <input class="input100" type="text" value="<%=T_ADDRESS%>" name="teacherAddress"/>
-                                </td>
+                <td>
+										<div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+												<input class="input100" type="text" value="<%=T_ADDRESS%>" name="teacherAddress"/>
+												<span class="focus-input100"></span>
+										</div>
+                </td>
 							</tr>
 							<tr>
 								<td>Mobile Number</td>
 								<td>:</td>
-                                <td>
-                                    <input class="input100" type="text" value="<%=T_MOBILE%>" name="teacherMobile"/>
-                                </td>
+                <td>
+										<div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+												<input class="input100" type="text" value="<%=T_MOBILE%>" name="teacherMobile"/>
+												<span class="focus-input100"></span>
+										</div>
+                </td>
 							</tr>
 							<tr>
 								<td></td>
 								<td></td>
 								<td>
-                                    <button class="login100-form-btn" onclick="editProfile()">Edit Profile</button>
-                                    <input class="login100-form-btn" type="submit" value="Save"/>
+										<div class="container-login100-form-btn">
+												<input class="login100-form-btn" type="submit" value="Save"/>
+											</div>
 								</td>
 							</tr>
-                        </table>
-                    </form>
+          </table>
+        </form>
 			</div>
 		</div>
 	</div>

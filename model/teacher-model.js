@@ -23,7 +23,6 @@ module.exports={
 	},
 	update: function(teacher, callback){
 		var sql = "update teachers set T_ID = ?, T_NAME = ?, T_EMAIL = ?, T_ADDRESS = ?, T_MOBILE = ?, T_IMAGE = ? where T_ID = ?";
-		
 		db.execute(sql, [teacher.teacherId, teacher.teacherName, teacher.teacherEmail, teacher.teacherAddress, teacher.teacherMobile, teacher.teacherImage, teacher.teacherId], function(status){
 			callback(status);
 		});

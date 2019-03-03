@@ -44,6 +44,10 @@ router.get('/profile', (req, res)=>{
 	});	
 });
 
+router.post('/profile', (req, res)=>{
+	res.redirect('/teacher/profile/edit');
+});
+
 router.get('/profile/edit', (req, res)=>{
 
 	teacherModel.get(req.session.uId, function(result){
@@ -54,6 +58,26 @@ router.get('/profile/edit', (req, res)=>{
 		}
 	});
 });	
+
+router.post('/profile/edit/', (req, res)=>{
+
+	var teacher ={
+		teacherId : req.session.uId,
+		teacherName : req.body.teacherName,
+		teacherEmail : req.body.teacherEmail,
+		teacherAddress : req.body.teacherAddress,
+		teacherMobile : req.body.teacherMobile,
+		teacherImage : req.body.teacherImage
+	};
+
+	teacherModel.update(teacher, function(success){
+		if(success){
+			res.redirect('/teacher/profile');
+		}else{
+			res.redirect('/teacher/profile/edit');
+		}
+	});
+});
 
 router.get('/adduser', (req, res)=>{
 	res.render('teacher/adduser');
