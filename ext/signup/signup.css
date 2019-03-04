@@ -1,5 +1,5 @@
 body {
-  background-color: #5CDB95;
+  background-color: white;
 }
 form {
   font-family:Josefin Sans;
@@ -8,7 +8,7 @@ form {
 /* =============================Span_Tag================================================== */
 span {
   font-family:Josefin Sans Light;
-  font-size:70px ;
+  font-size:40px ;
   color:#05386B;
   display:inline;
   font-weight: bold
@@ -44,6 +44,8 @@ th {
 
 /* =============================Input_Text================================================== */
 input {
+  border: 2px solid #0026B3;
+  border-radius: 10px;
   font-family:Josefin Sans Light;
   font-size:30px;
   color:#05386B
@@ -62,11 +64,11 @@ input[type=submit] {
   transition-duration: 0.4s;
 }
 input[type=submit] {
-  background-color: #8EE4AF;
+  background-color: #EAE6DA;
   color: #05386B;
 }
 input[type=submit]:hover {
-  background-color: white;
+  background-color: #7FDBFF;
   color: #05386B;
 }
 /* =============================Warning_div_Tag================================================== */

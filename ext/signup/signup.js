@@ -72,27 +72,6 @@ function checkAddress(c4)
 		}
 }
 
-function checkType(c5)
-{
-	var wrn = document.getElementById("wrn5");
-	var type = document.getElementsByName("types");
-	var ischecked = false;
-	for ( var i = 0; i < type.length; i++)
-	{
-    if(type[i].checked)
-		{
-        ischecked = true;
-				wrn.innerHTML = "";
-        v = true;
-        break;
-    }
-	}
-if(!ischecked)   {
-    wrn.innerHTML = "*Select Type";
-    v = false ;
-}
-}
-
 function checkUN(c6)
 {
 		var regex = /[^a-z,A-Z,0-9]/gi;
@@ -163,12 +142,11 @@ function allOK()
 
 	checkFN(document.regF.fname);
 	checkMAIL(document.regF.email);
-	checkDOB(document.regF.dob);
 	checkAddress(document.regF.address);
-	checkType(document.regF.types);
 	checkUN(document.regF.uname);
 	checkPASS(document.regF.pass);
 	checkFile(document.regF.imageFile);
+	checkDOB(document.regF.dob);
 
 	return v;
 
