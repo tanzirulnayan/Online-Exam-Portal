@@ -104,17 +104,47 @@ router.get('/editProfile', (req, res)=>{
 router.post('/editProfile', (req, res)=>{
 	var update ={
 		studentId 		: req.body.studentId,
+		userId 			: req.body.studentId,
+		studentOldid 	: req.session.uId,
 		studentName 	: req.body.studentName,
 		studentEmail 	: req.body.studentEmail,
 		studentDOB 		: req.body.studentDOB,
 		studentAddress	: req.body.studentAddress,
-		studentImage	: req.body.studentImage,
 	};
-	studentModel.insert(update, function(success){
+	userModel.update2(update, function(success){
+		if(success){
+			studentModel.update(update, function(success){
+				if(success){
+					studentModel.get(req.session.uId, function(result){
+						res.redirect('/logout');	
+					});	
+				}else{
+					res.redirect('/student/editProfile');
+				}
+			});
+		}else{
+			res.redirect('/student/editProfile');
+		}
+	});
+});	
+// ********************************************
+// *************Edit Picture************************
+router.get('/editPicture', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/editPicture', result[0]);	
+	});	
+});
+router.post('/editPicture', (req, res)=>{
+	var update2 ={
+		studentId 		: req.session.uId,
+		studentImage	:"/pictures/" + res.req.file.filename
+	};
+	studentModel.update2(update2, function(success){
 		if(success){
 			res.redirect('/student');
 		}else{
-			res.redirect('/student/editProfile');
+			res.redirect('/student/editPicture');
 		}
 	});
 });	

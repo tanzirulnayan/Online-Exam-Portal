@@ -70,7 +70,7 @@ router.post('/student', (req, res)=>{
 		userId 				:req.body.uname,
 		password 			:req.body.pass,
 		type 				:"STUDENT",
-		studentImage		:res.req.file.destination + res.req.file.filename
+		studentImage		:"/pictures/" + res.req.file.filename
 	};
 
 	userModel.insert(user, function(success){
@@ -80,9 +80,7 @@ router.post('/student', (req, res)=>{
 					res.redirect('/login');
 				}
 				else{
-					console.log(req.body.imageFile);
 					res.redirect('/signup');
-					console.log(user.studentImage);
 				}
 			});
 		}
@@ -104,7 +102,7 @@ router.post('/admin', (req, res)=>{
 		adminEmail 			:req.body.email,
 		adminMobile			:req.body.mobile,
 		adminAddress	 	:req.body.address,
-		userId 			:req.body.username,
+		userId 				:req.body.username,
 		password 			:req.body.password,
 		type 				:"ADMIN",
 		adminImage			:res.req.file.destination + res.req.file.filename

@@ -33,6 +33,13 @@ module.exports={
 			callback(status);
 		});
 	},
+	update2: function(user, callback){
+		var sql = "update users set U_ID = ? where U_ID = ?";
+		
+		db.execute(sql, [user.userId, user.studentOldid],function(status){
+			callback(status);
+		});
+	},
 	delete: function(userId, callback){
 		var sql = "delete from users where U_ID = ?";
 		db.execute(sql, [userId], function(status){

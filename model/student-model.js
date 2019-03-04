@@ -21,10 +21,15 @@ module.exports={
 		});
 	},
 	update: function(student, callback){
-		var sql = "update students set S_ID = ?, S_NAME = ?, S_EMAIL = ?, S_DOB = ?, S_ADDRESS = ?, S_IMAGE = ? where S_ID = ?";
-
-
-		db.execute(sql, [student.studentId, student.studentName, student.studentEmail, student.studentDOB, student.studentAddress, student.studentImage, student.studentId], function(status){
+		var sql = "update students set S_ID = ?, S_NAME = ?, S_EMAIL = ?, S_DOB = ?, S_ADDRESS = ? where S_ID = ?";
+		db.execute(sql, [student.studentId, student.studentName, student.studentEmail, student.studentDOB, student.studentAddress, student.studentOldid], function(status){
+			callback(status);
+		});
+	},
+	update2: function(student2, callback){
+		console.log(student2.studentId);
+		var sql = "update students set  S_IMAGE = ? where S_ID = ?";
+		db.execute(sql, [student2.studentImage, student2.studentId], function(status){
 			callback(status);
 		});
 	},

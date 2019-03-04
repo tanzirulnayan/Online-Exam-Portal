@@ -22,7 +22,7 @@ app.use(exSession({secret: 'my top secret code', saveUninitialized: true, resave
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 var storage = multer.diskStorage({
-	destination: '/pictures/',
+	destination: "./images/",
 	filename   : function(req,file,cb){
 		cb(null , "image_"+Date.now()+path.extname(file.originalname));
 	}
