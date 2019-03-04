@@ -23,21 +23,18 @@ router.get('/', (req, res)=>{
     };
     res.render('admin/index', user);
 });	
-// ********************************************
-// *************Profile************************
-// router.get('/profile', (req, res)=>{
-// 	studentModel.get(req.session.uid, function(result){
+//********************************************
+//*************Profile************************
+router.get('/profile', (req, res)=>{
 
-// 		if(result.length > 0){
-// 			res.render('admin/profile', result[0]);
-// 		}
-// 	});	
-// });
+	adminModel.get(req.session.uId, function(result){
+		res.render('admin/profile', result[0]);	
+	});	
+});
 
-// router.post('/profile', (req, res)=>{
-	
-// });	
+router.post('/profile', (req, res)=>{
 
+});	
 
 
 
