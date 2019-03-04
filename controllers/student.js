@@ -2,7 +2,7 @@ var express 		= require('express');
 var userModel 		= require.main.require('./model/user-model');
 var teacherModel 	= require.main.require('./model/teacher-model');
 var studentModel 	= require.main.require('./model/student-model');
-var supportModel = require.main.require('./model/support-model');
+var supportModel 	= require.main.require('./model/support-model');
 var router 			= express.Router();
 
 // ********************************************
@@ -24,19 +24,15 @@ router.get('/', (req, res)=>{
 // ********************************************
 // *************Profile************************
 router.get('/profile', (req, res)=>{
-	studentModel.get(req.session.uid, function(result){
 
-		if(result.length > 0){
-			res.render('student/profile', result[0]);
-		}
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/profile', result[0]);	
 	});	
 });
 
 router.post('/profile', (req, res)=>{
-	
+
 });	
-
-
 // ********************************************
 // *************Support************************
 router.get('/support', (req, res)=>{
