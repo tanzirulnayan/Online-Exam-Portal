@@ -208,4 +208,7 @@ router.post('/account', (req, res)=>{
 	});
 });
 
+router.get('/createExam', (req, res)=>{
+	res.render('teacher/createExam');
+});
 module.exports = router;
