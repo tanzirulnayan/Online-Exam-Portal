@@ -26,7 +26,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="<%=S_IMAGE%>" alt="image" title="myPicture" />
+														<img src="<%=S_IMAGE%>" alt="image" title="myPicture" />
+														<div class="file btn btn-lg btn-primary">
+															Change Photo
+															<input type="file" name="studentImage"/>
+													</div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -38,14 +42,6 @@
                                         STUDENT
                                     </h6>
                                     
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Timeline</a>
-                                </li> -->
-                            </ul>
                         </div>
                     </div>
 
@@ -64,7 +60,7 @@
                             <a href="">####</a><br/> -->
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-3">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
@@ -72,7 +68,7 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><%=S_ID%></p>
+                                                <p><input type="text" name="studentId" value="<%=S_ID%>" ></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -80,7 +76,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><%=S_NAME%></p>
+																							<p><input type="text" name="studentName" value="<%=S_NAME%>"></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -88,7 +84,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><%=S_EMAIL%></p>
+																							<p><input type="text" name="studentEmail" value="<%=S_EMAIL%>"></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -96,7 +92,7 @@
                                                 <label>Date of Birth</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><%=S_DOB%></p>
+																							<p><input type="date" name="studentDOB" value="<%=S_DOB%>"></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -104,9 +100,10 @@
                                                 <label>Address</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><%=S_ADDRESS%></p>
+																							<p><input type="text" name="studentAddress" value="<%=S_ADDRESS%>"></p>
                                             </div>
-                                        </div>
+																				</div>
+																				<input type="submit" name="update" value="Update"/>
                             </div>
                         </div>
                     </div>

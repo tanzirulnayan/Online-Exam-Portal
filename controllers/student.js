@@ -55,9 +55,70 @@ router.post('/support', (req, res)=>{
 	});
 });	
 // ********************************************
+// *************Change Password************************
+router.get('/changePassword', (req, res)=>{
+	res.render('student/changePassword');
+});
 
+router.post('/changePassword', (req, res)=>{
+	var user ={
+		userId : req.session.uId,
+		password : req.body.oldPassword
+	};
 
+	userModel.validate(user, function(result){
+		if(result.length > 0){
+			if(result[0].U_TYPE == "STUDENT" && result[0].U_STATUS == "ACTIVE")
+			{
+				if(req.body.newPassword == req.body.conPassword){
+					var updateUser={
+						userId : req.session.uId,
+						password : req.body.newPassword,
+						type : "STUDENT",
+						status : "ACTIVE"
+					};
+					console.log("before update");
+					userModel.update(updateUser, function(success){
+						if(success){
+							res.redirect('/student');
+						}else{
+							res.redirect("/student/changePassword");
+						}
+					});
+				}
+			}
+		}else{
+			res.redirect("/student/changePassword");
+		}
+	});
+});	
+// ********************************************
+// *************Edit Profile************************
+router.get('/editProfile', (req, res)=>{
 
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/editProfile', result[0]);	
+	});	
+});
+
+router.post('/editProfile', (req, res)=>{
+	var update ={
+		studentId 		: req.body.studentId,
+		studentName 	: req.body.studentName,
+		studentEmail 	: req.body.studentEmail,
+		studentDOB 		: req.body.studentDOB,
+		studentAddress	: req.body.studentAddress,
+		studentImage	: req.body.studentImage,
+	};
+	studentModel.insert(update, function(success){
+		if(success){
+			res.redirect('/student');
+		}else{
+			res.redirect('/student/editProfile');
+		}
+	});
+});	
+// ********************************************
 
 
 
