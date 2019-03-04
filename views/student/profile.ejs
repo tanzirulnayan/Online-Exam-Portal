@@ -10,10 +10,9 @@
 
 </head>
 <body>
-<form name="studentSupport" method="POST">   
+
 	<ul>
         <li><a class="active" href="/student">Home</a></li>
-        <li>&nbsp;</li>
 		<li style="float:right"><a href="/logout">Log Out</a></li>
 		<li style="float:right"><a href="/student/support">Support</a></li>
 		<li style="float:right"><a href="/student/profile">Profile</a></li>
@@ -23,11 +22,11 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container emp-profile">
-            <form method="post">
+            <form name="studentSupport" method="POST">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="<%=S_IMAGE%>" alt=""/>
+                            <img src="<%=S_IMAGE%>" alt="image" title="myPicture" />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -43,28 +42,26 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Timeline</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <a href="" class="profile-edit-btn">Edit Profile</a><br/>
-                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>Setting</p>
+                            <a href="">Edit Profile</a><br/>
+                            <a href="">Change Password</a><br/>
+                            <!-- <p>Extra</p>
                             <a href="">####</a><br/>
                             <a href="">####</a><br/>
-                            <p>Extra</p>
                             <a href="">####</a><br/>
                             <a href="">####</a><br/>
-                            <a href="">####</a><br/>
-                            <a href="">####</a><br/>
-                            <a href="">####</a><br/>
+                            <a href="">####</a><br/> -->
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -118,6 +115,6 @@
         </div>
     
 
-</form>
+
 </body>
 </html>

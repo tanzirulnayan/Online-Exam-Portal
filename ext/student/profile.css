@@ -25,12 +25,6 @@ body{
     font-size: 15px;
     background: #212529b8;
 }
-.profile-img .file input {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
-}
 .profile-head h5{
     color: #333;
 }
