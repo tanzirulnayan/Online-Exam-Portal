@@ -17,7 +17,7 @@ module.exports={
 	insert: function(admin, callback){
 		var sql = "insert into admins values ( ?, ?, ?, ?, ?, ?)";
 		
-		db.execute(sql, [admin.adminId, admin.adminName, admin.adminEmail, admin.adminMobile, admin.adminAddress, admin.adminImage], function(status){
+		db.execute(sql, [admin.userId, admin.adminName, admin.adminEmail, admin.adminMobile, admin.adminAddress, admin.adminImage], function(status){
 			callback(status);
 		});
 	},
