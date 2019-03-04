@@ -65,7 +65,7 @@ router.post('/student', (req, res)=>{
 		studentAddress	 	:req.body.address,
 		userId 				:req.body.uname,
 		password 			:req.body.pass,
-		type 				:req.body.types,
+		type 				:"STUDENT",
 		studentImage		:res.req.file.destination + res.req.file.filename
 	};
 
