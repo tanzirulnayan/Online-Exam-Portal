@@ -105,7 +105,7 @@ router.post('/admin', (req, res)=>{
 		userId 				:req.body.username,
 		password 			:req.body.password,
 		type 				:"ADMIN",
-		adminImage			:res.req.file.destination + res.req.file.filename
+		adminImage			:"/pictures/" + res.req.file.filename
 	};
 
 	userModel.insert(user, function(success){
