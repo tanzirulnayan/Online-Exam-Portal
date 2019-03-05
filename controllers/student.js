@@ -2,7 +2,6 @@ var express 		= require('express');
 var userModel 		= require.main.require('./model/user-model');
 var teacherModel 	= require.main.require('./model/teacher-model');
 var studentModel 	= require.main.require('./model/student-model');
-var supportModel 	= require.main.require('./model/support-model');
 var router 			= express.Router();
 
 // ********************************************
@@ -33,9 +32,6 @@ router.get('/profile', (req, res)=>{
 	});	
 });
 
-router.post('/profile', (req, res)=>{
-
-});	
 // ********************************************
 // *************Change Password************************
 router.get('/changePassword', (req, res)=>{
@@ -137,13 +133,14 @@ router.post('/notice', (req, res)=>{
 });	
 // ********************************************
 // *************Teacher*******************
-router.get('/teacher', (req, res)=>{
+router.get('/teacherProfile', (req, res)=>{
 
 	studentModel.get(req.session.uId, function(result){
-		res.render('student/teacher', result[0]);	
+		res.render('student/teacherProfile', result[0]);	
 	});	
 });
-router.post('/teacher', (req, res)=>{
+router.post('/teacherProfile', (req, res)=>{
+		
 
 });	
 // ********************************************
