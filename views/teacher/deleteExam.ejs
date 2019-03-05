@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>My Exams</title>
+	<title>Delete Exam</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
 	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
@@ -53,40 +53,45 @@
 <body>
 	<ul>
 		<li><a href="/teacher">Home</a></li>
-		<li style="float:right"><a href="../../logout">Log Out</a></li>
+		<li style="float:right"><a href="logout">Log Out</a></li>
 		<li style="float:right"><a href="/teacher/support">Support</a></li>
 		<li style="float:right"><a href="/teacher/account">Account</a></li>
-        <li style="float:right"><a href="/teacher/profile">Profile</a></li>
-        <li style="float:right"><a class="active" href="/teacher/exam">Exam</a></li>
+		<li style="float:right"><a href="/teacher/profile">Profile</a></li>
+		<li style="float:right"><a class="active" href="/teacher/exam">Exam</a></li>
 		<li style="float:right"><a href="/teacher/adduser">Add User</a></li>
 		<li style="float:right"><a href="/teacher/userlist">User List</a></li>
 	</ul>
-	
+
 	<div class="limiter">
-		<div class="container-login100" align="center">
-			<table border="1" width="80%" >
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Date</th>
-					<th>Start Time</th>
-					<th>End Time</th>
-					<th>Action</th>
-				</tr>
-				<% for(var i=0; i < examList.length; i++){ %>
-				<tr>
-					<td><%= examList[i].E_ID %></td>
-					<td><%= examList[i].E_TITLE %></td>
-					<td><%= examList[i].E_DATE %></td>
-					<td><%= examList[i].E_START_TIME %></td>
-					<td><%= examList[i].E_END_TIME %></td>
-					<td>
-						<a href="/teacher/exam/myExams/view/<%= examList[i].E_ID %>">View</a> |
-						<a href="/teacher/exam/myExams/delete/<%= examList[i].E_ID %>">Delete</a> 
-					</td>
-				</tr>
-				<% } %>
-			</table>
+		<div class="container-login100">
+				<span class="login100-form-title">
+						<h1><%=E_TITLE%></h1>
+                </span>
+                <span class="login100-form-title">
+					<table border="0px">
+                        <tr>
+                            <td>Date</td>
+                            <td>:</td>
+                            <td><%=E_DATE%></td>
+                        </tr>
+                        <tr>
+                            <td>Start Time</td>
+                            <td>:</td>
+                            <td><%=E_START_TIME%></td>
+                        </tr>
+                        <tr>
+                            <td>End Time</td>
+                            <td>:</td>
+                            <td><%=E_END_TIME%></td>
+                        </tr>
+                    </table>
+                </span>
+                <form class="login100-form validate-form" method="POST">   
+                    <input type="hidden" name="id" value="<%=E_ID%>">
+                    <div class="container-login100-form-btn">
+                        <input type="submit" name="delete" value="Delete"class="login100-form-btn" />
+                    </div>
+                </form>
 		</div>
 	</div>
 	

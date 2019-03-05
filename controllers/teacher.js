@@ -102,7 +102,7 @@ router.post('/adduser', (req, res)=>{
 });
 
 router.get('/edit/:id', (req, res)=>{
-
+	console.log("heheheeh");
 	userModel.get(req.params.id, function(result){
 		if(result.length >0 ){
 			res.render('teacher/edit', result[0]);
@@ -130,24 +130,24 @@ router.post('/edit/:id', (req, res)=>{
 	});
 });
 
-router.get('/delete/:id', (req, res)=>{
+router.get('/exam/myExams/delete/:id', (req, res)=>{
 
-	userModel.get(req.params.id, function(result){
+	examRoomModel.get(req.params.id, function(result){
 		if(result.length >0 ){
-			res.render('teacher/delete', result[0]);
+			res.render('teacher/deleteExam', result[0]);
 		}else{
-			res.redirect('/teacher/userlist');
+			res.redirect('/teacher/exam/myExams');
 		}
 	});
 });	
 
-router.post('/delete/:id', (req, res)=>{
+router.post('/exam/myExams/delete/:id', (req, res)=>{
 	
-	userModel.delete(req.params.id, function(success){
+	examRoomModel.delete(req.params.id, function(success){
 		if(success){
-			res.redirect('/teacher/userlist');
+			res.redirect('/teacher/exam/myExams');
 		}else{
-			res.redirect("/teacher/delete/"+req.params.id);
+			res.redirect("/teacher/exam/myExams/delete/"+req.params.id);
 		}
 	});
 });
