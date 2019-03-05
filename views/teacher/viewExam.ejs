@@ -53,7 +53,7 @@
 <body>
 	<ul>
 		<li><a href="/teacher">Home</a></li>
-		<li style="float:right"><a href="logout">Log Out</a></li>
+		<li style="float:right"><a href="../../../../logout">Log Out</a></li>
 		<li style="float:right"><a href="/teacher/support">Support</a></li>
 		<li style="float:right"><a href="/teacher/account">Account</a></li>
 		<li style="float:right"><a href="/teacher/profile">Profile</a></li>
@@ -63,17 +63,31 @@
 	</ul>
 
 	<div class="limiter">
-		<div class="container-login100">
-				<span class="login100-form-title">
-						<h1><%=userId%></h1>
-                </span>
-                <table>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </table>
-		</div>
-	</div>
+            <div class="container-login100">
+                    <span class="login100-form-title">
+                            <h1><%=E_TITLE%></h1>
+                    </span>
+                    <span class="login100-form-title">
+                        <table border="0px">
+                            <tr>
+                                <td>Date</td>
+                                <td>:</td>
+                                <td><%=E_DATE%></td>
+                            </tr>
+                            <tr>
+                                <td>Start Time</td>
+                                <td>:</td>
+                                <td><%=E_START_TIME%></td>
+                            </tr>
+                            <tr>
+                                <td>End Time</td>
+                                <td>:</td>
+                                <td><%=E_END_TIME%></td>
+                            </tr>
+                        </table>
+                    </span>
+            </div>
+        </div>
 	
 	<script src="/assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/assets/login/vendor/bootstrap/js/popper.js"></script>

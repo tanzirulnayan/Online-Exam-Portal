@@ -101,18 +101,27 @@ router.post('/adduser', (req, res)=>{
 	});
 });
 
-router.get('/edit/:id', (req, res)=>{
-	console.log("heheheeh");
-	userModel.get(req.params.id, function(result){
+router.get('/exam/myExams/view/:id', (req, res)=>{
+	examRoomModel.get(req.params.id, function(result){
 		if(result.length >0 ){
-			res.render('teacher/edit', result[0]);
+			res.render('teacher/viewExam', result[0]);
 		}else{
-			res.redirect('/teacher/userlist');
+			res.redirect('/teacher/exam/myExams');
+		}
+	});
+});
+
+router.get('/exam/myExams/edit/:id', (req, res)=>{
+	examRoomModel.get(req.params.id, function(result){
+		if(result.length >0 ){
+			res.render('teacher/editExam', result[0]);
+		}else{
+			res.redirect('/teacher/exam/myExams');
 		}
 	});
 });	
 
-router.post('/edit/:id', (req, res)=>{
+router.post('/exam/myExams/edit/:id', (req, res)=>{
 	
 	var user ={
 		id: req.params.id,
