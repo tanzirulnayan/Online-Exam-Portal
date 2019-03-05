@@ -39,20 +39,45 @@ router.post('/profile', (req, res)=>{
 //********************************************
 //*************account************************
 router.get('/account', (req, res)=>{
-
-	adminModel.get(req.session.uId, function(result){
-		res.render('admin/account', result[0]);	
-	});	
+	res.render('admin/account');
 });
 
 router.post('/account', (req, res)=>{
+	var user ={
+		userId : req.session.uId,
+		password : req.body.oldPassword
+	};
 
+	userModel.validate(user, function(result){
+		if(result.length > 0){
+			if(result[0].U_TYPE == "ADMIN" && result[0].U_STATUS == "ACTIVE")
+			{
+				if(req.body.newPassword == req.body.conPassword){
+					var updateUser={
+						userId : req.session.uId,
+						password : req.body.newPassword,
+						type : "ADMIN",
+						status : "ACTIVE"
+					};
+					console.log("before update");
+					userModel.update(updateUser, function(success){
+						if(success){
+							res.redirect('/admin');
+						}else{
+							res.redirect("/admin/account");
+						}
+					});
+				}
+			}
+		}else{
+			res.redirect("/admin/account");
+		}
+	});
 });	
 
 
 //********************************************
 //*************Edit_profile************************
-
 
 
 router.get('/edit_profile', (req, res)=>{
@@ -63,7 +88,30 @@ router.get('/edit_profile', (req, res)=>{
 });
 
 router.post('/edit_profile', (req, res)=>{
-
+	var update ={
+		admintId 		: req.body.admintId,
+		userId 			: req.body.adminId,
+		adminOldid 	    : req.session.uId,
+		adminEmail   	: req.body.adminEmail,
+		adminEmail 	    : req.body.adminEmail,
+		adminMobile 	: req.body.adminMobile,
+		adminAddress	: req.body.adminAddress,
+	};
+	userModel.update2(update, function(success){
+		if(success){
+			adminModel.update(update, function(success){
+				if(success){
+					adminModel.get(req.session.uId, function(result){
+						res.redirect('/logout');	
+					});	
+				}else{
+					res.redirect('/admin/edit_profile');
+				}
+			});
+		}else{
+			res.redirect('/admin/edit_profile');
+		}
+	});
 });	
 
 //********************************************

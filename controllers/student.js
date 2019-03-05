@@ -103,25 +103,17 @@ router.get('/editProfile', (req, res)=>{
 
 router.post('/editProfile', (req, res)=>{
 	var update ={
-		studentId 		: req.body.studentId,
-		userId 			: req.body.studentId,
-		studentOldid 	: req.session.uId,
+		studentId 		: req.session.uId,
 		studentName 	: req.body.studentName,
 		studentEmail 	: req.body.studentEmail,
 		studentDOB 		: req.body.studentDOB,
 		studentAddress	: req.body.studentAddress,
 	};
-	userModel.update2(update, function(success){
+	studentModel.update(update, function(success){
 		if(success){
-			studentModel.update(update, function(success){
-				if(success){
-					studentModel.get(req.session.uId, function(result){
-						res.redirect('/logout');	
-					});	
-				}else{
-					res.redirect('/student/editProfile');
-				}
-			});
+			studentModel.get(req.session.uId, function(result){
+				res.redirect('/student');	
+			});	
 		}else{
 			res.redirect('/student/editProfile');
 		}
