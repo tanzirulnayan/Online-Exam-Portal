@@ -38,7 +38,7 @@ router.post('/teacher', (req, res)=>{
 					teacherEmail 	:req.body.email,
 					teacherAddress	:req.body.address,
 					teacherMobile 	:req.body.mobile,
-					teacherImage	:res.req.file.destination + res.req.file.filename
+					teacherImage	:"/pictures/" + res.req.file.filename
 				}; 
 				teacherModel.insert(teacher, function(success){
 					if(success){
