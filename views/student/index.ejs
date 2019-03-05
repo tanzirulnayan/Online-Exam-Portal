@@ -3,21 +3,52 @@
 <head><title>Home|Student|Online Exam Portal</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/student/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/dropdown.css">
 
 </head>
 <body>
 <form name="studentHome" method="POST" >
 
-	<ul>
-		<li><a class="active" href="/student">Home</a></li>
-		<li style="float:right"><a href="/logout">Log Out</a></li>
-		<li style="float:right"><a href="/student/support">Support</a></li>
-		<li style="float:right"><a href="/student/profile">Profile</a></li>
-		<li style="float:right"><a href="">Teacher</a></li>
-		<li style="float:right"><a href="">Profile</a></li>
-		<li style="float:right"><a href="">Profile</a></li>
+<ul>
+	<li><a href="/student">Home</a></li>
+	<li style="float:right"><a href="/logout">Log Out</a></li>
+	<li style="float:right"><a href="/student/profile">Profile</a></li>
+	<img src="<%=S_IMAGE%>" style="border-radius: 50%;width:50px;height:50px;float:right">
+	<li style="float:right" ><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	<li style="float:right"><a href="/student/forum">Forum</a></li>
+	<li style="float:right"><a href="/student/teacher">Teacher</a></li>
+	<li style="float:right"><a href="/student/notice">Notices</a></li>
+	<li style="float:right">
+	<div class="dropdown">
+		<button class="dropbtn">Exam</button>
+		<div class="dropdown-content">
+			<a href="#">Join Exam</a>
+			<a href="/student/result">Results</a>
+			<a href="/student/download">Download</a>
+			<a href="/student/history">History</a>
+		</div>
+		</div>
+	</li>
+</ul>
 
-	</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

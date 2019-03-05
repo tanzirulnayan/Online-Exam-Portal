@@ -18,8 +18,11 @@ router.get('*', function(req, res, next){
 router.get('/', (req, res)=>{
     var user = {
         userId: req.session.uId
-    };
-    res.render('student/index', user);
+	};
+	
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/index', result[0]);	
+	});	
 });	
 // ********************************************
 // *************Profile************************
@@ -34,30 +37,11 @@ router.post('/profile', (req, res)=>{
 
 });	
 // ********************************************
-// *************Support************************
-router.get('/support', (req, res)=>{
-	res.render('student/support');
-});
-
-router.post('/support', (req, res)=>{
-	var support ={
-		studentId : req.session.uId,
-		supportText : req.body.supportText,
-		supportTime : new Date(),
-		supportStatus : "PENDING"
-	};
-	supportModel.insert2(support, function(success){
-		if(success){
-			res.redirect('/student');
-		}else{
-			res.redirect('/student/support');
-		}
-	});
-});	
-// ********************************************
 // *************Change Password************************
 router.get('/changePassword', (req, res)=>{
-	res.render('student/changePassword');
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/changePassword', result[0]);	
+	});	
 });
 
 router.post('/changePassword', (req, res)=>{

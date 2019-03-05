@@ -7,15 +7,16 @@
 <link rel="stylesheet" type="text/css" href="/assets/student/main.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/profile.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/dropdown.css">
 
 </head>
 <body>
 
 <ul>
-<li><a class="active" href="/student">Home</a></li>
-<li style="float:right"><a href="/logout">Log Out</a></li>
-<li style="float:right"><a href="/student/support">Support</a></li>
-<li style="float:right"><a href="/student/profile">Profile</a></li>
+    <li><a href="/student">Home</a></li>
+    <li style="float:right"><a href="/logout">Log Out</a></li>
+    <li style="float:right"><a href="/student/profile">Profile</a></li>
+    <img src="<%=S_IMAGE%>" style="border-radius: 50%;width:50px;height:50px;float:right">
 </ul>
 
 
@@ -100,7 +101,7 @@
                         <p><input type="text" name="studentAddress" value="<%=S_ADDRESS%>"></p>
                         </div>
                         </div>
-                        <input type="submit" name="update" value="Update"/>
+                        <input type="submit" class="login100-form-btn" name="update" value="Update"/>
         </div>
     </div>
 </div>
