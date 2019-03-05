@@ -21,9 +21,9 @@ module.exports={
 		});
 	},
 	insert: function(examRoom, callback){
-		var sql = "insert into exam_rooms values ( ?, ?, ?, ?, ?, ?)";
+		var sql = "insert into exam_rooms values (NULL, ?, ?, ?, ?, ?)";
 		
-		db.execute(sql, [examRoom.examId, examRoom.examTitle, examRoom.examDate, examRoom.examStartTime, examRoom.examEndTime, examRoom.teacherId], function(status){
+		db.execute(sql, [examRoom.examTitle, examRoom.examDate, examRoom.examStartTime, examRoom.examEndTime, examRoom.teacherId], function(status){
 			callback(status);
 		});
 	},

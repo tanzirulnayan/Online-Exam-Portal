@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home</title>
+	<title>Exam</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
 	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
@@ -52,21 +52,28 @@
 
 <body>
 	<ul>
-		<li><a class="active" href="/teacher">Home</a></li>
-		<li style="float:right"><a href="logout">Log Out</a></li>
+		<li><a href="/teacher">Home</a></li>
+		<li style="float:right"><a href="../logout">Log Out</a></li>
 		<li style="float:right"><a href="/teacher/support">Support</a></li>
 		<li style="float:right"><a href="/teacher/account">Account</a></li>
-		<li style="float:right"><a href="/teacher/profile">Profile</a></li>
-		<li style="float:right"><a href="/teacher/exam">Exam</a></li>
+        <li style="float:right"><a href="/teacher/profile">Profile</a></li>
+        <li style="float:right"><a class="active" href="/teacher/exam">Exam</a></li>
 		<li style="float:right"><a href="/teacher/adduser">Add User</a></li>
 		<li style="float:right"><a href="/teacher/userlist">User List</a></li>
 	</ul>
-
+	
 	<div class="limiter">
-		<div class="container-login100">
-				<span class="login100-form-title">
-						<h1>Welcome teacher, <%=userId%></h1>
-				</span>
+		<div class="container-login100" align="center">
+            <form class="login100-form validate-form" method="POST">
+                <div class="container-login100-form-btn">
+                    <div class="container-login100-form-btn">
+                        <a class="login100-form-btn" href="/teacher/exam/createExam">Create New Exam Room</a>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <a class="login100-form-btn" href="/teacher/exam/myExams">My Exam Rooms</a>
+                    </div>
+                </div>
+            </form>
 		</div>
 	</div>
 	

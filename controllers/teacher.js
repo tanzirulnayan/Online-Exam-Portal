@@ -4,6 +4,7 @@ var userModel = require.main.require('./model/user-model');
 var teacherModel = require.main.require('./model/teacher-model');
 var studentModel = require.main.require('./model/student-model');
 var supportModel = require.main.require('./model/support-model');
+var examRoomModel = require.main.require('./model/examRoom-model');
 var router = express.Router();
 
 router.get('*', function(req, res, next){
@@ -192,7 +193,6 @@ router.post('/account', (req, res)=>{
 						type : "TEACHER",
 						status : "ACTIVE"
 					};
-					console.log("before update");
 					userModel.update(updateUser, function(success){
 						if(success){
 							res.redirect('/teacher');
@@ -207,8 +207,33 @@ router.post('/account', (req, res)=>{
 		}
 	});
 });
+router.get('/exam', (req, res)=>{
+	res.render('teacher/exam');
+});
 
-router.get('/createExam', (req, res)=>{
+router.get('/exam/createExam', (req, res)=>{
 	res.render('teacher/createExam');
+});
+
+router.post('/exam/createExam', (req, res)=>{
+	var examRoom ={
+		examTitle 	  : req.body.title,
+		examDate 	  : req.body.date,
+		examStartTime : req.body.start,
+		examEndTime   : req.body.end,
+		teacherId	  : req.session.uId
+	};
+
+	examRoomModel.insert(examRoom, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams');
+		}else{
+			res.redirect("/teacher/exam/createExam");
+		}
+	});
+});
+
+router.get('/exam/myExams', (req, res)=>{
+	res.render('teacher/myExams');
 });
 module.exports = router;
