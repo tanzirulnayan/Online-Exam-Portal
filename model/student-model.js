@@ -21,8 +21,8 @@ module.exports={
 		});
 	},
 	update: function(student, callback){
-		var sql = "update students set S_ID = ?, S_NAME = ?, S_EMAIL = ?, S_DOB = ?, S_ADDRESS = ? where S_ID = ?";
-		db.execute(sql, [student.studentId, student.studentName, student.studentEmail, student.studentDOB, student.studentAddress, student.studentOldid], function(status){
+		var sql = "update students set S_NAME = ?, S_EMAIL = ?, S_DOB = ?, S_ADDRESS = ? where S_ID = ?";
+		db.execute(sql, [student.studentName, student.studentEmail, student.studentDOB, student.studentAddress, student.studentId], function(status){
 			callback(status);
 		});
 	},
