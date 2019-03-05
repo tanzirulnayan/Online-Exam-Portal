@@ -234,6 +234,15 @@ router.post('/exam/createExam', (req, res)=>{
 });
 
 router.get('/exam/myExams', (req, res)=>{
-	res.render('teacher/myExams');
+	examRoomModel.getByTeacherId(req.session.uId, function(results){
+		if(results.length > 0){
+			var exam = {
+				name: req.session.uId,
+				examList: results
+			};
+			res.render('teacher/myExams', exam);
+		}
+	});
 });
+
 module.exports = router;
