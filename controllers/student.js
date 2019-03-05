@@ -125,7 +125,72 @@ router.post('/editPicture', (req, res)=>{
 	});
 });	
 // ********************************************
+// *************Notice*******************
+router.get('/notice', (req, res)=>{
 
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/notice', result[0]);	
+	});	
+});
+router.post('/notice', (req, res)=>{
+
+});	
+// ********************************************
+// *************Teacher*******************
+router.get('/teacher', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/teacher', result[0]);	
+	});	
+});
+router.post('/teacher', (req, res)=>{
+
+});	
+// ********************************************
+// *************Forum*******************
+router.get('/forum', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/forum', result[0]);	
+	});	
+});
+router.post('/forum', (req, res)=>{
+
+});	
+// ********************************************
+// *************Result*******************
+router.get('/result', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/result', result[0]);	
+	});	
+});
+router.post('/result', (req, res)=>{
+
+});	
+// ********************************************
+// *************Download*******************
+router.get('/download', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/download', result[0]);	
+	});	
+});
+router.post('/download', (req, res)=>{
+
+});	
+// ********************************************
+// *************History*******************
+router.get('/history', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/history', result[0]);	
+	});	
+});
+router.post('/history', (req, res)=>{
+
+});	
+// ********************************************
 
 
 
