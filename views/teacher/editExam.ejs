@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Edit Exam</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		ul {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  overflow: hidden;
+		  background-color: #333;
+		}
+		
+		li {
+		  float: left;
+		  
+		}
+		
+		li:last-child {
+		  border-right: none;
+		}
+		
+		li a {
+		  display: block;
+		  color: white;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		}
+		
+		li a:hover:not(.active) {
+		  background-color: #111;
+		}
+		
+		.active {
+		  background-color: #4CAF50;
+		}
+	</style>
+</head>
+
+<body>
+	<ul>
+		<li><a href="/teacher">Home</a></li>
+		<li style="float:right"><a href="../../../../logout">Log Out</a></li>
+		<li style="float:right"><a href="/teacher/support">Support</a></li>
+		<li style="float:right"><a href="/teacher/account">Account</a></li>
+		<li style="float:right"><a href="/teacher/profile">Profile</a></li>
+		<li style="float:right"><a class="active" href="/teacher/exam">Exam</a></li>
+		<li style="float:right"><a href="/teacher/adduser">Add User</a></li>
+		<li style="float:right"><a href="/teacher/userlist">User List</a></li>
+	</ul>
+
+	<div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form method="POST">
+                    <table align="center" border="0" width="100%" >
+                        <tr>
+                            <td width="25%">Exam Ttile</td>
+                            <td width="2%">:</td>
+                            <td width="60%">
+                                <div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+                                    <%=E_TITLE%>
+                                </div>
+                            </td>
+                        </tr>
+                                
+                        <tr>
+                            <td>Date</td>
+                            <td>:</td>
+                            <td>
+                                <div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+                                    <input class="input100" type="date" value="<%=E_DATE%>" name="date"/>
+                                    <span class="focus-input100"></span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Start Time</td>
+                            <td>:</td>
+                            <td>
+                                <div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+                                    <input class="input100" type="time" value="<%=E_START_TIME%>" name="start"/>
+                                    <span class="focus-input100"></span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>End Time</td>
+                            <td>:</td>
+                            <td>
+                                <div class="wrap-input100 validate-input" data-validate = "Field must not be empty">
+                                    <input class="input100" type="time" value="<%=E_END_TIME%>" name="end"/>
+                                    <span class="focus-input100"></span>
+                                </div>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="container-login100-form-btn">
+                                    <input class="login100-form-btn" type="submit" value="Update"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+	
+	<script src="/assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/assets/login/vendor/bootstrap/js/popper.js"></script>
+	<script src="/assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/assets/login/vendor/select2/select2.min.js"></script>
+	<script src="/assets/login/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<script src="/assets/login/js/main.js"></script>
+
+</body>
+</html>
