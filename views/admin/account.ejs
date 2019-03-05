@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Account</title>
+	<title>Change Password</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
-	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css"/>
-	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css"/>
+
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="/assets/student/changePassword.js"></script>
 
 	<style>
 		ul {
@@ -54,20 +48,21 @@
 	<ul>
 		<li><a class="active" href="/admin">Home</a></li>
 		<li style="float:right"><a href="/logout">Log Out</a></li>
-		<li style="float:right"><a href="">Pending List</a></li>
-		<li style="float:right"><a href="/admin/account">Account</a></li>
+		<li style="float:right"><a href="/admin/Pending_list">Pending List</a></li>
 		<li style="float:right"><a href="/admin/profile">Profile</a></li>
-		<li style="float:right"><a href="">Admin List</a></li>
-		<li style="float:right"><a href="">Teacher List</a></li>
-		<li style="float:right"><a href="">Student List</a></li>
+		<li style="float:right"><a href="/admin/admin_list">Admin List</a></li>
+		<li style="float:right"><a href="/admin/teacher_list">Teacher List</a></li>
+		<li style="float:right"><a href="/admin/student_list">Student List</a></li>
 	</ul>
 	
 	<div class="limiter">
 		<div class="container-login100">
             <div>
-                    <form method="POST">
-                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                <input class="input100" type="password" name="oldPassword" placeholder="Old Password">
+                    <form method="POST" name="CPASS">
+                            <div class="wrap-input100 validate-input">
+																<input class="input100" type="password" name="oldPassword" placeholder="Old Password"
+																onkeyup="oldPass(this)">
+																<div id="wrn1"></div>
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
@@ -75,7 +70,9 @@
                             </div>
                     
                             <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                <input class="input100" type="password" name="newPassword" placeholder="New Password">
+																<input class="input100" type="password" name="newPassword" placeholder="New Password"
+																onkeyup="newPass(this)">
+																<div id="wrn2"></div>
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
@@ -83,7 +80,9 @@
                             </div>
             
                             <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                <input class="input100" type="password" name="conPassword" placeholder="Retype New Password">
+																<input class="input100" type="password" name="conPassword" placeholder="Retype New Password"
+																onkeyup="newCpass(this)">
+																<div id="wrn3"></div>
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
@@ -91,7 +90,7 @@
                             </div>
             
                             <div class="container-login100-form-btn">
-                                <input class="login100-form-btn" type="submit" value="Change Password"/>
+                                <input class="login100-form-btn" type="submit" value="Change Password" onclick = "return allOK();"/>
                             </div>
                         </form>
             </div>
@@ -103,6 +102,7 @@
 	<script src="/assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/assets/login/vendor/select2/select2.min.js"></script>
 	<script src="/assets/login/vendor/tilt/tilt.jquery.min.js"></script>
+
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
