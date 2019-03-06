@@ -2,7 +2,6 @@ var express 		= require('express');
 var userModel 		= require.main.require('./model/user-model');
 var teacherModel 	= require.main.require('./model/teacher-model');
 var studentModel 	= require.main.require('./model/student-model');
-var supportModel 	= require.main.require('./model/support-model');
 var router 			= express.Router();
 
 // ********************************************
@@ -18,8 +17,11 @@ router.get('*', function(req, res, next){
 router.get('/', (req, res)=>{
     var user = {
         userId: req.session.uId
-    };
-    res.render('student/index', user);
+	};
+	
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/index', result[0]);	
+	});	
 });	
 // ********************************************
 // *************Profile************************
@@ -30,34 +32,12 @@ router.get('/profile', (req, res)=>{
 	});	
 });
 
-router.post('/profile', (req, res)=>{
-
-});	
-// ********************************************
-// *************Support************************
-router.get('/support', (req, res)=>{
-	res.render('student/support');
-});
-
-router.post('/support', (req, res)=>{
-	var support ={
-		studentId : req.session.uId,
-		supportText : req.body.supportText,
-		supportTime : new Date(),
-		supportStatus : "PENDING"
-	};
-	supportModel.insert2(support, function(success){
-		if(success){
-			res.redirect('/student');
-		}else{
-			res.redirect('/student/support');
-		}
-	});
-});	
 // ********************************************
 // *************Change Password************************
 router.get('/changePassword', (req, res)=>{
-	res.render('student/changePassword');
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/changePassword', result[0]);	
+	});	
 });
 
 router.post('/changePassword', (req, res)=>{
@@ -141,7 +121,73 @@ router.post('/editPicture', (req, res)=>{
 	});
 });	
 // ********************************************
+// *************Notice*******************
+router.get('/notice', (req, res)=>{
 
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/notice', result[0]);	
+	});	
+});
+router.post('/notice', (req, res)=>{
+
+});	
+// ********************************************
+// *************Teacher*******************
+router.get('/teacherProfile', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/teacherProfile', result[0]);	
+	});	
+});
+router.post('/teacherProfile', (req, res)=>{
+		
+
+});	
+// ********************************************
+// *************Forum*******************
+router.get('/forum', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/forum', result[0]);	
+	});	
+});
+router.post('/forum', (req, res)=>{
+
+});	
+// ********************************************
+// *************Result*******************
+router.get('/result', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/result', result[0]);	
+	});	
+});
+router.post('/result', (req, res)=>{
+
+});	
+// ********************************************
+// *************Download*******************
+router.get('/download', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/download', result[0]);	
+	});	
+});
+router.post('/download', (req, res)=>{
+
+});	
+// ********************************************
+// *************History*******************
+router.get('/history', (req, res)=>{
+
+	studentModel.get(req.session.uId, function(result){
+		res.render('student/history', result[0]);	
+	});	
+});
+router.post('/history', (req, res)=>{
+
+});	
+// ********************************************
 
 
 

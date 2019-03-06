@@ -7,106 +7,127 @@
 <link rel="stylesheet" type="text/css" href="/assets/student/main.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/profile.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/dropdown.css">
 
 </head>
 <body>
 
-	<ul>
-        <li><a class="active" href="/student">Home</a></li>
-		<li style="float:right"><a href="/logout">Log Out</a></li>
-		<li style="float:right"><a href="/student/support">Support</a></li>
-		<li style="float:right"><a href="/student/profile">Profile</a></li>
-    </ul>
-
-
-<!------ Include the above in your HEAD tag ---------->
+<ul>
+    <li><a href="/student">Home</a></li>
+    <li style="float:right"><a href="/logout">Log Out</a></li>
+    <li style="float:right"><a href="/student/profile">Profile</a></li>
+    <img src="<%=S_IMAGE%>" style="border-radius: 50%;width:50px;height:50px;float:right">
+    <li style="float:right" ><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+    <li style="float:right"><a href="/student/forum">Forum</a></li>
+    <li style="float:right"><a href="/student/teacherProfile">Teacher</a></li>
+    <li style="float:right"><a href="/student/notice">Notices</a></li>
+    <li style="float:right">
+    <div class="dropdown">
+        <button class="dropbtn">Exam</button>
+        <div class="dropdown-content">
+            <a href="#">Join Exam</a>
+            <a href="/student/result">Results</a>
+            <a href="/student/download">Download</a>
+            <a href="/student/history">History</a>
+        </div>
+        </div>
+    </li>
+</ul>
 
 <div class="container emp-profile">
-            <form name="studentSupport" method="POST">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="<%=S_IMAGE%>" alt="image" title="myPicture" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                        <%=S_NAME%>
-                                    </h5>
-                                    <h6>
-                                        STUDENT
-                                    </h6>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
-                            <p>Setting</p>
-                            <a href="/student/editProfile">Edit Profile</a><br/>
-                            <a href="/student/editPicture">Edit Picture</a><br/>
-                            <a href="/student/changePassword">Change Password</a><br/>
-                            <!-- <p>Extra</p>
-                            <a href="">####</a><br/>
-                            <a href="">####</a><br/>
-                            <a href="">####</a><br/>
-                            <a href="">####</a><br/>
-                            <a href="">####</a><br/> -->
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%=S_ID%></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%=S_NAME%></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%=S_EMAIL%></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Date of Birth</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%=S_DOB%></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Address</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%=S_ADDRESS%></p>
-                                            </div>
-                                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>           
+<form name="studentSupport" method="POST">
+<div class="row" >
+    <div class="col-md-4" >
+    </div>
+    <div class="col-md-6">
+        <div class="profile-head">
+            <h5>
+            <%=S_NAME%>
+            </h5>
+            <h6>
+            STUDENT
+            </h6>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="profile-img">
+        <img src="<%=S_IMAGE%>" alt="image" title="myPicture" />
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <br><br><br>
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <div class="row">
+
+                            <div class="col-md-6">
+                            <label> 
+                            User Id</label>
+                            </div>
+                            <div class="col-md-6">
+                            <p><%=S_ID%></p>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Name</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p><%=S_NAME%></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Email</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p><%=S_EMAIL%></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Date of Birth</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p><%=S_DOB%></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Address</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p><%=S_ADDRESS%></p>
+                        </div>
+                        </div>
+                    </div>
+            </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="profile-work">
+            <p>Setting</p>
+            <a href="/student/editProfile">Edit Profile</a><br/>
+            <a href="/student/editPicture">Edit Picture</a><br/>
+            <a href="/student/changePassword">Change Password</a><br/>
+            <!-- <p>Extra</p>
+            <a href="">####</a><br/>
+            <a href="">####</a><br/>
+            <a href="">####</a><br/>
+            <a href="">####</a><br/>
+            <a href="">####</a><br/> -->
+        </div>
+    </div>
+
+</div>
+</form>           
+</div>
     
-
-
 </body>
 </html>
