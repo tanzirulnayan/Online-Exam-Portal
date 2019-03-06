@@ -123,18 +123,20 @@ router.get('/exam/myExams/edit/:id', (req, res)=>{
 
 router.post('/exam/myExams/edit/:id', (req, res)=>{
 	
-	var user ={
-		id: req.params.id,
-		uname : req.body.uname,
-		password : req.body.password,
-		type : req.body.type
+	var examRoom ={
+		examId 		  : req.params.id,
+		examTitle 	  : req.body.title,
+		examDate 	  : req.body.date,
+		examStartTime : req.body.start,
+		examEndTime   : req.body.end,
+		teacherId	  : req.session.uId
 	};
 	
-	userModel.update(user, function(success){
+	examRoomModel.update(examRoom, function(success){
 		if(success){
-			res.redirect('/teacher/userlist');
+			res.redirect('/teacher/exam/myExams');
 		}else{
-			res.render("/teacher/edit/"+req.params.id);
+			res.render("/teacher/exam/myExams/edit/"+req.params.id);
 		}
 	});
 });
