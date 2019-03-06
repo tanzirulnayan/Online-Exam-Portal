@@ -163,6 +163,16 @@ router.post('/exam/myExams/delete/:id', (req, res)=>{
 	});
 });
 
+router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
+	participantModel.get(req.params.id, function(results){
+		if(results.length >0 ){
+			res.render('teacher/addStudent', results[0]);
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+		}
+	});
+});
+
 router.get('/support', (req, res)=>{
 	res.render('teacher/support');
 });
