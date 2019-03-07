@@ -118,17 +118,22 @@ router.post('/edit_profile', (req, res)=>{
 //*************admin_list************************
 
 
+// router.get('/admin_list', (req, res)=>{
+	
+// 	adminModel.getAll(function(results){
+// 		if(results.length > 0){
+// 			if(result[0].U_TYPE == "ADMIN" && result[0].U_STATUS == "ACTIVE")
+// 			{
+// 				var user = {
+// 					name: req.session.uId,
+// 					uList: results
+// 				};
+// 				res.render('admin/admin_list', user);
+// 		    }
+// 		}
+// 	});	
+// });
 
-router.get('/admin_list', (req, res)=>{
-
-	adminModel.get(req.session.uId, function(result){
-		res.render('admin/admin_list', result[0]);	
-	});	
-});
-
-router.post('/admin_list', (req, res)=>{
-
-});	
 
 
 

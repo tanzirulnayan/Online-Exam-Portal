@@ -20,4 +20,26 @@
 		<li style="float:right"><a href="">Teacher List</a></li>
 		<li style="float:right"><a href="">Student List</a></li>
     </ul>
+	<table border="1" width="400px" >
+		<tr>
+			<th>ID</th>
+			<th>PASS</th>
+			<th>TYPE</th>
+			<th>Action</th>
+		</tr>
 
+		<% for(var i=0; i < uList.length; i++){ %>
+		<tr>
+			<td><%= uList[i].U_ID %></td>
+            <td><%= uList[i].U_PASSWORD %></td>
+			<td><%= uList[i].U_TYPE %></td>
+			<td>
+				<a href="/admin/edit/<%= uList[i].U_ID %>">Edit</a> |
+				<a href="/admin/delete/<%= uList[i].U_ID %>">Delete</a> 
+			</td>
+		</tr>
+		<% } %>
+	</table>
+
+</body>
+</html>
