@@ -144,10 +144,8 @@ router.get('/teacherProfile', (req, res)=>{
 // *************Teacher Profile*******************
 router.get('/teacherProfiles/:id', (req, res)=>{
 	var id = req.params.id;
-	teacherModel.get(id, function(result){
-		// res.render('student/teacherProfile', result[0]);	
-		console.log(result[0]);
-		res.send(result[0]);
+	teacherModel.get(id, function(result){	
+		 res.send(result[0]);
 	});	
 });
 
