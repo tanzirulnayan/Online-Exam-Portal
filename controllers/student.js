@@ -132,17 +132,25 @@ router.post('/notice', (req, res)=>{
 
 });	
 // ********************************************
-// *************Teacher*******************
+// *************Teacher Search*******************
 router.get('/teacherProfile', (req, res)=>{
 
 	studentModel.get(req.session.uId, function(result){
 		res.render('student/teacherProfile', result[0]);	
 	});	
 });
-router.post('/teacherProfile', (req, res)=>{
-		
 
-});	
+// ********************************************
+// *************Teacher Profile*******************
+router.get('/teacherProfiles/:id', (req, res)=>{
+	var id = req.params.id;
+	teacherModel.get(id, function(result){
+		// res.render('student/teacherProfile', result[0]);	
+		console.log(result[0]);
+		res.send(result[0]);
+	});	
+});
+
 // ********************************************
 // *************Forum*******************
 router.get('/forum', (req, res)=>{
