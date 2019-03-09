@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2019 at 06:11 AM
+-- Generation Time: Mar 09, 2019 at 08:32 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -168,15 +168,6 @@ CREATE TABLE `support` (
   `S_TIME` date NOT NULL,
   `S_STATUS` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `support`
---
-
-INSERT INTO `support` (`T_ID`, `S_TEXT`, `S_TIME`, `S_STATUS`) VALUES
-('nayan', 'HI BRO', '2019-03-09', 'PENDING'),
-('nayan', 'Nunu Man', '2019-03-09', 'PENDING'),
-('nayan', 'FUCK ', '2019-03-09', 'PENDING');
 
 -- --------------------------------------------------------
 
