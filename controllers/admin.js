@@ -29,16 +29,13 @@ router.get('/profile', (req, res)=>{
 
 	adminModel.get(req.session.uId, function(result){
 
-		if(result.length > 0){
+		if(result.length > 0)
+		    {
 			res.render('admin/profile', result[0]);	
 		    }
 		
 	});	
 });
-
-router.post('/profile', (req, res)=>{
-
-});	
 
 //********************************************
 //*************account************************
@@ -99,17 +96,11 @@ router.post('/edit_profile', (req, res)=>{
 		adminMobile 	: req.body.adminMobile,
 		adminAddress	: req.body.adminAddress,
 	};
-	userModel.update2(update, function(success){
+	adminModel.update(update, function(success){
 		if(success){
-			adminModel.update(update, function(success){
-				if(success){
-					adminModel.get(req.session.uId, function(result){
-						res.redirect('/logout');	
-					});	
-				}else{
-					res.redirect('/admin/edit_profile');
-				}
-			});
+			adminModel.get(req.session.uId, function(result){
+				res.redirect('/admin');	
+			});	
 		}else{
 			res.redirect('/admin/edit_profile');
 		}
@@ -236,7 +227,27 @@ router.post('/teacher_list', (req, res)=>{
 });	
 
 
+// ********************************************
+// *************Edit Picture************************
+router.get('/edit_picture', (req, res)=>{
 
+	studentModel.get(req.session.uId, function(result){
+		res.render('admin/edit_picture', result[0]);	
+	});	
+});
+router.post('/edit_picture', (req, res)=>{
+	var update2 ={
+		studentId 		: req.session.uId,
+		studentImage	:"/pictures/" + res.req.file.filename
+	};
+	adminModel.pictureedit(pictureedit, function(success){
+		if(success){
+			res.redirect('/admin');
+		}else{
+			res.redirect('/admin/edit_picture');
+		}
+	});
+});	
 
 
 
