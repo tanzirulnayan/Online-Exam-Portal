@@ -75,8 +75,8 @@
 					<td><%= participantList[i].S_NAME %></td>
 					<td><%= participantList[i].S_EMAIL %></td>
 					<td>
-						<a href="/teacher/exam/view/<%=E_ID%>/addStudent/<%= examList[i].S_ID %>">Approve</a> |
-						<a href="/teacher/exam/view/<%=E_ID%>/deleteStudent<%= examList[i].S_ID %>">Delete</a> 
+						<a href="/teacher/exam/view/<%=E_ID%>/addStudent/<%= participantList[i].S_ID %>">Approve</a> |
+						<a href="/teacher/exam/view/<%=E_ID%>/deleteStudent<%= participantList[i].S_ID %>">Delete</a> 
 					</td>
 				</tr>
 				<% } %>

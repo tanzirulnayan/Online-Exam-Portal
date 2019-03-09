@@ -26,7 +26,14 @@ module.exports={
 		db.execute(sql, [participantId], function(status){
 			callback(status);
 		});
-	}
+	},
+	getStudentsByExamId: function(examId, callback){
+		var sql = "SELECT students.S_ID, students.S_NAME, students.S_EMAIL, students.S_ADDRESS, students.S_IMAGE FROM students INNER JOIN exam_participants ON students.S_ID = exam_participants.P_ID WHERE exam_participants.E_ID = ?";
+		
+		db.getResult(sql, [examId], function(results){
+			callback(results);
+		});
+	},
 }
 
 
