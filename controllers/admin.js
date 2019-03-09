@@ -170,16 +170,32 @@ router.post('/adminview_profile', (req, res)=>{
 
 
 router.get('/pending_list', (req, res)=>{
-
-	adminModel.get(req.session.uId, function(result){
-		res.render('admin/pending_list', result[0]);	
+	
+	userModel.getAll(function(results){
+		if(results.length > 0){
+			var user = {
+				name: req.session.uId,
+				uList: results
+			};
+			res.render('admin/pending_list', user);
+		}
 	});	
 });
 
-router.post('/pending_list', (req, res)=>{
+//********************************************
+//*************pending_list-->> change************************
 
-});	
-
+router.get('/pending_list/:id', (req, res)=>{
+	//console.log("dfs");
+	userModel.updatestatus(req.params.id,function(results){
+		if(result.length >0 ){
+			console.log("ds")
+			res.render('admin/pending_list', result[0]);
+		}else{
+			res.redirect('/admin');
+		}
+	});	
+});
 
 
 //********************************************
