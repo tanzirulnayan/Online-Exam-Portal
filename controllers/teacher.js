@@ -145,6 +145,20 @@ router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
 	});
 });
 
+router.get('/exam/myExams/view/:id/studentList', (req, res)=>{
+	participantModel.getActiveStudentsByExamId(req.params.id, function(results){
+		if(results.length >0 ){
+			var participants = {
+				E_ID			: req.params.id,
+				participantList : results
+			};
+			res.render('teacher/studentList', participants);
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+		}
+	});
+});
+
 router.get('/exam/myExams/view/:id/addNotice', (req, res)=>{
 	res.render('teacher/addNotice');
 });

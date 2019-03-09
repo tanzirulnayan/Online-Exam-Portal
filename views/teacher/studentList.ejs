@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Add Student</title>
+	<title>Student List</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
 	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
@@ -67,16 +67,17 @@
 					<th>Username</th>
 					<th>Name</th>
                     <th>Email</th>
-                    <th>Action</th>
+                    <th>Address</th>
+                    <th>Image</th>
 				</tr>
 				<% for(var i=0; i < participantList.length; i++){ %>
 				<tr>
 					<td><%= participantList[i].S_ID %></td>
 					<td><%= participantList[i].S_NAME %></td>
-					<td><%= participantList[i].S_EMAIL %></td>
+                    <td><%= participantList[i].S_EMAIL %></td>
+                    <td><%= participantList[i].S_ADDRESS %></td>
 					<td>
-						<a href="/teacher/exam/view/<%=E_ID%>/addStudent/<%= participantList[i].S_ID %>">Approve</a> |
-						<a href="/teacher/exam/view/<%=E_ID%>/deleteStudent<%= participantList[i].S_ID %>">Delete</a> 
+                        <img align="center" src="<%=participantList[i].S_IMAGE%>" alt="person" height="50px" width="50px"/>
 					</td>
 				</tr>
 				<% } %>
