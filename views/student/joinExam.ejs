@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head><title>Join Exam</title>
+
+<script type="text/javascript" src="/assets/student/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/student/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/student/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/profile.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/dropdown.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/search.css">
+<!-- <script type="text/javascript" src="/assets/student/teacherProfile.js"></script> -->
+</head>
+<body>
+
+<ul>
+    <li><a href="/student">Home</a></li>
+    <li style="float:right"><a href="/logout">Log Out</a></li>
+    <li style="float:right"><a href="/student/profile">Profile</a></li>
+    <img src="<%=S_IMAGE%>" style="border-radius: 50%;width:50px;height:50px;float:right">
+    <li style="float:right" ><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+    <li style="float:right"><a href="/student/forum">Forum</a></li>
+    <li style="float:right"><a href="/student/teacherProfile">Teacher</a></li>
+    <li style="float:right"><a href="/student/notice">Notices</a></li>
+    <li style="float:right">
+    <div class="dropdown">
+    <button class="dropbtn">Exam</button>
+    <div class="dropdown-content">
+        <a href="/student/searchExam">Search Exam</a>
+		<a href="/student/joinExam">Join Exam</a>
+        <a href="/student/result">Results</a>
+        <a href="/student/download">Download</a>
+        <a href="/student/history">History</a>
+    </div>
+    </div>
+    </li>
+</ul>
+
+
+<form name="joinExam">
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <div class="input-group">
+                <input class="form-control" placeholder="Search by Teacher's ID . . ." 
+                 name="search" id="examSearch" type="text">
+                <div class="input-group-btn">
+                <input id="searchbtn" type = 'button' value = 'Search' />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container emp-profile" id='getall'></div>
+
+
+
+</form>
+</body>
+</html>
