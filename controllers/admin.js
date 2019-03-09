@@ -28,7 +28,11 @@ router.get('/', (req, res)=>{
 router.get('/profile', (req, res)=>{
 
 	adminModel.get(req.session.uId, function(result){
-		res.render('admin/profile', result[0]);	
+
+		if(result.length > 0){
+			res.render('admin/profile', result[0]);	
+		    }
+		
 	});	
 });
 
@@ -118,24 +122,47 @@ router.post('/edit_profile', (req, res)=>{
 //*************admin_list************************
 
 
-// router.get('/admin_list', (req, res)=>{
+router.get('/admin_list', (req, res)=>{
 	
-// 	adminModel.getAll(function(results){
-// 		if(results.length > 0){
-// 			if(result[0].U_TYPE == "ADMIN" && result[0].U_STATUS == "ACTIVE")
-// 			{
-// 				var user = {
-// 					name: req.session.uId,
-// 					uList: results
-// 				};
-// 				res.render('admin/admin_list', user);
-// 		    }
-// 		}
-// 	});	
-// });
+	adminModel.getAll(function(results){
+		if(results.length > 0){
+			var user = {
+				name: req.session.uId,
+				uList: results
+			};
+			res.render('admin/admin_list', user);
+		}
+	});	
+});
 
+//********************************************
+//*************admin_list--->>profile************************
 
+router.get('/admin_list/:id', (req, res)=>{
+	//console.log("qwerty");
+	adminModel.get(req.params.id, function(result){
+		if(result.length >0 ){
+			res.render('admin/adminview_profile', result[0]);
+		}else{
+			res.redirect('/admin/admin_list');
+		}
+	});
+});	
 
+//********************************************
+//*****************adminview_profile********************
+router.get('/adminview_profile', (req, res)=>{
+
+	adminModel.get(req.session.uId, function(result){
+		if(result.length > 0){
+		res.render('admin/adminview_profile', result[0]);	
+		}
+	});	
+});
+
+router.post('/adminview_profile', (req, res)=>{
+
+});	
 
 //********************************************
 //*************pending_list************************

@@ -23,19 +23,16 @@
 	<table border="1" width="400px" >
 		<tr>
 			<th>ID</th>
-			<th>PASS</th>
-			<th>TYPE</th>
+			<th>NAME</th>
 			<th>Action</th>
 		</tr>
 
 		<% for(var i=0; i < uList.length; i++){ %>
 		<tr>
-			<td><%= uList[i].U_ID %></td>
-            <td><%= uList[i].U_PASSWORD %></td>
-			<td><%= uList[i].U_TYPE %></td>
+			<td><%= uList[i].A_ID %></td>
+			<td><%= uList[i].A_NAME %></td>
 			<td>
-				<a href="/admin/edit/<%= uList[i].U_ID %>">Edit</a> |
-				<a href="/admin/delete/<%= uList[i].U_ID %>">Delete</a> 
+				<a href="/admin/admin_list/<%= uList[i].A_ID %>">Profile</a> 
 			</td>
 		</tr>
 		<% } %>
