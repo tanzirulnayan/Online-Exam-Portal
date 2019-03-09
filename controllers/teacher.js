@@ -132,7 +132,7 @@ router.post('/exam/myExams/delete/:id', (req, res)=>{
 });
 
 router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
-	participantModel.getStudentsByExamId(req.params.id, function(results){
+	participantModel.getPendingStudentsByExamId(req.params.id, function(results){
 		if(results.length >0 ){
 			var participants = {
 				E_ID			: req.params.id,
