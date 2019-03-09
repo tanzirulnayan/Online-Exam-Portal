@@ -174,6 +174,10 @@ router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
 	});
 });
 
+router.get('/exam/myExams/view/:id/addNotice', (req, res)=>{
+	res.render('teacher/addNotice');
+});
+
 router.get('/support', (req, res)=>{
 	res.render('teacher/support');
 });
