@@ -53,13 +53,11 @@
 <body>
 	<ul>
 		<li><a href="/teacher">Home</a></li>
-		<li style="float:right"><a href="../../../logout">Log Out</a></li>
+		<li style="float:right"><a href="../../../../../logout">Log Out</a></li>
 		<li style="float:right"><a href="/teacher/support">Support</a></li>
 		<li style="float:right"><a href="/teacher/account">Account</a></li>
         <li style="float:right"><a href="/teacher/profile">Profile</a></li>
         <li style="float:right"><a class="active" href="/teacher/exam">Exam</a></li>
-		<li style="float:right"><a href="/teacher/adduser">Add User</a></li>
-		<li style="float:right"><a href="/teacher/userlist">User List</a></li>
 	</ul>
 	
 	<div class="limiter">
@@ -77,8 +75,8 @@
 					<td><%= participantList[i].S_NAME %></td>
 					<td><%= participantList[i].S_EMAIL %></td>
 					<td>
-						<a href="/teacher/exam/view/<%=E_ID%>/addStudent/<%= examList[i].S_ID %>">Approve</a> |
-						<a href="/teacher/exam/view/<%=E_ID%>/deleteStudent<%= examList[i].S_ID %>">Delete</a> 
+						<a href="/teacher/exam/view/<%=E_ID%>/addStudent/<%= participantList[i].S_ID %>">Approve</a> |
+						<a href="/teacher/exam/view/<%=E_ID%>/deleteStudent<%= participantList[i].S_ID %>">Delete</a> 
 					</td>
 				</tr>
 				<% } %>

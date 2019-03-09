@@ -14,10 +14,30 @@
 	<ul>
 		<li><a class="active" href="/admin">Home</a></li>
 		<li style="float:right"><a href="/logout">Log Out</a></li>
-		<li style="float:right"><a href="">Pending List</a></li>
+		<li style="float:right"><a href="/admin/pending_list">Pending List</a></li>
 		<li style="float:right"><a href="/admin/profile">Profile</a></li>
-		<li style="float:right"><a href="">Admin List</a></li>
-		<li style="float:right"><a href="">Teacher List</a></li>
-		<li style="float:right"><a href="">Student List</a></li>
+		<li style="float:right"><a href="/admin/admin_list">Admin List</a></li>
+		<li style="float:right"><a href="/admin/teacher_list">Teacher List</a></li>
+		<li style="float:right"><a href="/admin/student_list">Student List</a></li>
     </ul>
 
+	<table border="1" width="400px" >
+		<tr>
+			<th>ID</th>
+			<th>PASSWORD</th>
+			<th>TYPE</th>
+			<th>Action</th>
+		</tr>
+
+		<% for(var i=0; i < uList.length; i++){ %>
+		<tr>
+			<td><%= uList[i].U_ID %></td>
+			<td><%= uList[i].U_PASSWORD %></td>
+			<td><%= uList[i].U_TYPE %></td>
+			<td>
+				<a href="/teacher/edit/<%= uList[i].U_ID %>">Edit</a> |
+				<a href="/teacher/delete/<%= uList[i].U_ID %>">Delete</a> 
+			</td>
+		</tr>
+		<% } %>
+	</table>

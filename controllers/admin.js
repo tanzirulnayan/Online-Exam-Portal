@@ -81,7 +81,7 @@ router.post('/account', (req, res)=>{
 
 
 //********************************************
-//*************Edit_profile************************
+//*************Edit_profile***************
 
 
 router.get('/edit_profile', (req, res)=>{
@@ -94,9 +94,7 @@ router.get('/edit_profile', (req, res)=>{
 router.post('/edit_profile', (req, res)=>{
 	var update ={
 		admintId 		: req.body.admintId,
-		userId 			: req.body.adminId,
-		adminOldid 	    : req.session.uId,
-		adminEmail   	: req.body.adminEmail,
+		adminName   	: req.body.adminName,
 		adminEmail 	    : req.body.adminEmail,
 		adminMobile 	: req.body.adminMobile,
 		adminAddress	: req.body.adminAddress,
@@ -170,16 +168,37 @@ router.post('/adminview_profile', (req, res)=>{
 
 
 router.get('/pending_list', (req, res)=>{
-
-	adminModel.get(req.session.uId, function(result){
-		res.render('admin/pending_list', result[0]);	
+	
+	userModel.getPending(function(results){
+		if(results.length > 0){
+			var user = {
+				name: req.session.uId,
+				uList: results
+			};
+			res.render('admin/pending_list', user);
+		}
+		// else{
+		// 	//Kisu ekta likhte hobe
+		// }
 	});	
 });
 
-router.post('/pending_list', (req, res)=>{
+//********************************************
+//*************pending_list-->> change************************
 
-});	
+router.get('/pending_list/:id', (req, res)=>{
+	//console.log("dfs");
 
+	userModel.updatestatus(req.params.id,function(success){
+
+		if(success){
+			res.redirect('/admin/pending_list');
+		 }
+		 //else{
+		// 	res.redirect('/admin');
+		// }
+	});	
+});
 
 
 //********************************************

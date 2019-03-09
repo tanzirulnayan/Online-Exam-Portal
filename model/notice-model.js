@@ -21,9 +21,9 @@ module.exports={
 		});
 	},
 	insert: function(notice, callback){
-		var sql = "insert into notices values ( ?, ?, ?, ?)";
+		var sql = "insert into notices values ( NULL, ?, ?, ?)";
 		
-		db.execute(sql, [notice.noticeId, notice.noticeText, notice.noticeTime, notice.examId], function(status){
+		db.execute(sql, [notice.noticeText, notice.noticeTime, notice.examId], function(status){
 			callback(status);
 		});
 	},

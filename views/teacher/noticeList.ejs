@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>My Exams</title>
+	<title>Notices</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
 	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
@@ -53,7 +53,7 @@
 <body>
 	<ul>
 		<li><a href="/teacher">Home</a></li>
-		<li style="float:right"><a href="../../logout">Log Out</a></li>
+		<li style="float:right"><a href="../../../../../logout">Log Out</a></li>
 		<li style="float:right"><a href="/teacher/support">Support</a></li>
 		<li style="float:right"><a href="/teacher/account">Account</a></li>
         <li style="float:right"><a href="/teacher/profile">Profile</a></li>
@@ -62,27 +62,22 @@
 	
 	<div class="limiter">
 		<div class="container-login100" align="center">
-			<table border="1px" width="80%" >
+
+            <span class="login100-form-title">
+                <h1>All Notices</h1>
+            </span>
+
+            <table border="1px" width="80%" >
 				<tr>
 					<th>ID</th>
-					<th>Title</th>
+					<th>Notice</th>
 					<th>Date</th>
-					<th>Start Time</th>
-					<th>End Time</th>
-					<th>Action</th>
 				</tr>
-				<% for(var i=0; i < examList.length; i++){ %>
+				<% for(var i=0; i < noticeList.length; i++){ %>
 				<tr>
-					<td><%= examList[i].E_ID %></td>
-					<td><%= examList[i].E_TITLE %></td>
-					<td><%= examList[i].E_DATE %></td>
-					<td><%= examList[i].E_START_TIME %></td>
-					<td><%= examList[i].E_END_TIME %></td>
-					<td>
-						<a href="/teacher/exam/myExams/view/<%= examList[i].E_ID %>">View</a> |
-						<a href="/teacher/exam/myExams/edit/<%= examList[i].E_ID %>">Edit</a> |
-						<a href="/teacher/exam/myExams/delete/<%= examList[i].E_ID %>">Delete</a> 
-					</td>
+					<td><%= noticeList[i].N_ID %></td>
+					<td><%= noticeList[i].N_TEXT %></td>
+					<td><%= noticeList[i].N_TIME %></td>
 				</tr>
 				<% } %>
 			</table>
