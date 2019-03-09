@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2019 at 11:58 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Mar 09, 2019 at 06:11 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -97,8 +97,18 @@ CREATE TABLE `exam_result` (
 CREATE TABLE `exam_rooms` (
   `E_ID` int(11) NOT NULL,
   `E_TITLE` text COLLATE utf8_unicode_ci NOT NULL,
+  `E_DATE` date NOT NULL,
+  `E_START_TIME` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `E_END_TIME` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `T_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `exam_rooms`
+--
+
+INSERT INTO `exam_rooms` (`E_ID`, `E_TITLE`, `E_DATE`, `E_START_TIME`, `E_END_TIME`, `T_ID`) VALUES
+(1, 'C# Quiz - 1', '2019-03-21', '10:00', '11:00', 'nayan');
 
 -- --------------------------------------------------------
 
@@ -159,6 +169,15 @@ CREATE TABLE `support` (
   `S_STATUS` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `support`
+--
+
+INSERT INTO `support` (`T_ID`, `S_TEXT`, `S_TIME`, `S_STATUS`) VALUES
+('nayan', 'HI BRO', '2019-03-09', 'PENDING'),
+('nayan', 'Nunu Man', '2019-03-09', 'PENDING'),
+('nayan', 'FUCK ', '2019-03-09', 'PENDING');
+
 -- --------------------------------------------------------
 
 --
@@ -174,6 +193,14 @@ CREATE TABLE `teachers` (
   `T_IMAGE` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`T_ID`, `T_NAME`, `T_EMAIL`, `T_ADDRESS`, `T_MOBILE`, `T_IMAGE`) VALUES
+('nayan', 'Md. Tanzirul Haque Nayan', 'tanzirul.haque@outlook.com', 'Basundhara', '01788284381', '/pictures/image_1552106721085.jpg'),
+('paola', 'Paola Amparo', 'paola@yahoo.com', 'Gulshan', '01521303626', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -186,6 +213,14 @@ CREATE TABLE `users` (
   `U_TYPE` varchar(7) COLLATE utf8_unicode_ci NOT NULL,
   `U_STATUS` varchar(7) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`U_ID`, `U_PASSWORD`, `U_TYPE`, `U_STATUS`) VALUES
+('nayan', 'nayan', 'TEACHER', 'ACTIVE'),
+('paola', 'paola', 'TEACHER', 'PENDING');
 
 --
 -- Indexes for dumped tables
@@ -232,6 +267,16 @@ ALTER TABLE `teachers`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`U_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `exam_rooms`
+--
+ALTER TABLE `exam_rooms`
+  MODIFY `E_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
