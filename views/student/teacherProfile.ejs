@@ -4,7 +4,6 @@
 
 <script type="text/javascript" src="/assets/student/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/student/jquery.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="/assets/student/main.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/profile.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/bootstrap.min.css">
@@ -27,7 +26,8 @@
     <div class="dropdown">
     <button class="dropbtn">Exam</button>
     <div class="dropdown-content">
-        <a href="#">Join Exam</a>
+        <a href="/student/searchExam">Search Exam</a>
+		<a href="/student/joinExam">Join Exam</a>
         <a href="/student/result">Results</a>
         <a href="/student/download">Download</a>
         <a href="/student/history">History</a>
@@ -46,7 +46,7 @@
                 <input class="form-control" placeholder="Search by Teacher's ID . . ." 
                  name="search" id="tsearch" type="text">
                 <div class="input-group-btn">
-                <button id="searchbtn">Search</button>
+                <input id="searchbtn" type = 'button' value = 'Search' />
                 </div>
             </div>
         </div>
