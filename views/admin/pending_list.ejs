@@ -20,8 +20,8 @@
 		<li style="float:right"><a href="/admin/teacher_list">Teacher List</a></li>
 		<li style="float:right"><a href="/admin/student_list">Student List</a></li>
     </ul>
-
-	<table border="1" width="400px" >
+<center>
+	<table border="1" width="400px"  >
 		<tr>
 			<th>ID</th>
 			<th>TYPE</th>
@@ -36,8 +36,10 @@
 			<td><%= uList[i].U_STATUS %></td>
 			<td>
 				<a href="/admin/pending_list/<%= uList[i].U_ID %>">Change</a> 
+				<!-- <input  id="change" type = "submit" value = "Change" /> -->
 		</tr>
 		<% } %>
 	</table>
+</center>
 </body>
 </html>
