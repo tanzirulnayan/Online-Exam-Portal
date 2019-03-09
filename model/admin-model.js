@@ -14,6 +14,9 @@ module.exports={
 			callback(results);
 		});
 	},
+
+
+
 	insert: function(admin, callback){
 		var sql = "insert into admins values ( ?, ?, ?, ?, ?, ?)";
 		

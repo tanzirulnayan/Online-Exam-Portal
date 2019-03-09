@@ -102,6 +102,7 @@ router.post('/adduser', (req, res)=>{
 });
 
 router.get('/exam/myExams/view/:id', (req, res)=>{
+	req.session.examRoom = req.params.id;
 	examRoomModel.get(req.params.id, function(result){
 		if(result.length >0 ){
 			res.render('teacher/viewExam', result[0]);
@@ -171,6 +172,10 @@ router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
 			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
 		}
 	});
+});
+
+router.get('/exam/myExams/view/:id/addNotice', (req, res)=>{
+	res.render('teacher/addNotice');
 });
 
 router.get('/support', (req, res)=>{
