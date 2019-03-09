@@ -102,6 +102,7 @@ router.post('/adduser', (req, res)=>{
 });
 
 router.get('/exam/myExams/view/:id', (req, res)=>{
+	req.session.examRoom = req.params.id;
 	examRoomModel.get(req.params.id, function(result){
 		if(result.length >0 ){
 			res.render('teacher/viewExam', result[0]);
