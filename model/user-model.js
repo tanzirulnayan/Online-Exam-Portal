@@ -44,6 +44,17 @@ module.exports={
 			callback(status);
 		});
 	},
+
+    updatestatus: function(userId, callback){
+		var sql = "update users set  U_STATUS ='ACTIVE' where U_ID =?";
+		
+		db.execute(sql, [userId] ,function(status){
+			callback(status);
+		});
+	},
+
+
+
 }
 
 
