@@ -5,6 +5,7 @@ var teacherModel = require.main.require('./model/teacher-model');
 var studentModel = require.main.require('./model/student-model');
 var supportModel = require.main.require('./model/support-model');
 var examRoomModel = require.main.require('./model/examRoom-model');
+var noticeModel = require.main.require('./model/notice-model');
 var router = express.Router();
 
 router.get('*', function(req, res, next){
@@ -21,20 +22,6 @@ router.get('/', (req, res)=>{
 		};
 		res.render('teacher/index', user);
 });	
-
-
-router.get('/userlist', (req, res)=>{
-	
-	userModel.getAll(function(results){
-		if(results.length > 0){
-			var user = {
-				name: req.session.uId,
-				uList: results
-			};
-			res.render('teacher/userlist', user);
-		}
-	});	
-});
 
 router.get('/profile', (req, res)=>{
 
@@ -76,27 +63,6 @@ router.post('/profile/edit/', (req, res)=>{
 			res.redirect('/teacher/profile');
 		}else{
 			res.redirect('/teacher/profile/edit');
-		}
-	});
-});
-
-router.get('/adduser', (req, res)=>{
-	res.render('teacher/adduser');
-});	
-
-router.post('/adduser', (req, res)=>{
-	
-	var user ={
-		uname : req.body.uname,
-		password : req.body.password,
-		type : req.body.type
-	};
-	
-	userModel.insert(user, function(success){
-		if(success){
-			res.redirect('/teacher/userlist');
-		}else{
-			res.render("/teacher/adduser");
 		}
 	});
 });
@@ -176,6 +142,35 @@ router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
 
 router.get('/exam/myExams/view/:id/addNotice', (req, res)=>{
 	res.render('teacher/addNotice');
+});
+
+router.post('/exam/myExams/view/:id/addNotice', (req, res)=>{
+	var examRoom ={
+		noticeText 	  : req.body.text,
+		noticeTime 	  : new Date(),
+		examId		  : req.params.id,
+		teacherId	  : req.session.uId
+	};
+
+	noticeModel.insert(examRoom, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/notices');
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/addNotice');
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:id/notices', (req, res)=>{
+	noticeModel.getByExamId(req.params.id, function(results){
+		if(results.length > 0){
+			var notice = {
+				name: req.session.uId,
+				noticeList: results
+			};
+			res.render('teacher/noticeList', notice);
+		}
+	});
 });
 
 router.get('/support', (req, res)=>{
