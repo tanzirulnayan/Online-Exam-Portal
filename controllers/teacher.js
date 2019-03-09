@@ -6,6 +6,7 @@ var studentModel = require.main.require('./model/student-model');
 var supportModel = require.main.require('./model/support-model');
 var examRoomModel = require.main.require('./model/examRoom-model');
 var noticeModel = require.main.require('./model/notice-model');
+var participantModel = require.main.require('./model/examParticipant-model');
 var router = express.Router();
 
 router.get('*', function(req, res, next){
@@ -131,9 +132,27 @@ router.post('/exam/myExams/delete/:id', (req, res)=>{
 });
 
 router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
-	participantModel.get(req.params.id, function(results){
+	participantModel.getPendingStudentsByExamId(req.params.id, function(results){
 		if(results.length >0 ){
-			res.render('teacher/addStudent', results[0]);
+			var participants = {
+				E_ID			: req.params.id,
+				participantList : results
+			};
+			res.render('teacher/addStudent', participants);
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:id/studentList', (req, res)=>{
+	participantModel.getActiveStudentsByExamId(req.params.id, function(results){
+		if(results.length >0 ){
+			var participants = {
+				E_ID			: req.params.id,
+				participantList : results
+			};
+			res.render('teacher/studentList', participants);
 		}else{
 			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
 		}
@@ -169,6 +188,9 @@ router.get('/exam/myExams/view/:id/notices', (req, res)=>{
 				noticeList: results
 			};
 			res.render('teacher/noticeList', notice);
+		}
+		else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
 		}
 	});
 });
