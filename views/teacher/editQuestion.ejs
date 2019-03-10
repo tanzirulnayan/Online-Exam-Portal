@@ -64,7 +64,7 @@
 		<div class="container-login100" align="center">
             <form class="login100-form validate-form" method="POST" width="600px">
                 <span class="login100-form-title">
-                    Set Question
+                    Edit Question
                 </span>
                 <table width="600px">
                         <tr>
@@ -72,7 +72,7 @@
                             <td>:</td>
                             <td>
                                 <div class="wrap-input100 validate-input" data-validate = "Title is required">
-                                    <input class="input100" type="text" name="title" placeholder="Question Title">
+                                    <input class="input100" type="text" name="title" value="<%=Q_TITLE%>" placeholder="Question Title">
                                     <span class="focus-input100"></span>
                                 </div>
                             </td>
@@ -82,7 +82,7 @@
                             <td>:</td>
                             <td>
                                 <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op1" placeholder="Option 1">
+                                    <input class="input100" type="text" name="op1" value="<%=Q_OPTION1%>" placeholder="Option 1">
                                     <span class="focus-input100"></span>
                                 </div>
                             </td>
@@ -92,7 +92,7 @@
                             <td>:</td>
                             <td>
                                 <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op2" placeholder="Option 2">
+                                    <input class="input100" type="text" name="op2" value="<%=Q_OPTION2%>" placeholder="Option 2">
                                     <span class="focus-input100"></span>
                                 </div>
                             </td>
@@ -102,7 +102,7 @@
                             <td>:</td>
                             <td>
                                 <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op3" placeholder="Option 3">
+                                    <input class="input100" type="text" name="op3" value="<%=Q_OPTION3%>" placeholder="Option 3">
                                     <span class="focus-input100"></span>
                                 </div>
                             </td>
@@ -112,7 +112,7 @@
                             <td>:</td>
                             <td>
                                 <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op4" placeholder="Option 4">
+                                    <input class="input100" type="text" name="op4" value="<%=Q_OPTION4%>" placeholder="Option 4">
                                     <span class="focus-input100"></span>
                                 </div>
                             </td>
@@ -122,7 +122,7 @@
                             <td>:</td>
                             <td>
                                 <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="answer" placeholder="Answer">
+                                    <input class="input100" type="text" name="answer" value="<%=Q_ANSWER%>" placeholder="Answer">
                                     <span class="focus-input100"></span>
                                 </div>
                             </td>
@@ -132,7 +132,7 @@
                             <td>:</td>
                             <td>
                                 <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="number" name="mark" placeholder="Mark">
+                                    <input class="input100" type="number" name="mark" value="<%=Q_MARK%>" placeholder="Mark">
                                     <span class="focus-input100"></span>
                                 </div>
                             </td>
@@ -142,7 +142,7 @@
                                 <td></td>
                                 <td>
                                     <div class="container-login100-form-btn">
-                                        <input type="submit" name="create" value="Create"class="login100-form-btn" />
+                                        <input type="submit" name="create" value="Edit"class="login100-form-btn" />
                                     </div>
                                 </td>
                             </tr>

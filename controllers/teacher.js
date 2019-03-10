@@ -268,6 +268,27 @@ router.get('/exam/myExams/view/:examId/questions/:questionId/edit', (req, res)=>
 	});
 });
 
+router.post('/exam/myExams/view/:examId/questions/:questionId/edit', (req, res)=>{
+	var question = {
+		title		: req.body.title,
+		op1			: req.body.op1,
+		op2			: req.body.op2,
+		op3			: req.body.op3,
+		op4			: req.body.op4,
+		answer		: req.body.answer,
+		mark		: req.body.mark,
+		examId		: req.params.examId,
+		questionId	: req.params.questionId
+	};
+	questionModel.update(question, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/questions');
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/questions/'+req.params.questionId+'/edit');
+		}
+	});
+});
+
 router.get('/exam/myExams/view/:id/addNotice', (req, res)=>{
 	res.render('teacher/addNotice');
 });
