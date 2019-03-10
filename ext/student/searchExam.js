@@ -4,7 +4,7 @@ $(document).ready(()=>{
         var id = $('#examSearch').val();
     
         $.ajax({
-                url: '/student/searchExamResult/' + id ,
+                url: '/student/searchExam/' + id ,
                 success: function(response) {
                     if(response)
                     {
