@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head><title>Wait!</title>
+
+<script type="text/javascript" src="/assets/student/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/student/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/student/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/profile.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/student/dropdown.css">
+
+</head>
+<body>
+
+<ul>
+    <li><a href="/student">Home</a></li>
+    <li style="float:right"><a href="/logout">Log Out</a></li>
+    <li style="float:right"><a href="/student/profile">Profile</a></li>
+    <img src="<%=S_IMAGE%>" style="border-radius: 50%;width:50px;height:50px;float:right">
+    <li style="float:right" ><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+    <li style="float:right"><a href="/student/forum">Forum</a></li>
+    <li style="float:right"><a href="/student/teacherProfile">Teacher</a></li>
+    <li style="float:right"><a href="/student/notice">Notices</a></li>
+    <li style="float:right">
+    <div class="dropdown">
+        <button class="dropbtn">Exam</button>
+        <div class="dropdown-content">
+            <a href="/student/searchExam">Search Exam</a>
+		    <a href="/student/joinExam">Join Exam</a>
+            <a href="/student/result">Results</a>
+            <a href="/student/download">Download</a>
+            <a href="/student/history">History</a>
+        </div>
+        </div>
+    </li>
+</ul>
+
+<div class="container emp-profile">
+<form name="studentSupport" method="POST">
+
+    <h1 align:middle>Please wait for the Permission 😎</h1>
+
+</form>
+</body>
+</html>

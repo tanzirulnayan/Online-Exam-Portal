@@ -16,6 +16,13 @@ module.exports={
 		});
 	},
 
+	getPending: function(callback){
+		var sql = "select * from users where U_STATUS='PENDING' ";
+		db.getResult(sql, [], function(results){
+			callback(results);
+		});
+	},
+
 
 
 
@@ -46,14 +53,14 @@ module.exports={
 	},
 
     updatestatus: function(userId, callback){
-		var sql = "update users set  U_STATUS ='ACTIVE' where U_ID =?";
+		var sql = "update users set  U_STATUS ='ACTIVE'  where U_ID =?";
 		
 		db.execute(sql, [userId] ,function(status){
 			callback(status);
 		});
 	},
 
-
+  
 
 }
 

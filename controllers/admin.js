@@ -29,16 +29,13 @@ router.get('/profile', (req, res)=>{
 
 	adminModel.get(req.session.uId, function(result){
 
-		if(result.length > 0){
+		if(result.length > 0)
+		    {
 			res.render('admin/profile', result[0]);	
 		    }
 		
 	});	
 });
-
-router.post('/profile', (req, res)=>{
-
-});	
 
 //********************************************
 //*************account************************
@@ -81,7 +78,7 @@ router.post('/account', (req, res)=>{
 
 
 //********************************************
-//*************Edit_profile************************
+//*************Edit_profile***************
 
 
 router.get('/edit_profile', (req, res)=>{
@@ -94,24 +91,16 @@ router.get('/edit_profile', (req, res)=>{
 router.post('/edit_profile', (req, res)=>{
 	var update ={
 		admintId 		: req.body.admintId,
-		userId 			: req.body.adminId,
-		adminOldid 	    : req.session.uId,
-		adminEmail   	: req.body.adminEmail,
+		adminName   	: req.body.adminName,
 		adminEmail 	    : req.body.adminEmail,
 		adminMobile 	: req.body.adminMobile,
 		adminAddress	: req.body.adminAddress,
 	};
-	userModel.update2(update, function(success){
+	adminModel.update(update, function(success){
 		if(success){
-			adminModel.update(update, function(success){
-				if(success){
-					adminModel.get(req.session.uId, function(result){
-						res.redirect('/logout');	
-					});	
-				}else{
-					res.redirect('/admin/edit_profile');
-				}
-			});
+			adminModel.get(req.session.uId, function(result){
+				res.redirect('/admin');	
+			});	
 		}else{
 			res.redirect('/admin/edit_profile');
 		}
@@ -171,7 +160,7 @@ router.post('/adminview_profile', (req, res)=>{
 
 router.get('/pending_list', (req, res)=>{
 	
-	userModel.getAll(function(results){
+	userModel.getPending(function(results){
 		if(results.length > 0){
 			var user = {
 				name: req.session.uId,
@@ -179,6 +168,9 @@ router.get('/pending_list', (req, res)=>{
 			};
 			res.render('admin/pending_list', user);
 		}
+		// else{
+		// 	//Kisu ekta likhte hobe
+		// }
 	});	
 });
 
@@ -187,13 +179,15 @@ router.get('/pending_list', (req, res)=>{
 
 router.get('/pending_list/:id', (req, res)=>{
 	//console.log("dfs");
-	userModel.updatestatus(req.params.id,function(results){
-		if(result.length >0 ){
-			console.log("ds")
-			res.render('admin/pending_list', result[0]);
-		}else{
-			res.redirect('/admin');
-		}
+
+	userModel.updatestatus(req.params.id,function(success){
+
+		if(success){
+			res.redirect('/admin/pending_list');
+		 }
+		 //else{
+		// 	res.redirect('/admin');
+		// }
 	});	
 });
 
@@ -233,7 +227,27 @@ router.post('/teacher_list', (req, res)=>{
 });	
 
 
+// ********************************************
+// *************Edit Picture************************
+router.get('/edit_picture', (req, res)=>{
 
+	studentModel.get(req.session.uId, function(result){
+		res.render('admin/edit_picture', result[0]);	
+	});	
+});
+router.post('/edit_picture', (req, res)=>{
+	var update2 ={
+		studentId 		: req.session.uId,
+		studentImage	:"/pictures/" + res.req.file.filename
+	};
+	adminModel.pictureedit(pictureedit, function(success){
+		if(success){
+			res.redirect('/admin');
+		}else{
+			res.redirect('/admin/edit_picture');
+		}
+	});
+});	
 
 
 

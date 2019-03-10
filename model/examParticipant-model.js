@@ -13,6 +13,12 @@ module.exports={
 			callback(results);
 		});
 	},
+	getSpecific: function(specific, callback){
+		var sql = "select * from exam_participants where P_ID=?";
+		db.getResult(sql, [specific], function(results){
+			callback(results);
+		});
+	},
 	insert: function(participant, callback){
 		var sql = "insert into exam_participants values ( ?, ?, ?)";
 		
