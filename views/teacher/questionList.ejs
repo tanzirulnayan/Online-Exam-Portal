@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Add Student</title>
+	<title>Questions</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
 	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
@@ -62,25 +62,36 @@
 	
 	<div class="limiter">
 		<div class="container-login100" align="center">
-			<table border="1px" width="80%" >
-				<tr>
-					<th>Username</th>
-					<th>Name</th>
-                    <th>Email</th>
+
+            <table border="1px" width="80%" >
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Answer</th>
+                    <th>Mark</th>
                     <th>Action</th>
-				</tr>
-				<% for(var i=0; i < participantList.length; i++){ %>
-				<tr>
-					<td><%= participantList[i].S_ID %></td>
-					<td><%= participantList[i].S_NAME %></td>
-					<td><%= participantList[i].S_EMAIL %></td>
-					<td>
-						<a href="/teacher/exam/myExams/view/<%=E_ID%>/addStudent/<%= participantList[i].S_ID %>">Approve</a> |
-						<a href="/teacher/exam/myExams/view/<%=E_ID%>/deleteStudent/<%= participantList[i].S_ID %>">Delete</a> 
-					</td>
-				</tr>
-				<% } %>
-			</table>
+                </tr>
+                <% for(var i=0; i < questionList.length; i++){ %>
+                <tr>
+                    <td><%= questionList[i].Q_ID %></td>
+                    <td><%= questionList[i].Q_TITLE %></td>
+                    <td><%= questionList[i].Q_OPTION1 %></td>
+                    <td><%= questionList[i].Q_OPTION2 %></td>
+                    <td><%= questionList[i].Q_OPTION3 %></td>
+                    <td><%= questionList[i].Q_OPTION4 %></td>
+                    <td><%= questionList[i].Q_ANSWER %></td>
+                    <td><%= questionList[i].Q_MARK %></td>
+                    <td>
+                        <a href="/teacher/exam/myExams/view/<%=E_ID%>/questions/<%= questionList[i].Q_ID %>/edit">Edit</a> |
+                        <a href="/teacher/exam/myExams/view/<%=E_ID%>/questions/<%= questionList[i].Q_ID %>/delete">Delete</a> 
+                    </td>
+                </tr>
+                <% } %>
+            </table>
 		</div>
 	</div>
 	

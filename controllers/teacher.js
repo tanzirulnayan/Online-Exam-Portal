@@ -7,6 +7,8 @@ var supportModel = require.main.require('./model/support-model');
 var examRoomModel = require.main.require('./model/examRoom-model');
 var noticeModel = require.main.require('./model/notice-model');
 var participantModel = require.main.require('./model/examParticipant-model');
+var forumModel = require.main.require('./model/forum-model');
+var questionModel = require.main.require('./model/question-model');
 var router = express.Router();
 
 router.get('*', function(req, res, next){
@@ -121,7 +123,6 @@ router.get('/exam/myExams/delete/:id', (req, res)=>{
 });	
 
 router.post('/exam/myExams/delete/:id', (req, res)=>{
-	
 	examRoomModel.delete(req.params.id, function(success){
 		if(success){
 			res.redirect('/teacher/exam/myExams');
@@ -145,6 +146,36 @@ router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
 	});
 });
 
+router.get('/exam/myExams/view/:examId/addStudent/:studentId', (req, res)=>{
+	var participant ={
+		studentId : req.params.studentId,
+		examId	  : req.params.examId
+	};
+
+	participantModel.updateStatusActive(participant, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/studentList');
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/studentList');
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:examId/deleteStudent/:studentId', (req, res)=>{
+	var participant ={
+		studentId : req.params.studentId,
+		examId	  : req.params.examId
+	};
+
+	participantModel.deleteStudent(participant, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/studentList');
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/studentList');
+		}
+	});
+});
+
 router.get('/exam/myExams/view/:id/studentList', (req, res)=>{
 	participantModel.getActiveStudentsByExamId(req.params.id, function(results){
 		if(results.length >0 ){
@@ -155,6 +186,84 @@ router.get('/exam/myExams/view/:id/studentList', (req, res)=>{
 			res.render('teacher/studentList', participants);
 		}else{
 			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:id/setQuestion', (req, res)=>{
+	res.render('teacher/addQuestion');
+});
+
+router.post('/exam/myExams/view/:id/setQuestion', (req, res)=>{
+	var question = {
+		title	: req.body.title,
+		op1		: req.body.op1,
+		op2		: req.body.op2,
+		op3		: req.body.op3,
+		op4		: req.body.op4,
+		answer	: req.body.answer,
+		mark	: req.body.mark,
+		examId	: req.params.id
+	};
+	questionModel.insert(question, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/questions');
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/setQuestion');
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:id/questions', (req, res)=>{
+	questionModel.getByExamId(req.params.id, function(results){
+		if(results.length > 0)
+		{
+			var questions = {
+				E_ID 		 : req.params.id,
+				questionList : results
+			};
+			res.render('teacher/questionList', questions);
+		}
+		else{
+			var questions = {
+				E_ID 		 : req.params.id,
+				questionList : ""
+			};
+			res.render('teacher/questionList', questions);
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:examId/questions/:questionId/delete', (req, res)=>{
+	questionModel.get(req.params.questionId, function(result){
+		if(result.length > 0)
+		{
+			res.render('teacher/deleteQuestion', result[0]);
+		}
+		else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/questions');
+		}
+	});
+});
+
+router.post('/exam/myExams/view/:examId/questions/:questionId/delete', (req, res)=>{
+	questionModel.delete(req.params.questionId, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/questions');
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/questions/'+req.params.questionId+'/delete');
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:examId/questions/:questionId/edit', (req, res)=>{
+	questionModel.get(req.params.questionId, function(result){
+		if(result.length > 0)
+		{
+			res.render('teacher/editQuestion', result[0]);
+		}
+		else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/questions');
 		}
 	});
 });
@@ -191,6 +300,42 @@ router.get('/exam/myExams/view/:id/notices', (req, res)=>{
 		}
 		else{
 			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:id/forum', (req, res)=>{
+	forumModel.getByExamId(req.params.id, function(results){
+		if(results.length > 0)
+		{
+			var comments = {
+				E_ID 		: req.params.id,
+				commentList : results
+			};
+			res.render('teacher/forum', comments);
+		}
+		else{
+			var comments = {
+				E_ID		: req.params.id,
+				commentList : ""
+			}
+			res.render('teacher/forum', comments);
+		}
+	});
+});
+
+router.post('/exam/myExams/view/:id/forum', (req, res)=>{
+	var comment ={
+		userId : req.session.uId,
+		commentText : req.body.text,
+		time : new Date(),
+		examId : req.params.id
+	};
+	forumModel.insert(comment, function(success){
+		if(success){
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/forum');
+		}else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/forum');
 		}
 	});
 });

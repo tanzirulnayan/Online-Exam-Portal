@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Delete Question</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css"/>
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+		ul {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  overflow: hidden;
+		  background-color: #333;
+		}
+		
+		li {
+		  float: left;
+		  
+		}
+		
+		li:last-child {
+		  border-right: none;
+		}
+		
+		li a {
+		  display: block;
+		  color: white;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		}
+		
+		li a:hover:not(.active) {
+		  background-color: #111;
+		}
+		
+		.active {
+		  background-color: #4CAF50;
+		}
+	</style>
+</head>
+
+<body>
+	<ul>
+		<li><a href="/teacher">Home</a></li>
+		<li style="float:right"><a href="../../../../../../../logout">Log Out</a></li>
+		<li style="float:right"><a href="/teacher/support">Support</a></li>
+		<li style="float:right"><a href="/teacher/account">Account</a></li>
+		<li style="float:right"><a href="/teacher/profile">Profile</a></li>
+		<li style="float:right"><a class="active" href="/teacher/exam">Exam</a></li>
+	</ul>
+
+	<div class="limiter">
+		<div class="container-login100">
+                <span class="login100-form-title">
+					<table>
+                        <tr>
+                            <td>ID</td>
+                            <td>:</td>
+                            <td><%=Q_ID%></td>
+                        </tr>
+                        <tr>
+                            <td>Question</td>
+                            <td>:</td>
+                            <td><%=Q_TITLE%></td>
+                        </tr>
+                        <tr>
+                            <td>Option 1</td>
+                            <td>:</td>
+                            <td><%=Q_OPTION1%></td>
+                        </tr>
+                        <tr>
+                            <td>Option 2</td>
+                            <td>:</td>
+                            <td><%=Q_OPTION2%></td>
+                        </tr>
+                        <tr>
+                            <td>Option 3</td>
+                            <td>:</td>
+                            <td><%=Q_OPTION3%></td>
+                        </tr>
+                        <tr>
+                            <td>Option 4</td>
+                            <td>:</td>
+                            <td><%=Q_OPTION4%></td>
+                        </tr>
+                        <tr>
+                            <td>Answer</td>
+                            <td>:</td>
+                            <td><%=Q_ANSWER%></td>
+                        </tr>
+                        <tr>
+                            <td>Mark</td>
+                            <td>:</td>
+                            <td><%=Q_MARK%></td>
+                        </tr>
+                    </table>
+                </span>
+                <form class="login100-form validate-form" method="POST">   
+                    <input type="hidden" name="questionId" value="<%=Q_ID%>">
+                    <div class="container-login100-form-btn">
+                        <input type="submit" name="delete" value="Delete"class="login100-form-btn" />
+                    </div>
+                </form>
+		</div>
+	</div>
+	
+	<script src="/assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/assets/login/vendor/bootstrap/js/popper.js"></script>
+	<script src="/assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/assets/login/vendor/select2/select2.min.js"></script>
+	<script src="/assets/login/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<script src="/assets/login/js/main.js"></script>
+
+</body>
+</html>
