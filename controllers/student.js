@@ -5,6 +5,7 @@ var studentModel 	= require.main.require('./model/student-model');
 var examRoom 		= require.main.require('./model/examRoom-model');
 var examParticipant	= require.main.require('./model/examParticipant-model');
 var notice			= require.main.require('./model/notice-model');
+var question		= require.main.require('./model/question-model');
 var router 			= express.Router();
 
 // ********************************************
@@ -178,9 +179,35 @@ router.get('/searchExam/:id', (req, res)=>{
 router.get('/joinExam', (req, res)=>{
 
 	studentModel.get(req.session.uId, function(result){
-		res.render('student/joinExam', result[0]);	
+		examParticipant.getSpecific(req.session.uId, function(result){	
+			res.render('student/joinExam', result[0]);
+	   });	
 	});	
 });
+// ********************************************
+// *************EXAM*******************
+router.get('/exam/:id', (req, res)=>{
+			question.getByExamId(req.params.id, function(result){
+				if(result.length > 0){
+					var question = {
+						qList: result
+					};
+				res.render('student/exam', question);
+				}
+		   });	
+});	
+router.post('/exam/:id', (req, res)=>{
+	question.getByExamId(req.params.id, function(result){
+		// for( var i=0 ; i<result.length ; i++){
+		// 		var answer={
+
+		// 		}
+		// }
+	});	
+});	
+
+
+
 // ********************************************
 // *************Forum*******************
 router.get('/forum', (req, res)=>{
@@ -263,14 +290,15 @@ router.post('/history', (req, res)=>{
 			});	
 		});
 
-// *************************************
+// *********************************************
 // *************Search Exam Notice AJAX*********
 router.get('/searchExamNotice/:id', (req, res)=>{
 	notice.getByExamId(req.params.id, function(result){	
 		 res.send(result[0]);
 	});	
 });
-// *************************************
+// **********************************************
+
 
 
 
