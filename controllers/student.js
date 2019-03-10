@@ -95,7 +95,7 @@ router.post('/editProfile', (req, res)=>{
 	studentModel.update(update, function(success){
 		if(success){
 			studentModel.get(req.session.uId, function(result){
-				res.redirect('/student');	
+				res.redirect('/student/profile');	
 			});	
 		}else{
 			res.redirect('/student/editProfile');
@@ -117,7 +117,7 @@ router.post('/editPicture', (req, res)=>{
 	};
 	studentModel.update2(update2, function(success){
 		if(success){
-			res.redirect('/student');
+			res.redirect('/student/profile');
 		}else{
 			res.redirect('/student/editPicture');
 		}
@@ -168,7 +168,7 @@ router.post('/searchExam', (req, res)=>{
 });
 // *************************************
 // *************Search Exam AJAX*******************
-router.get('/searchExamResult/:id', (req, res)=>{
+router.get('/searchExam/:id', (req, res)=>{
 	examRoom.get(req.params.id, function(result){	
 		 res.send(result[0]);
 	});	
@@ -182,45 +182,6 @@ router.get('/joinExam', (req, res)=>{
 	});	
 });
 // ********************************************
-// *************Notice*******************
-router.get('/notice', (req, res)=>{
-
-	examParticipant.getSpecific(req.session.uId, function(result){
-		if(result.length>0){
-			
-			for (var i = 0; i < result.length; i++) {
-				 
-				notice.getByExamId(result[i].E_ID , function(results){
-
-					for (var i = 0; i < results.length; i++){
-						
-						studentModel.get(req.session.uId, function(result2){		
-							res.render('student/notice', result2, {data: results[i]} );	
-						});
-					
-					}
-					
-				  });
-			  
-			}
-
-		
-		}
-		// else{
-		// 	res.redirect('/student/searchExam');
-		// }
-	});	
-
-
-	studentModel.get(req.session.uId, function(result){
-		res.render('student/notice', result[0]);	
-	});	
-});
-router.post('/notice', (req, res)=>{
-
-});	
-
-// *************************************
 // *************Forum*******************
 router.get('/forum', (req, res)=>{
 
@@ -266,7 +227,50 @@ router.post('/history', (req, res)=>{
 });	
 // ********************************************
 
+// *************Notice*******************
+// router.get('/notice', (req, res)=>{
+// 	var data = {};
+// 	examParticipant.getSpecific(req.session.uId, function(result){
+// 		if(result.length>0){
+			
+// 			for (var i = 0; i < result.length; i++) {
+				 
+// 				notice.getByExamId(result[i].E_ID , function(results){
 
+// 					for (var i = 0; i < results.length; i++){
+					
+// 						 data[i] = results; 
+						 
+// 					}
+// 					console.log(data);
+							
+						
+// 							res.render('student/notice', data[i] );	
+							
+// 				  });
+
+// 			}
+// 		}
+// 		else{
+// 			res.redirect('/student');
+// 		}
+// 	});	
+// });
+		router.get('/notice', (req, res)=>{
+
+			studentModel.get(req.session.uId, function(result){
+				res.render('student/notice', result[0]);	
+			});	
+		});
+
+// *************************************
+// *************Search Exam Notice AJAX*********
+router.get('/searchExamNotice/:id', (req, res)=>{
+	notice.getByExamId(req.params.id, function(result){	
+		 res.send(result[0]);
+	});	
+});
+// *************************************
 
 
 

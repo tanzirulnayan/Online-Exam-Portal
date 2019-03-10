@@ -1,7 +1,7 @@
 var db = require('./db');
 
 module.exports={
-    get: function(examId, callback){
+  get: function(examId, callback){
 		var sql = "select * from exam_participants where E_ID = ?";
 		db.getResult(sql, [examId], function(results){
 			callback(results);
@@ -26,7 +26,7 @@ module.exports={
 			callback(status);
 		});
 	},
-	delete: function(participant, callback){
+	delete: function(participantId, callback){
 		var sql = "delete from exam_participants where P_ID = ?";
 		
 		db.execute(sql, [participantId], function(status){
@@ -45,6 +45,20 @@ module.exports={
 		
 		db.getResult(sql, [examId], function(results){
 			callback(results);
+		});
+	},
+	updateStatusActive: function(participant, callback){
+		var sql = "update exam_participants set P_STATUS = 'ACTIVE' where P_ID = ? AND E_ID = ?";
+		
+		db.execute(sql, [participant.studentId, participant.examId],function(status){
+			callback(status);
+		});
+	},
+	deleteStudent: function(participant, callback){
+		var sql = "delete from exam_participants where P_ID = ? and E_ID = ?";
+		
+		db.execute(sql, [participant.studentId, participant.examId], function(status){
+			callback(status);
 		});
 	}
 }

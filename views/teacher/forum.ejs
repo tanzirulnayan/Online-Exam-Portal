@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Add Student</title>
+	<title>Forum</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>	
 	<link rel="icon" type="image/png" href="/assets/login/images/icons/favicon.ico"/>
@@ -62,25 +62,47 @@
 	
 	<div class="limiter">
 		<div class="container-login100" align="center">
-			<table border="1px" width="80%" >
+
+            <span class="login100-form-title">
+                <h1>Forum</h1>
+            </span>
+
+            <table width="80%" >
+				<% for(var i=0; i < commentList.length; i++){ %>
 				<tr>
-					<th>Username</th>
-					<th>Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-				</tr>
-				<% for(var i=0; i < participantList.length; i++){ %>
-				<tr>
-					<td><%= participantList[i].S_ID %></td>
-					<td><%= participantList[i].S_NAME %></td>
-					<td><%= participantList[i].S_EMAIL %></td>
 					<td>
-						<a href="/teacher/exam/myExams/view/<%=E_ID%>/addStudent/<%= participantList[i].S_ID %>">Approve</a> |
-						<a href="/teacher/exam/myExams/view/<%=E_ID%>/deleteStudent/<%= participantList[i].S_ID %>">Delete</a> 
-					</td>
-				</tr>
+                        <b><%= commentList[i].U_ID %></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i><%= commentList[i].C_TEXT %></i>
+                    </td>
+                </tr>
+                <tr height="15px"></tr>
+
 				<% } %>
-			</table>
+            </table>
+            
+            <form class="login100-form validate-form" method="POST" width="600px">
+                <table width="600px">
+                        <tr>
+                            <td>
+                                <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                                    <input class="input100" type="text" name="text" placeholder="Type comment here">
+                                    <span class="focus-input100"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="container-login100-form-btn">
+                                    <input type="submit" name="create" value="Send"class="login100-form-btn" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+            </form>
 		</div>
 	</div>
 	
