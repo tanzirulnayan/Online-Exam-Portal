@@ -10,39 +10,27 @@
 </head>
 <body>
 
-<ul>
-    <li><a href="/student">Home</a></li>
-    <li style="float:right"><a href="/logout">Log Out</a></li>
-    <li style="float:right"><a href="/student/profile">Profile</a></li>
-    <img src="<%=S_IMAGE%>" style="border-radius: 50%;width:50px;height:50px;float:right">
-</ul>
+	<ul>
+		<li><a class="active" href="/admin">Home</a></li>
+		<li style="float:right"><a href="/logout">Log Out</a></li>
+		<li style="float:right"><a href="/admin/pending_list">Pending List</a></li>
+		<li style="float:right"><a href="/admin/profile">Profile</a></li>
+		<li style="float:right"><a href="/admin/admin_list">Admin List</a></li>
+		<li style="float:right"><a href="/admin/teacher_list">Teacher List</a></li>
+		<li style="float:right"><a href="/admin/student_list">Student List</a></li>
+    </ul>
 
 
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container emp-profile">
-		<form method="POST" name="change">
+		<form method="POST" name="CPASS">
 <div class="row">
 	<div class="col-md-4" >
 	</div>
-	<div class="col-md-4">
-		<div class="profile-head">
-			<h5>
-				<%=A_NAME%>
-			</h5>
-			<h6>
-				ADMIN
-			</h6>	
-		</div>
-	</div>
+	
 
-</div>
-<div class="row">
-<div class="col-md-4">
-    <div class="profile-img">
-        <img src="<%=A_IMAGE%>" alt="image" title="myPicture" />
-    </div>
-</div>
+
 <div class="col-md-3">
 <br><br><br>
 <div class="tab-content profile-tab" id="myTabContent">
@@ -89,8 +77,8 @@
     <div class="profile-work">
         <p>Setting</p>
         <a href="/admin/edit_profile">Edit Profile</a><br/>
-        <a href="/student/edit_picture">Edit Picture</a><br/>
-        <a href="/student/account">Change Password</a><br/>
+        <a href="/admin/edit_picture">Edit Picture</a><br/>
+        <a href="/admin/account">Change Password</a><br/>
         <!-- <p>Extra</p>
         <a href="">####</a><br/>
         <a href="">####</a><br/>
