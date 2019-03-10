@@ -141,7 +141,11 @@ router.get('/exam/myExams/view/:id/addStudent', (req, res)=>{
 			};
 			res.render('teacher/addStudent', participants);
 		}else{
-			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+			var participants = {
+				E_ID			: req.params.id,
+				participantList : ""
+			};
+			res.render('teacher/addStudent', participants);
 		}
 	});
 });
@@ -185,7 +189,11 @@ router.get('/exam/myExams/view/:id/studentList', (req, res)=>{
 			};
 			res.render('teacher/studentList', participants);
 		}else{
-			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+			var participants = {
+				E_ID			: req.params.id,
+				participantList : ""
+			};
+			res.render('teacher/studentList', participants);
 		}
 	});
 });
@@ -320,7 +328,11 @@ router.get('/exam/myExams/view/:id/notices', (req, res)=>{
 			res.render('teacher/noticeList', notice);
 		}
 		else{
-			res.redirect('/teacher/exam/myExams/view/'+req.params.id);
+			var notice = {
+				name: req.session.uId,
+				noticeList: ""
+			};
+			res.render('teacher/noticeList', notice);
 		}
 	});
 });
