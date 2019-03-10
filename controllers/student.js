@@ -187,13 +187,19 @@ router.get('/notice', (req, res)=>{
 
 	examParticipant.getSpecific(req.session.uId, function(result){
 		if(result.length>0){
+			
 			for (var i = 0; i < result.length; i++) {
 				 
-				notice.getByExamId(result[i].E_ID , function(result){
+				notice.getByExamId(result[i].E_ID , function(results){
+
+					for (var i = 0; i < results.length; i++){
 						
-						studentModel.get(req.session.uId, function(result2){
-								res.render('student/notice', result , result2);	
-							});
+						studentModel.get(req.session.uId, function(result2){		
+							res.render('student/notice', result2, {data: results[i]} );	
+						});
+					
+					}
+					
 				  });
 			  
 			}
