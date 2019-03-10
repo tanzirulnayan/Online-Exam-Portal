@@ -45,12 +45,14 @@
 			<th>Action</th>
 		</tr>
 		<tr>
-			<td><%=E_ID%></td>
-			<td><%=P_STATUS%></td>
+        <% for(var i=0; i < qList.length; i++){ %>
+			<td><%=qList[i].E_ID%></td>
+			<td><%=qList[i].P_STATUS%></td>
 			<td>
-				<a href="/student/exam/<%=E_ID%>">Start Exam</a> 
+				<a href="/student/exam/<%=qList[i].E_ID%>">Start Exam</a> 
            </td>
          </tr>
+         <% } %>
     </table>
     
 </div>
