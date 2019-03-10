@@ -19,25 +19,25 @@
 		<li style="float:right"><a href="/admin/admin_list">Admin List</a></li>
 		<li style="float:right"><a href="/admin/teacher_list">Teacher List</a></li>
 		<li style="float:right"><a href="/admin/student_list">Student List</a></li>
-    </ul>
-
+	</ul>
+	<center>
 	<table border="1" width="400px" >
 		<tr>
 			<th>ID</th>
-			<th>PASSWORD</th>
-			<th>TYPE</th>
+			<th>NAME</th>
 			<th>Action</th>
 		</tr>
 
 		<% for(var i=0; i < uList.length; i++){ %>
 		<tr>
-			<td><%= uList[i].U_ID %></td>
-			<td><%= uList[i].U_PASSWORD %></td>
-			<td><%= uList[i].U_TYPE %></td>
+			<td><%= uList[i].T_ID %></td>
+			<td><%= uList[i].T_NAME %></td>
 			<td>
-				<a href="/teacher/edit/<%= uList[i].U_ID %>">Edit</a> |
-				<a href="/teacher/delete/<%= uList[i].U_ID %>">Delete</a> 
+				<a href="/admin/teacher_list/<%= uList[i].T_ID %>">Profile</a> 
 			</td>
 		</tr>
 		<% } %>
 	</table>
+</center>
+</body>
+</html>

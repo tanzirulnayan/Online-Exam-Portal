@@ -27,21 +27,20 @@ module.exports={
 	update: function(admin, callback){
 		var sql = "update admins set  A_NAME = ?, A_EMAIL = ?, A_MOBILE = ?, A_ADDRESS = ? where A_ID = ?";
 		
-		db.execute(sql, [admin.adminId, admin.adminName, admin.adminEmail, admin.adminMobile, admin.adminAddress, admin.adminImage, admin.adminId], function(status){
+		db.execute(sql, [ admin.adminName, admin.adminEmail, admin.adminMobile, admin.adminAddress,  admin.adminId], function(status){
 			callback(status);
 		});
 	},
 	delete: function(adminId, callback){
-		var sql = "delete from teachers where T_ID = ?";
+		var sql = "delete from admins where A_ID = ?";
 		db.execute(sql, [adminId], function(status){
 			callback(status);
 		});
 	},
 	
-	pictureedit: function(admin2, callback){
-		console.log(admin2.admintId);
+	pictureedit: function(edit, callback){
 		var sql = "update admins set  A_IMAGE = ? where A_ID = ?";
-		db.execute(sql, [admin2.adminImage, admin2.adminId], function(status){
+		db.execute(sql, [edit.adminImage, edit.adminId], function(status){
 			callback(status);
 		});
 	},
