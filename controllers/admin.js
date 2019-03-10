@@ -89,17 +89,18 @@ router.get('/edit_profile', (req, res)=>{
 });
 
 router.post('/edit_profile', (req, res)=>{
-	var update ={
-		admintId 		: req.body.admintId,
+	var admin ={
+		adminId 		: req.session.uId,
 		adminName   	: req.body.adminName,
 		adminEmail 	    : req.body.adminEmail,
 		adminMobile 	: req.body.adminMobile,
 		adminAddress	: req.body.adminAddress,
 	};
-	adminModel.update(update, function(success){
+
+	adminModel.update(admin, function(success){
 		if(success){
 			adminModel.get(req.session.uId, function(result){
-				res.redirect('/admin');	
+				res.redirect('/admin/profile');	
 			});	
 		}else{
 			res.redirect('/admin/edit_profile');
@@ -122,6 +123,8 @@ router.get('/admin_list', (req, res)=>{
 			res.render('admin/admin_list', user);
 		}
 	});	
+
+
 });
 
 //********************************************
@@ -168,11 +171,13 @@ router.get('/pending_list', (req, res)=>{
 			};
 			res.render('admin/pending_list', user);
 		}
-		// else{
-		// 	//Kisu ekta likhte hobe
-		// }
+		 else{
+			res.render('/admin');
+		}
+	   
 	});	
-});
+});	
+
 
 //********************************************
 //*************pending_list-->> change************************
@@ -196,18 +201,18 @@ router.get('/pending_list/:id', (req, res)=>{
 //*************student_list************************
 
 
-
 router.get('/student_list', (req, res)=>{
-
-	adminModel.get(req.session.uId, function(result){
-		res.render('admin/student_list', result[0]);	
+	
+	studentModel.getAll(function(results){
+		if(results.length > 0){
+			var user = {
+				name: req.session.uId,
+				uList: results
+			};
+			res.render('admin/student_list', user);
+		}
 	});	
 });
-
-router.post('/student_list', (req, res)=>{
-
-});	
-
 
 
 //********************************************
@@ -216,33 +221,35 @@ router.post('/student_list', (req, res)=>{
 
 
 router.get('/teacher_list', (req, res)=>{
-
-	adminModel.get(req.session.uId, function(result){
-		res.render('admin/teacher_list', result[0]);	
+	
+	teacherModel.getAll(function(results){
+		if(results.length > 0){
+			var user = {
+				name: req.session.uId,
+				uList: results
+			};
+			res.render('admin/teacher_list', user);
+		}
 	});	
 });
-
-router.post('/teacher_list', (req, res)=>{
-
-});	
 
 
 // ********************************************
 // *************Edit Picture************************
 router.get('/edit_picture', (req, res)=>{
 
-	studentModel.get(req.session.uId, function(result){
+	adminModel.get(req.session.uId, function(result){
 		res.render('admin/edit_picture', result[0]);	
 	});	
 });
 router.post('/edit_picture', (req, res)=>{
-	var update2 ={
-		studentId 		: req.session.uId,
-		studentImage	:"/pictures/" + res.req.file.filename
+	var pictureedit ={
+		adminId 		: req.session.uId,
+		adminImage	:"/pictures/" + res.req.file.filename
 	};
 	adminModel.pictureedit(pictureedit, function(success){
 		if(success){
-			res.redirect('/admin');
+			res.redirect('/admin/profile');
 		}else{
 			res.redirect('/admin/edit_picture');
 		}
@@ -250,10 +257,57 @@ router.post('/edit_picture', (req, res)=>{
 });	
 
 
+//********************************************
+//*************student_list--->>profile************************
+
+router.get('/student_list/:id', (req, res)=>{
+	//console.log("qwerty");
+	studentModel.get(req.params.id, function(result){
+		if(result.length >0 ){
+			res.render('admin/studentview_profile', result[0]);
+		}else{
+			res.redirect('/admin/student_list');
+		}
+	});
+});	
 
 
+//********************************************
+//*************teacher_list--->>profile************************
 
+router.get('/teacher_list/:id', (req, res)=>{
+	//console.log("qwerty");
+	teacherModel.get(req.params.id, function(result){
+		if(result.length >0 ){
+			res.render('admin/teacherview_profile', result[0]);
+		}else{
+			res.redirect('/admin/teacher_list');
+		}
+	});
+});	
 
+//********************************************
+//*************admin_list-->> delete************************
 
+router.get('/admin_list/delete/:id', (req, res)=>{
+	//console.log("dfs");
+
+	userModel.delete(req.params.id,function(success){
+
+		if(success){
+			adminModel.delete(req.params.id, function(success){
+				if(success){
+					res.redirect('/admin/admin_list');
+				}
+				else{
+					res.render('/admin');
+				}
+			});
+		 }
+		 else{
+			res.render('/admin');
+		}
+	});	
+});
 
 module.exports = router;
