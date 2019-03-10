@@ -25,7 +25,7 @@ module.exports={
 		});
 	},
 	update: function(admin, callback){
-		var sql = "update admins set A_ID = ?, A_NAME = ?, A_EMAIL = ?, A_MOBILE = ?, A_ADDRESS = ?, A_IMAGE = ? where A_ID = ?";
+		var sql = "update admins set  A_NAME = ?, A_EMAIL = ?, A_MOBILE = ?, A_ADDRESS = ? where A_ID = ?";
 		
 		db.execute(sql, [admin.adminId, admin.adminName, admin.adminEmail, admin.adminMobile, admin.adminAddress, admin.adminImage, admin.adminId], function(status){
 			callback(status);
@@ -37,7 +37,16 @@ module.exports={
 			callback(status);
 		});
 	},
-}
+	
+	pictureedit: function(admin2, callback){
+		console.log(admin2.admintId);
+		var sql = "update admins set  A_IMAGE = ? where A_ID = ?";
+		db.execute(sql, [admin2.adminImage, admin2.adminId], function(status){
+			callback(status);
+		});
+	},
 
+
+}
 
 

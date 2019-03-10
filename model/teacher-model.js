@@ -32,7 +32,7 @@ module.exports={
 		db.execute(sql, [teacherId], function(status){
 			callback(status);
 		});
-	},
+	}
 }
 
 
