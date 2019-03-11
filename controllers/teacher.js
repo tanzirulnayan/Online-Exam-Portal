@@ -373,6 +373,26 @@ router.post('/exam/myExams/view/:id/forum', (req, res)=>{
 	});
 });
 
+router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
+	rankModel.getByExamId(req.params.examId, function(results){
+		if(results.length > 0)
+		{
+			var comments = {
+				E_ID 		: req.params.examId,
+				commentList : results
+			};
+			res.render('teacher/rank', comments);
+		}
+		else{
+			var comments = {
+				E_ID		: req.params.examId,
+				commentList : ""
+			}
+			res.render('teacher/rank', comments);
+		}
+	});
+});
+
 router.get('/support', (req, res)=>{
 	res.render('teacher/support');
 });
