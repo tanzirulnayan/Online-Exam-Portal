@@ -8,6 +8,12 @@ module.exports={
 			callback(result);
 		});
 	},
+	getLIKE: function(teacherId, callback){
+		var sql = "select * from teachers where T_ID LIKE ?";
+		db.getResult(sql, [teacherId], function(result){
+			callback(result);
+		});
+	},
 	getAll: function(callback){
 		var sql = "select * from teachers";
 		db.getResult(sql, [], function(results){
