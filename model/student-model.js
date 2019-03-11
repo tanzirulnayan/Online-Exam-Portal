@@ -43,3 +43,16 @@ module.exports={
 
 
 
+// getActive: function(studentId, callback){
+// 	var sql = "SELECT students.S_ID, students.S_NAME, students.S_EMAIL, students.S_ADDRESS, students.S_IMAGE FROM students INNER JOIN users ON students.S_ID = users.U_ID WHERE U_STATUS = 'ACTIVE'";
+	
+// 	db.getResult(sql, [userID], function(results){
+// 		callback(results);
+// 	});
+// }
+
+
+
+
+
+

@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="/assets/admin/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/assets/admin/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/assets/admin/main.css">
-	<link rel="stylesheet" type="text/css" href="/assets/admin/profile.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/assets/admin/profile.css"> -->
 	<link rel="stylesheet" type="text/css" href="/assets/admin/bootstrap.min.css">
 
 </head>
@@ -27,6 +27,7 @@
 			<th>ID</th>
 			<th>Text</th>
 			<th>Time</th>
+			<th>Seen</th>
 		</tr>
 
 		<% for(var i=0; i < uList.length; i++){ %>
@@ -34,6 +35,7 @@
 			<td><a href="/admin/teacher_list/<%= uList[i].T_ID %>">	<%= uList[i].T_ID %></a></td>
 			<td><%= uList[i].S_TEXT %></td>
 			<td><%= uList[i].S_TIME %></td>
+			<td><a href="/admin/support/seen/<%= uList[i].T_ID %>">Check</a></td>
 			<!-- <td><%= uList[i].S_STATUS %></td> -->
 		
 		</tr>

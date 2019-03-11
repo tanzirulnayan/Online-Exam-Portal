@@ -114,6 +114,7 @@ router.post('/edit_profile', (req, res)=>{
 
 router.get('/admin_list', (req, res)=>{
 	
+	
 	adminModel.getAll(function(results){
 		if(results.length > 0){
 			var user = {
@@ -189,10 +190,15 @@ router.get('/pending_list/:id', (req, res)=>{
 
 		if(success){
 			res.redirect('/admin/pending_list');
-		 }
-		 //else{
-		// 	res.redirect('/admin');
-		// }
+			}
+			
+			else{
+				var user = {
+					name: req.session.uId,
+					uList: ""
+						  };
+				res.render('admin/pending_list', user);
+				}	
 	});	
 });
 
@@ -211,6 +217,16 @@ router.get('/student_list', (req, res)=>{
 			};
 			res.render('admin/student_list', user);
 		}
+		else{
+			var user = {
+				name: req.session.uId,
+				uList: ""
+			          };
+			res.render('admin/student_list', user);
+
+
+		    }	
+		
 	});	
 });
 
@@ -222,7 +238,7 @@ router.get('/student_list', (req, res)=>{
 
 router.get('/teacher_list', (req, res)=>{
 	
-	teacherModel.getAll(function(results){
+	 teacherModel.getAll(function(results){
 		if(results.length > 0){
 			var user = {
 				name: req.session.uId,
@@ -230,6 +246,16 @@ router.get('/teacher_list', (req, res)=>{
 			};
 			res.render('admin/teacher_list', user);
 		}
+		else{
+			var user = {
+				name: req.session.uId,
+				uList: ""
+			          };
+			res.render('admin/teacher_list', user);
+
+
+		    }	
+
 	});	
 });
 
@@ -374,12 +400,35 @@ router.get('/support', (req, res)=>{
 				uList: results
 			};
 			res.render('admin/support', user);
-		}
+		} 
+
+		else{
+			var user = {
+				name: req.session.uId,
+				uList: ""
+			          };
+			res.render('admin/support', user);
+
+
+		    }	
+		
 		
 	});	
 });
 
+//********************************************
+//*************Support_seen************************
+router.get('/support/seen/:id', (req, res)=>{
+	userModel.updatesupport(req.params.id,function(success){
 
+		if(success){
+			res.redirect('/admin/support');
+		 }
+		 //else{
+		// 	res.redirect('/admin');
+		// }
+	});	
+});
 
 
 

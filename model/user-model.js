@@ -60,11 +60,18 @@ module.exports={
 		});
 	},
 
-
 	getAllSupport: function(callback){
-		var sql = "select * from support";
+		var sql = "select * from support where S_STATUS ='PENDING' ";
 		db.getResult(sql, [], function(results){
 			callback(results);
+		});
+	},
+
+	updatesupport: function(userId, callback){
+		var sql = "update support set  S_STATUS ='ACTIVE'  where T_ID =?";
+		
+		db.execute(sql, [userId] ,function(status){
+			callback(status);
 		});
 	},
 
