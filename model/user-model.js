@@ -60,6 +60,17 @@ module.exports={
 		});
 	},
 
+
+	getAllSupport: function(callback){
+		var sql = "select * from support";
+		db.getResult(sql, [], function(results){
+			callback(results);
+		});
+	},
+
+
+
+
   
 
 }

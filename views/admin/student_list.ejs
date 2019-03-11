@@ -33,7 +33,8 @@
 			<td><%= uList[i].S_ID %></td>
 			<td><%= uList[i].S_NAME %></td>
 			<td>
-				<a href="/admin/student_list/<%= uList[i].S_ID %>">Profile</a> 
+				<a href="/admin/student_list/<%= uList[i].S_ID %>">Profile</a> |||
+				<a href="/admin/student_list/delete/<%= uList[i].S_ID %>">Delete</a>
 			</td>
 		</tr>
 		<% } %>
