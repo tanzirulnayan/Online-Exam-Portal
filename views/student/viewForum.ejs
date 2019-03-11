@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>Forum</title>
+<head><title>View Forum</title>
 
 <script type="text/javascript" src="/assets/student/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/student/jquery.min.js"></script>
@@ -34,26 +34,41 @@
     </li>
 </ul>
 
-<form name="forumCheck">
+<form name="forumCheck" method="POST">
     <div class="container emp-profile" id='show'>
     <table border="1" width="400px" class="table table-dark table-hover" >
 		<tr>
-			<th>E_ID</th>
-			<th>Status</th>
-			<th>Action</th>
+			<th>U_ID</th>
+			<th>C_TEXT</th>
 		</tr>
 		<tr>
         <% for(var i=0; i < qList.length; i++){ %>
-			<td><%=qList[i].E_ID%></td>
-			<td><%=qList[i].P_STATUS%></td>
-			<td>
-				<a href="/student/viewForum/<%=qList[i].E_ID%>">View Forum</a> 
-           </td>
+			<td><%=qList[i].U_ID%></td>
+            <td><%=qList[i].C_TEXT%></td>
          </tr>
          <% } %>
     </table>
-    
 </div>
+<center>
+<table width="600px">
+    <tr>
+        <td>
+            <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                <input class="input100" type="text" name="text" placeholder="Type comment here">
+                <span class="focus-input100"></span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="container-login100-form-btn">
+                <input type="submit" name="create" value="Send"class="login100-form-btn" />
+            </div>
+        </td>
+    </tr>
+</table>
+</center>
+
 </form>
 </body>
 </html>

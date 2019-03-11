@@ -310,4 +310,84 @@ router.get('/admin_list/delete/:id', (req, res)=>{
 	});	
 });
 
+
+//********************************************
+//*************student_list-->> delete************************
+
+router.get('/student_list/delete/:id', (req, res)=>{
+	//console.log("dfs");
+
+	userModel.delete(req.params.id,function(success){
+
+		if(success){
+			studentModel.delete(req.params.id, function(success){
+				if(success){
+					res.redirect('/admin/student_list');
+				}
+				else{
+					res.render('/admin');
+				}
+			});
+		 }
+		 else{
+			res.render('/admin');
+		}
+	});	
+});
+
+
+
+
+//********************************************
+//*************teacher_list-->> delete************************
+
+router.get('/teacher_list/delete/:id', (req, res)=>{
+	//console.log("dfs");
+
+	userModel.delete(req.params.id,function(success){
+
+		if(success){
+			teacherModel.delete(req.params.id, function(success){
+				if(success){
+					res.redirect('/admin/teacher_list');
+				}
+				else{
+					res.render('/admin');
+				}
+			});
+		 }
+		 else{
+			res.render('/admin');
+		}
+	});	
+});
+
+
+//********************************************
+//*************Support************************
+router.get('/support', (req, res)=>{
+
+	userModel.getAllSupport(function(results){
+		if(results.length > 0){
+			var user = {
+				name: req.session.uId,
+				uList: results
+			};
+			res.render('admin/support', user);
+		}
+		
+	});	
+});
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
+
+

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><title>Student List|Online Exam Portal</title>
+<head><title>Support|Admin|Online Exam Portal</title>
 
 	<script type="text/javascript" src="/assets/admin/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/assets/admin/jquery.min.js"></script>
@@ -20,23 +20,22 @@
 		<li style="float:right"><a href="/admin/admin_list">Admin List</a></li>
 		<li style="float:right"><a href="/admin/teacher_list">Teacher List</a></li>
 		<li style="float:right"><a href="/admin/student_list">Student List</a></li>
-    </ul>
+	</ul>
 	<center>
 	<table border="1" width="400px" >
 		<tr>
 			<th>ID</th>
-			<th>NAME</th>
-			<th>Action</th>
+			<th>Text</th>
+			<th>Time</th>
 		</tr>
 
 		<% for(var i=0; i < uList.length; i++){ %>
 		<tr>
-			<td><%= uList[i].S_ID %></td>
-			<td><%= uList[i].S_NAME %></td>
-			<td>
-				<a href="/admin/student_list/<%= uList[i].S_ID %>">Profile</a> |||
-				<a href="/admin/student_list/delete/<%= uList[i].S_ID %>">Delete</a>
-			</td>
+			<td><a href="/admin/teacher_list/<%= uList[i].T_ID %>">	<%= uList[i].T_ID %></a></td>
+			<td><%= uList[i].S_TEXT %></td>
+			<td><%= uList[i].S_TIME %></td>
+			<!-- <td><%= uList[i].S_STATUS %></td> -->
+		
 		</tr>
 		<% } %>
 	</table>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head><title>Profile|Admin|Online Exam Portal</title>
+<head><title>Teacher List|Online Exam Portal</title>
 
-<script type="text/javascript" src="/assets/student/bootstrap.min.js"></script>
-<script type="text/javascript" src="/assets/student/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/assets/student/main.css">
-<link rel="stylesheet" type="text/css" href="/assets/student/profile.css">
-<link rel="stylesheet" type="text/css" href="/assets/student/bootstrap.min.css">
+	<script type="text/javascript" src="/assets/admin/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/admin/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/admin/main.css">
+	<link rel="stylesheet" type="text/css" href="/assets/admin/profile.css">
+	<link rel="stylesheet" type="text/css" href="/assets/admin/bootstrap.min.css">
 
 </head>
 <body>
@@ -14,6 +14,7 @@
 	<ul>
 		<li><a class="active" href="/admin">Home</a></li>
 		<li style="float:right"><a href="/logout">Log Out</a></li>
+		<li style="float:right"><a href="/admin/support">Support</a></li>
 		<li style="float:right"><a href="/admin/pending_list">Pending List</a></li>
 		<li style="float:right"><a href="/admin/profile">Profile</a></li>
 		<li style="float:right"><a href="/admin/admin_list">Admin List</a></li>
@@ -33,7 +34,8 @@
 			<td><%= uList[i].T_ID %></td>
 			<td><%= uList[i].T_NAME %></td>
 			<td>
-				<a href="/admin/teacher_list/<%= uList[i].T_ID %>">Profile</a> 
+				<a href="/admin/teacher_list/<%= uList[i].T_ID %>">Profile</a> |||
+				<a href="/admin/teacher_list/delete/<%= uList[i].T_ID %>">Delete</a>
 			</td>
 		</tr>
 		<% } %>
