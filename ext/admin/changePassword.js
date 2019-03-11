@@ -67,9 +67,9 @@ function newCpass(c3)
 
 function allOK()
 {
-	oldPass(document.CPASS.oldPassword);
-	newPass(document.CPASS.newPassword);
-	newCpass(document.CPASS.conPassword);
+	oldPass(document.changepass.oldPassword);
+	newPass(document.changepass.newPassword);
+	newCpass(document.changepass.conPassword);
 
 	return v;
 
