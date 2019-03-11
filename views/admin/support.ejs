@@ -31,7 +31,7 @@
 
 		<% for(var i=0; i < uList.length; i++){ %>
 		<tr>
-			<td><%= uList[i].T_ID %></td>
+			<td><a href="/admin/teacher_list/<%= uList[i].T_ID %>">	<%= uList[i].T_ID %></a></td>
 			<td><%= uList[i].S_TEXT %></td>
 			<td><%= uList[i].S_TIME %></td>
 		
