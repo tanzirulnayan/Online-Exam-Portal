@@ -4,7 +4,6 @@
 
 <script type="text/javascript" src="/assets/student/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/student/jquery.min.js"></script>
-<script type="text/javascript" src="/assets/student/changePicture.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/student/main.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/profile.css">
 <link rel="stylesheet" type="text/css" href="/assets/student/bootstrap.min.css">
@@ -24,7 +23,7 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container emp-profile">
-<form name="editPicture" method="POST" enctype="multipart/form-data">
+<form name="studentSupport" method="POST" enctype="multipart/form-data">
 <div class="row">
     <div class="col-md-4">
     </div>
@@ -45,8 +44,7 @@
         <div class="profile-img">
             <img src="<%=S_IMAGE%>" alt="image" title="myPicture" />
             <div class="file btn btn-lg btn-primary">
-                <input type="file" name="imageFile" accept="image/*" value="<%=S_IMAGE%>" onchange="checkFile(this)">
-                <div id="wrn8"></div>
+                <input type="file" name="imageFile" accept="image/*" value="<%=S_IMAGE%>">
             </div>
         </div>
     </div>
@@ -95,7 +93,7 @@
                         </div>
                     </div>
                     <br><br>
-                    <input type="submit" class="login100-form-btn" name="update" value="Update" onclick = "return allOK();"/>
+                    <input type="submit" class="login100-form-btn" name="update" value="Update"/>
                 </div>
             </div>
         </div>
