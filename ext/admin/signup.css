@@ -1,0 +1,86 @@
+body {
+  background-color: white;
+}
+form {
+  font-family:Josefin Sans;
+  font-size:35px;
+}
+/* =============================Span_Tag================================================== */
+span {
+  font-family:Josefin Sans Light;
+  font-size:40px ;
+  color:#05386B;
+  display:inline;
+  font-weight: bold
+}
+
+/* =============================Heading_Tag================================================== */
+h1 {
+  font-family:Amaranth ;
+  font-size:30px ;
+  color:#05386B;
+  text-decoration: underline overline;
+  text-align :center ;
+}
+/* =============================anchor_Tag================================================== */
+a {
+  font-family:Josefin Sans;
+  font-size:35px;color:#05386B;
+	text-decoration:underline
+}
+
+
+/* =============================table_data_Tag================================================== */
+td {
+  font-family:Josefin Sans;
+  font-size:30px;
+  color:#05386B
+}
+th {
+  font-family:Josefin Sans;
+  font-size:35px;
+  color:#05386B
+}
+
+/* =============================Input_Text================================================== */
+input {
+  border: 2px solid #0026B3;
+  border-radius: 10px;
+  font-family:Josefin Sans Light;
+  font-size:30px;
+  color:#05386B
+}
+
+/* =============================Submit_Button================================================== */
+
+input[type=submit] {
+  font-family:Josefin Sans;
+  font-size:25PX;
+  background-color:#8EE4AF ;
+  color:#05386B;
+  width: 250px;
+  height: 40px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+input[type=submit] {
+  background-color: #EAE6DA;
+  color: #05386B;
+}
+input[type=submit]:hover {
+  background-color: #7FDBFF;
+  color: #05386B;
+}
+/* =============================Warning_div_Tag================================================== */
+div {
+  display:inline;
+  font-size:20px;
+  color:#b30000
+}
+/* =============================Drop-down List================================================== */
+select {
+  font-family:Josefin Sans;
+  background-color:#5CDB95;
+  color:#05386B ;
+  font-size:30px;
+}
