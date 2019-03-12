@@ -483,6 +483,14 @@ router.get('/exam/myExams', (req, res)=>{
 			};
 			res.render('teacher/myExams', exam);
 		}
+		else
+		{
+			var exam = {
+				name: req.session.uId,
+				examList: ""
+			};
+			res.render('teacher/myExams', exam);
+		}
 	});
 });
 
