@@ -187,6 +187,12 @@ router.get('/joinExam', (req, res)=>{
 					qList: result
 				};
 				res.render('student/joinExam', join);
+			}
+			else{
+				var join = {
+					qList: ""
+				};
+				res.render('student/joinExam', join);
 			}	
 	   });	
 	
