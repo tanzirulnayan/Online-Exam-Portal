@@ -377,7 +377,7 @@ router.post('/exam/myExams/view/:id/forum', (req, res)=>{
 });
 
 router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
-	rankModel.getByExamId(req.params.examId, function(results){
+	rankModel.getRankByExamId(req.params.examId, function(results){
 		if(results.length > 0)
 		{
 			var rank = {
@@ -392,6 +392,18 @@ router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
 				rankList : ""
 			}
 			res.render('teacher/rank', rank);
+		}
+	});
+});
+
+router.get('/exam/myExams/view/:examId/rank/student/:studentId', (req, res)=>{
+	studentModel.get(req.params.studentId, function(result){
+		if(result.length > 0)
+		{
+			res.render('teacher/studentProfile', result[0]);
+		}
+		else{
+			res.redirect('/teacher/exam/myExams/view/'+req.params.examId+'/rank');
 		}
 	});
 });
