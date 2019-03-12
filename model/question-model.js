@@ -20,9 +20,9 @@ module.exports={
 		});
 	},
 	insert: function(question, callback){
-		var sql = "insert into questions values ( NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+		var sql = "insert into questions values ( NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		db.execute(sql, [question.title, question.op1, question.op2, question.op3, question.op4, question.answer, question.mark, question.examId], function(status){
+		db.execute(sql, [question.title, question.type, question.op1, question.op2, question.op3, question.op4, question.answer, question.mark, question.examId], function(status){
 			callback(status);
 		});
 	},

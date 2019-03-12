@@ -205,6 +205,7 @@ router.get('/exam/myExams/view/:id/setQuestion', (req, res)=>{
 router.post('/exam/myExams/view/:id/setQuestion', (req, res)=>{
 	var question = {
 		title	: req.body.title,
+		type	: 'MCQ',
 		op1		: req.body.op1,
 		op2		: req.body.op2,
 		op3		: req.body.op3,
@@ -279,6 +280,7 @@ router.get('/exam/myExams/view/:examId/questions/:questionId/edit', (req, res)=>
 router.post('/exam/myExams/view/:examId/questions/:questionId/edit', (req, res)=>{
 	var question = {
 		title		: req.body.title,
+		type		: 'MCQ',
 		op1			: req.body.op1,
 		op2			: req.body.op2,
 		op3			: req.body.op3,
