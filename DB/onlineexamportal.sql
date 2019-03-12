@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2019 at 09:21 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Mar 12, 2019 at 05:06 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,13 +37,6 @@ CREATE TABLE `admins` (
   `A_IMAGE` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `admins`
---
-
-INSERT INTO `admins` (`A_ID`, `A_NAME`, `A_EMAIL`, `A_MOBILE`, `A_ADDRESS`, `A_IMAGE`) VALUES
-('dd', 'Admin One', 'Admin@gmail.com', '01755555555', 'Dhaka', '/pictures/image_1552243187643.png');
-
 -- --------------------------------------------------------
 
 --
@@ -56,6 +49,32 @@ CREATE TABLE `answers` (
   `Q_ID` int(10) NOT NULL,
   `ANSWER` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`P_ID`, `E_ID`, `Q_ID`, `ANSWER`) VALUES
+('nobel', 2, 2, 'ASP.NET'),
+('nobel', 2, 3, 'Microsoft'),
+('nobel', 2, 4, 'using'),
+('nobel', 2, 5, 'ToInt32'),
+('nobel', 2, 6, 'None'),
+('lubna', 2, 2, 'ASP.NET'),
+('lubna', 2, 3, 'Microsoft'),
+('lubna', 2, 4, 'none'),
+('lubna', 2, 5, 'ToInt32'),
+('lubna', 2, 6, 'None'),
+('nihal', 2, 2, 'Laravel'),
+('nihal', 2, 3, 'Microsoft'),
+('nihal', 2, 4, 'using'),
+('nihal', 2, 5, 'ToInt32'),
+('nihal', 2, 6, 'None'),
+('arnob', 2, 2, 'Angular'),
+('arnob', 2, 3, 'Oracle'),
+('arnob', 2, 4, 'using'),
+('arnob', 2, 5, 'ToDouble'),
+('arnob', 2, 6, 'None');
 
 -- --------------------------------------------------------
 
@@ -79,7 +98,7 @@ CREATE TABLE `chats` (
 CREATE TABLE `comments` (
   `U_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `C_TEXT` text COLLATE utf8_unicode_ci NOT NULL,
-  `C_TIME` text COLLATE utf8_unicode_ci NOT NULL,
+  `C_TIME` date NOT NULL,
   `E_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -89,7 +108,13 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`U_ID`, `C_TEXT`, `C_TIME`, `E_ID`) VALUES
 ('nayan', 'Best of luck', '2019-03-10', 2),
-('nayan', 'don\'t forget to bring your permit', '2019-03-10', 2);
+('nayan', 'don\'t forget to bring your permit', '2019-03-10', 2),
+('nayan', 'Be Careful! No makeup quiz will be taken.', '2019-03-11', 2),
+('nayan', 'test comment', '2019-03-11', 3),
+('nayan', 'comment 2', '2019-03-11', 3),
+('nobel', 'test comment', '2019-03-11', 2),
+('nobel', 'check', '2019-03-11', 2),
+('nayan', 'yyy', '2019-03-11', 2);
 
 -- --------------------------------------------------------
 
@@ -108,8 +133,23 @@ CREATE TABLE `exam_participants` (
 --
 
 INSERT INTO `exam_participants` (`P_ID`, `P_STATUS`, `E_ID`) VALUES
-('ss', 'ACTIVE', 5),
-('ss', 'ACTIVE', 6);
+('arnob', 'ACTIVE', 2),
+('arnob', 'PENDING', 3),
+('arnob', 'PENDING', 4),
+('nihal', 'ACTIVE', 2),
+('nihal', 'PENDING', 3),
+('nihal', 'ACTIVE', 4),
+('lubna', 'ACTIVE', 2),
+('lubna', 'ACTIVE', 3),
+('lubna', 'PENDING', 4),
+('raisa', 'PENDING', 3),
+('raisa', 'ACTIVE', 4),
+('shaguffta', 'PENDING', 2),
+('shaguffta', 'ACTIVE', 3),
+('shaguffta', 'PENDING', 4),
+('tony', 'PENDING', 2),
+('tony', 'PENDING', 4),
+('nobel', 'ACTIVE', 2);
 
 -- --------------------------------------------------------
 
@@ -133,7 +173,7 @@ CREATE TABLE `exam_result` (
 CREATE TABLE `exam_rooms` (
   `E_ID` int(11) NOT NULL,
   `E_TITLE` text COLLATE utf8_unicode_ci NOT NULL,
-  `E_DATE` text COLLATE utf8_unicode_ci NOT NULL,
+  `E_DATE` date NOT NULL,
   `E_START_TIME` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `E_END_TIME` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `T_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL
@@ -144,8 +184,9 @@ CREATE TABLE `exam_rooms` (
 --
 
 INSERT INTO `exam_rooms` (`E_ID`, `E_TITLE`, `E_DATE`, `E_START_TIME`, `E_END_TIME`, `T_ID`) VALUES
-(5, 'Math', '2019-03-11', '01:00', '02:00', 'tt'),
-(6, 'GK', '2019-03-11', '10:00', '12:00', 'tt');
+(2, 'C# Quiz - 1', '2019-03-06', '10:00', '11:00', 'nayan'),
+(3, 'C++ Quiz - 1', '2019-03-26', '13:00', '14:00', 'nayan'),
+(4, 'C# Quiz - 2', '2019-03-28', '10:00', '11:00', 'nayan');
 
 -- --------------------------------------------------------
 
@@ -156,7 +197,7 @@ INSERT INTO `exam_rooms` (`E_ID`, `E_TITLE`, `E_DATE`, `E_START_TIME`, `E_END_TI
 CREATE TABLE `notices` (
   `N_ID` int(3) NOT NULL,
   `N_TEXT` text COLLATE utf8_unicode_ci NOT NULL,
-  `N_TIME` text COLLATE utf8_unicode_ci NOT NULL,
+  `N_TIME` date NOT NULL,
   `E_ID` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -165,8 +206,11 @@ CREATE TABLE `notices` (
 --
 
 INSERT INTO `notices` (`N_ID`, `N_TEXT`, `N_TIME`, `E_ID`) VALUES
-(5, 'Best Of Luck For The Quiz', '2019-03-11', 5),
-(6, 'Thiis is Gk Quiz', '2019-03-11', 6);
+(1, 'Be Careful! No makeup quiz will be taken.', '2019-03-09', 2),
+(2, 'Bring your exam permit', '2019-03-09', 2),
+(3, 'No ID, No Entry!', '2019-03-09', 3),
+(4, 'Best of luck', '2019-03-09', 4),
+(5, 'Be Careful! No makeup quiz will be taken.', '2019-03-11', 2);
 
 -- --------------------------------------------------------
 
@@ -176,6 +220,7 @@ INSERT INTO `notices` (`N_ID`, `N_TEXT`, `N_TIME`, `E_ID`) VALUES
 
 CREATE TABLE `questions` (
   `Q_ID` int(10) NOT NULL,
+  `Q_TYPE` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `Q_TITLE` text COLLATE utf8_unicode_ci NOT NULL,
   `Q_OPTION1` text COLLATE utf8_unicode_ci NOT NULL,
   `Q_OPTION2` text COLLATE utf8_unicode_ci NOT NULL,
@@ -190,11 +235,12 @@ CREATE TABLE `questions` (
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`Q_ID`, `Q_TITLE`, `Q_OPTION1`, `Q_OPTION2`, `Q_OPTION3`, `Q_OPTION4`, `Q_ANSWER`, `Q_MARK`, `E_ID`) VALUES
-(4, '2 + 5 = ?', '5', '6', '7', '8', '7', 10, 5),
-(5, '100-20', '50', '70', '80', '90', '80', 10, 5),
-(6, 'Capital of BD', 'Dhaka', 'CTG', 'Comilla', 'Barishal', 'Dhaka', 10, 6),
-(7, 'National  Fruit?', 'Mango', 'Jack Fruit', 'Apple', 'Orange', 'Jack Fruit', 10, 6);
+INSERT INTO `questions` (`Q_ID`, `Q_TYPE`, `Q_TITLE`, `Q_OPTION1`, `Q_OPTION2`, `Q_OPTION3`, `Q_OPTION4`, `Q_ANSWER`, `Q_MARK`, `E_ID`) VALUES
+(2, '', 'Which of the following is C# Framework?', 'Laravel', 'ASP.NET', 'Angular', 'React', 'ASP.NET', 2, 2),
+(3, '', '.NET Framework is developed by?', 'Microsoft', 'Oracle', 'Facebook', 'Apple', 'Microsoft', 2, 2),
+(4, '', 'Which of the following keyword is used  in C#?', 'imports', 'using', 'exports', 'none', 'using', 2, 2),
+(5, '', 'Which of the following converts a type to a 32-bit integer in C#?', 'ToDecimal', 'ToDouble', 'ToInt16', 'ToInt32', 'ToInt32', 2, 2),
+(6, '', 'Which one of the following is correct?', 'constructor has return type', 'all class members are public', 'printf is C# keyword', 'None', 'None', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -206,7 +252,7 @@ CREATE TABLE `students` (
   `S_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `S_NAME` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `S_EMAIL` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `S_DOB` text COLLATE utf8_unicode_ci,
+  `S_DOB` date DEFAULT NULL,
   `S_ADDRESS` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `S_IMAGE` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -216,7 +262,13 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`S_ID`, `S_NAME`, `S_EMAIL`, `S_DOB`, `S_ADDRESS`, `S_IMAGE`) VALUES
-('ss', 'Student One', 'student@gmail.com', '2019-03-12', 'Dhaka', '/pictures/image_1552243258316.jpg');
+('arnob', 'Arnob Sudipto', 'arnob@gmail.com', '1996-05-25', 'Basundhara', '/pictures/image_1552151881783.png'),
+('lubna', 'Kaniz Lubna', 'lubna@hotmail.com', '2001-08-08', 'Basundhara', '/pictures/image_1552151769045.png'),
+('nihal', 'Minhaz Nihal', 'nihal@gmail.com', '1996-11-30', 'Nikunja', '/pictures/image_1552151979940.png'),
+('nobel', 'Nobel Mozumdar', 'nobel@gmail.com', '1998-10-20', 'Nikunja', '/pictures/image_1552130790653.jpg'),
+('raisa', 'Raisa Kamal', 'raisa@yahoo.com', '1999-02-09', 'Mohakhali', '/pictures/image_1552151681865.png'),
+('shaguffta', 'Shaguffta Rahman', 'shaguffta@gmail.com', '1997-02-28', 'Mirpur', '/pictures/image_1552151614343.png'),
+('tony', 'Tony Stark', 'tony@avengers.com', '1998-10-13', 'Basundhara', '/pictures/image_1552151831078.png');
 
 -- --------------------------------------------------------
 
@@ -251,7 +303,8 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`T_ID`, `T_NAME`, `T_EMAIL`, `T_ADDRESS`, `T_MOBILE`, `T_IMAGE`) VALUES
-('tt', 'Teacher One', 'teacher@gmail.com', 'Dhaka', '01755555555', '/pictures/image_1552243132785.jpg');
+('nayan', 'Md. Tanzirul Haque Nayan', 'tanzirul.haque@outlook.com', 'Basundhara', '01788284381', '/pictures/image_1552106721085.jpg'),
+('paola', 'Paola Amparo', 'paola@yahoo.com', 'Gulshan', '01521303626', NULL);
 
 -- --------------------------------------------------------
 
@@ -271,9 +324,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`U_ID`, `U_PASSWORD`, `U_TYPE`, `U_STATUS`) VALUES
-('dd', 'dd', 'ADMIN', 'ACTIVE'),
-('ss', 'ss', 'STUDENT', 'ACTIVE'),
-('tt', 'tt', 'TEACHER', 'ACTIVE');
+('arnob', 'arnob', 'STUDENT', 'ACTIVE'),
+('lubna', 'lubna', 'STUDENT', 'ACTIVE'),
+('nayan', 'nayan', 'TEACHER', 'ACTIVE'),
+('nihal', 'nihal', 'STUDENT', 'ACTIVE'),
+('nobel', 'nobel', 'STUDENT', 'ACTIVE'),
+('paola', 'paola', 'TEACHER', 'PENDING'),
+('raisa', 'raisa', 'STUDENT', 'ACTIVE'),
+('shaguffta', 'shaguffta', 'STUDENT', 'ACTIVE'),
+('tony', 'tony', 'STUDENT', 'ACTIVE'),
+('turjoy', 'turjoy', 'ADMIN', 'ACTIVE');
 
 --
 -- Indexes for dumped tables
@@ -329,19 +389,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `exam_rooms`
 --
 ALTER TABLE `exam_rooms`
-  MODIFY `E_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `E_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `notices`
 --
 ALTER TABLE `notices`
-  MODIFY `N_ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `N_ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Q_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
