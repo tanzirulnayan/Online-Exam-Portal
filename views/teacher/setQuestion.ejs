@@ -61,93 +61,108 @@
 	</ul>
 	
 	<div class="limiter">
-		<div class="container-login100" align="center">
-            <form class="login100-form validate-form" method="POST" width="600px">
-                <span class="login100-form-title">
-                    Set Question
-                </span>
-                <table width="600px">
-                        <tr>
-                            <td>Question</td>
-                            <td>:</td>
-                            <td>
-                                <div class="wrap-input100 validate-input" data-validate = "Title is required">
-                                    <input class="input100" type="text" name="title" placeholder="Question Title">
-                                    <span class="focus-input100"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Option 1</td>
-                            <td>:</td>
-                            <td>
-                                <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op1" placeholder="Option 1">
-                                    <span class="focus-input100"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Option 2</td>
-                            <td>:</td>
-                            <td>
-                                <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op2" placeholder="Option 2">
-                                    <span class="focus-input100"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Option 3</td>
-                            <td>:</td>
-                            <td>
-                                <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op3" placeholder="Option 3">
-                                    <span class="focus-input100"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Option 4</td>
-                            <td>:</td>
-                            <td>
-                                <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="op4" placeholder="Option 4">
-                                    <span class="focus-input100"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Answer</td>
-                            <td>:</td>
-                            <td>
-                                <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="text" name="answer" placeholder="Answer">
-                                    <span class="focus-input100"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mark</td>
-                            <td>:</td>
-                            <td>
-                                <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
-                                    <input class="input100" type="number" name="mark" placeholder="Mark">
-                                    <span class="focus-input100"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="container-login100-form-btn">
-                                        <input type="submit" name="create" value="Create"class="login100-form-btn" />
-                                    </div>
-                                </td>
-                            </tr>
-                    </table>
-            </form>
+		<div id="questionDiv" class="container-login100" align="center">
+                <form class="login100-form validate-form" method="POST" width="600px">
+                        <span class="login100-form-title">
+                            Set Question
+                        </span>
+                        <span class="login100-form-title">
+                            <table width="600px">
+                                <tr>
+                                    <td width="25%">
+                                        <input type="button" id="McqButton" class="login100-form-btn" value="MCQ" onclick="mcq()"/>
+                                    </td>
+                                    <td width="25%">
+                                        <input type="button" id="OutputButton" class="login100-form-btn" value="Output Finding" onclick="output()"/>
+                                    </td>
+                                    <td width="25%">
+                                        <input type="button" id="ErrorTraceButton" class="login100-form-btn" value="Error Tracing" onclick="errorTrace()"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </span>
+                        <table width="600px">
+                                <tr>
+                                    <td>Question</td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="wrap-input100 validate-input" data-validate = "Title is required">
+                                            <input class="input100" type="text" name="title" placeholder="Question Title">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Option 1</td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                                            <input class="input100" type="text" name="op1" placeholder="Option 1">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Option 2</td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                                            <input class="input100" type="text" name="op2" placeholder="Option 2">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Option 3</td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                                            <input class="input100" type="text" name="op3" placeholder="Option 3">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Option 4</td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                                            <input class="input100" type="text" name="op4" placeholder="Option 4">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Answer</td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                                            <input class="input100" type="text" name="answer" placeholder="Answer">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="wrap-input100 validate-input" data-validate = "Can't left empty">
+                                            <input class="input100" type="number" name="mark" placeholder="Mark">
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="container-login100-form-btn">
+                                                <input type="submit" name="create" value="Create"class="login100-form-btn" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                            </table>
+                    </form>
 		</div>
 	</div>
 	
@@ -164,4 +179,21 @@
 	<script src="/assets/login/js/main.js"></script>
 
 </body>
+
+<script>
+    function mcq(){
+        alert('mcq');
+        var element = document.getElementById("questionDiv");
+        element.innerHTML = "";
+    }
+
+    function output(){
+        alert('output');
+    }
+
+    function errorTrace(){
+        alert('error');
+    }
+    
+</script>
 </html>

@@ -509,4 +509,8 @@ router.get('/exam/myExams', (req, res)=>{
 	});
 });
 
+router.get('/addQuestion', (req, res)=>{
+	res.render('teacher/setQuestion');
+});
+
 module.exports = router;
