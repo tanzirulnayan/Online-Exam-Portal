@@ -199,7 +199,7 @@ router.get('/joinExam', (req, res)=>{
 });
 // ********************************************
 // *************EXAM*******************
-router.get('/exam/:id', (req, res)=>{
+router.get('/exam/id=:id', (req, res)=>{
 			question.getByExamId(req.params.id, function(result){
 				if(result.length > 0){
 					var question = {
@@ -209,39 +209,57 @@ router.get('/exam/:id', (req, res)=>{
 				}
 		   });	
 });	
-router.post('/exam/:id/:answer', (req, res)=>{
+router.get('/exam/:eid/:qid/:answer', (req, res)=>{
 	
-	
-	
-	
-	
-	
-	question.getByExamId(req.params.id, function(result){
-		if(result.length > 0){
-			var answers = {
-				P_ID	: req.session.uId,
-				E_ID	: req.params.id,
-			};
-			for(var i=0 ; i<result.length ; i++){
-				answers.Q_ID 	= req.body;
-				str = 'radio'+i;
-				console.log(req.body.radio[i]);
+	var answers = {
+		P_ID	: req.session.uId,
+		E_ID	: req.params.eid,
+		Q_ID	: req.params.qid,
+		ANSWER	: req.params.answer,
+	};
 
-				answers.ANSWER	= req.body.str;
-			}
-			// answer.insert(answers, function(success){
-			// 	if(success){
-			// 		studentModel.get(req.session.uId, function(result){
-			// 			res.render('student/', result[0]);	
-			// 		});	
-			// 	}else{
-			// 		res.redirect('/student/joinExam');
-			// 	}
-			// });	
-			console.log(answers);
+
+	answer.insert(answers, function(success){
+		if(success){
+			question.getByExamId(req.params.eid, function(result){
+				if(result.length > 0){
+					var question = {
+						qList: result
+					};
+				res.send(question);
+				}
+		   });	
+				
 		}
+	});
+
+	
+	
+	
+	
+	// question.getByExamId(req.params.id, function(result){
+	// 	if(result.length > 0){
+			
+	// 		for(var i=0 ; i<result.length ; i++){
+	// 			answers.Q_ID 	= req.body;
+	// 			str = 'radio'+i;
+	// 			console.log(req.body.radio[i]);
+
+	// 			answers.ANSWER	= req.body.str;
+	// 		}
+	// 		// answer.insert(answers, function(success){
+	// 		// 	if(success){
+	// 		// 		studentModel.get(req.session.uId, function(result){
+	// 		// 			res.render('student/', result[0]);	
+	// 		// 		});	
+	// 		// 	}else{
+	// 		// 		res.redirect('/student/joinExam');
+	// 		// 	}
+	// 		// });	
+	// 		console.log(answers);
+	// 	}
 		
-	});	
+	// });	
 });	
 
 
