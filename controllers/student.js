@@ -209,7 +209,13 @@ router.get('/exam/:id', (req, res)=>{
 				}
 		   });	
 });	
-router.post('/exam/:id', (req, res)=>{
+router.post('/exam/:id/:answer', (req, res)=>{
+	
+	
+	
+	
+	
+	
 	question.getByExamId(req.params.id, function(result){
 		if(result.length > 0){
 			var answers = {
