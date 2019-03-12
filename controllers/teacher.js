@@ -9,6 +9,7 @@ var noticeModel = require.main.require('./model/notice-model');
 var participantModel = require.main.require('./model/examParticipant-model');
 var forumModel = require.main.require('./model/forum-model');
 var questionModel = require.main.require('./model/question-model');
+var rankModel = require.main.require('./model/rank-model');
 var router = express.Router();
 
 router.get('*', function(req, res, next){
@@ -379,18 +380,18 @@ router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
 	rankModel.getByExamId(req.params.examId, function(results){
 		if(results.length > 0)
 		{
-			var comments = {
+			var rank = {
 				E_ID 		: req.params.examId,
-				commentList : results
+				rankList : results
 			};
-			res.render('teacher/rank', comments);
+			res.render('teacher/rank', rank);
 		}
 		else{
-			var comments = {
+			var rank = {
 				E_ID		: req.params.examId,
-				commentList : ""
+				rankList : ""
 			}
-			res.render('teacher/rank', comments);
+			res.render('teacher/rank', rank);
 		}
 	});
 });
