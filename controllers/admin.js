@@ -287,7 +287,6 @@ router.post('/edit_picture', (req, res)=>{
 //*************student_list--->>profile************************
 
 router.get('/student_list/:id', (req, res)=>{
-	//console.log("qwerty");
 	studentModel.get(req.params.id, function(result){
 		if(result.length >0 ){
 			res.render('admin/studentview_profile', result[0]);
@@ -430,6 +429,16 @@ router.get('/support/seen/:id', (req, res)=>{
 	});	
 });
 
+
+
+// *************Teacher Profile****************
+router.get('/teacher_search/:id', (req, res)=>{
+	teacherModel.getLIKE(req.params.id, function(result){	
+		 res.send(result[0]);
+		 console.log(result);
+	});	
+});
+// ********************************************
 
 
 

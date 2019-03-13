@@ -1,0 +1,31 @@
+.form-control {
+    padding: 0px 500px 0 100px;
+    margin-top: 10px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+    border: 3px solid #555;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    min-height:40px;
+    height: auto;
+    border-radius: 50px 0  0 50px !important;
+}
+
+
+#searchbtn
+{   border:0;
+    padding: 0px 30px;
+    margin-top: 10px;
+    color: #333;
+    background:white;
+    font-size: 20px;
+    font-weight: 500;
+    border: 3px solid rgb(4, 90, 252);
+    border-left: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    min-height:40px;
+    height: auto;
+    border-radius: 0 50px 50px 0 !important;
+}
