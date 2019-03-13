@@ -374,7 +374,6 @@ router.get('/exam/myExams/view/:examId/:commentText', (req, res)=>{
 			forumModel.getByExamId(req.params.examId, function(results){
 				if(results.length > 0)
 				{
-					console.log(results);
 					res.send(results);
 				}
 				else{

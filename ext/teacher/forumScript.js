@@ -2,14 +2,12 @@ $(document).ready(()=>{
     $('#commentButton').click(()=>{  
         var commentText = $('#commentText').val();
         var examId      = $('#examId').val();
-        alert(commentText);
         $.ajax({
                 url: '/teacher/exam/myExams/view/'+examId+'/'+commentText,
                 success: function(response) {
                     if(response)
                     {
                         var view = $('#show');
-                        alert(response[0].U_ID);
                         var output = '<span class="login100-form-title">\
                                 <h1>Forum</h1>\
                             </span>\
