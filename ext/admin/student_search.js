@@ -1,10 +1,10 @@
 $(document).ready(()=>{
 
     $('#searchbtn').click(()=>{  
-        var id = $('#tsearch').val();
+        var id = $('#ssearch').val();
     
         $.ajax({
-                url: '/admin/teacher_search/' + id ,
+                url: '/admin/student_search/' + id ,
                 success: function(response) {
                      if(response)
                     {
@@ -12,16 +12,16 @@ $(document).ready(()=>{
     
                         views.html(
                             '<div class="container emp-profile">\
-                            <div class="row" >\
+                             <div class="row" >\
                                 <div class="col-md-4" >\
-                                </div>\
+                              </div>\
                                 <div class="col-md-6">\
                                     <div class="profile-head">\
                                         <h5>\
-                                        '+response.T_NAME+'\
+                                        '+response.S_NAME+'\
                                         </h5>\
                                         <h6>\
-                                        TEACHER\
+                                        STUDENT\
                                         </h6>\
                                     </div>\
                                 </div>\
@@ -29,7 +29,7 @@ $(document).ready(()=>{
                             <div class="row">\
                                 <div class="col-md-4">\
                                     <div class="profile-img">\
-                                    <img src='+response.T_IMAGE+' alt="image" title="myPicture" />\
+                                    <img src='+response.S_IMAGE+' alt="image" title="myPicture" />\
                                     </div>\
                                 </div>\
                                 <div class="col-md-06">\
@@ -42,7 +42,7 @@ $(document).ready(()=>{
                                                         User Id</label>\
                                                         </div>\
                                                         <div class="col-md-6">\
-                                                        <p>'+response.T_ID+'</p>\
+                                                        <p>'+response.S_ID+'</p>\
                                                         </div>\
                                                 </div>\
                                                 <div class="row">\
@@ -50,7 +50,7 @@ $(document).ready(()=>{
                                                     <label>Name</label>\
                                                     </div>\
                                                     <div class="col-md-6">\
-                                                    <p>'+response.T_NAME+'</p>\
+                                                    <p>'+response.S_NAME+'</p>\
                                                     </div>\
                                                 </div>\
                                                 <div class="row">\
@@ -58,15 +58,15 @@ $(document).ready(()=>{
                                                     <label>Email</label>\
                                                     </div>\
                                                     <div class="col-md-6">\
-                                                    <p>'+response.T_EMAIL+'</p>\
+                                                    <p>'+response.S_EMAIL+'</p>\
                                                     </div>\
                                                 </div>\
                                                 <div class="row">\
                                                     <div class="col-md-6">\
-                                                    <label>Mobile</label>\
+                                                    <label>Date of Birth</label>\
                                                     </div>\
                                                     <div class="col-md-6">\
-                                                    <p>'+response.T_MOBILE+'</p>\
+                                                    <p>'+response.S_DOB+'</p>\
                                                     </div>\
                                                 </div>\
                                                 <div class="row">\
@@ -74,7 +74,7 @@ $(document).ready(()=>{
                                                     <label>Address</label>\
                                                     </div>\
                                                     <div class="col-md-6">\
-                                                    <p>'+response.T_ADDRESS+'</p>\
+                                                    <p>'+response.S_ADDRESS+'</p>\
                                                     </div>\
                                                     </div>\
                                                 </div>\

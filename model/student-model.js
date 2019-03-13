@@ -8,6 +8,10 @@ module.exports={
 			callback(result);
 		});
 	},
+
+
+
+
 	getAll: function(callback){
 		var sql = "select * from students";
 		db.getResult(sql, [], function(results){
@@ -40,6 +44,7 @@ module.exports={
 		});
 	},
 }
+
 
 
 

@@ -431,9 +431,19 @@ router.get('/support/seen/:id', (req, res)=>{
 
 
 
-// *************Teacher Profile****************
+// *************Teacher Student Profile****************
 router.get('/teacher_search/:id', (req, res)=>{
 	teacherModel.getLIKE(req.params.id, function(result){	
+		 res.send(result[0]);
+		 console.log(result);
+	});	
+});
+// ********************************************
+
+
+// *************Student Search Profile****************
+router.get('/student_search/:id', (req, res)=>{
+	studentModel.get(req.params.id, function(result){	
 		 res.send(result[0]);
 		 console.log(result);
 	});	
