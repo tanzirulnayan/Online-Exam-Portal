@@ -360,20 +360,30 @@ router.get('/exam/myExams/view/:id/forum', (req, res)=>{
 	});
 });
 
-router.post('/exam/myExams/view/:id/forum', (req, res)=>{
+//AJAX
+router.get('/exam/myExams/view/:examId/:commentText', (req, res)=>{
 	var comment ={
 		userId : req.session.uId,
-		commentText : req.body.text,
+		commentText : req.params.commentText,
 		time : new Date(),
-		examId : req.params.id
+		examId : req.params.examId
 	};
+	console.log(comment);
 	forumModel.insert(comment, function(success){
 		if(success){
-			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/forum');
-		}else{
-			res.redirect('/teacher/exam/myExams/view/'+req.params.id+'/forum');
+			forumModel.getByExamId(req.params.examId, function(results){
+				if(results.length > 0)
+				{
+					console.log(results);
+					res.send(results);
+				}
+				else{
+					res.send(results);
+				}
+			});
 		}
 	});
+
 });
 
 router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
