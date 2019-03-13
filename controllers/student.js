@@ -209,6 +209,8 @@ router.get('/exam/id=:id', (req, res)=>{
 				}
 		   });	
 });	
+// ********************************************
+// *************EXAM***************************
 router.get('/exam/:eid/:qid/:answer', (req, res)=>{
 	
 	var answers = {
