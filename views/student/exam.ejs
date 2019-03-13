@@ -42,8 +42,8 @@
 <div class="container emp-profile" id="show">
     <% for(var i=0; i < qList.length; i++){ %>
         
-      <input type="text" id="Q_ID" value="<%=qList[i].Q_ID%>"> 
-         <h1><%=i+1%> > <%=qList[i].Q_TITLE%></h1>
+      <input type="hidden" id="Q_ID" value="<%=qList[i].Q_ID%>"> 
+         <h1><%=qList[i].Q_TITLE%></h1>
          <label class="container">&nbsp&nbsp&nbsp     <%=qList[i].Q_OPTION1%>
              <input type="radio" name="radio" value="<%=qList[i].Q_OPTION1%>">
              <span class="checkmark"></span>
