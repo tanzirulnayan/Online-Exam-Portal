@@ -225,10 +225,12 @@ router.get('/exam/:eid/:qid/:answer', (req, res)=>{
 		if(success){
 			question.getByExamId(req.params.eid, function(result){
 				if(result.length > 0){
-					var question = {
-						qList: result
-					};
-				res.send(question);
+					// router.get('/setCookie', (req,res)=>{
+					// 	res.cookie('questionCookie', '1');
+					// 	res.send("done");
+					// });
+					
+				res.send(result);
 				}
 		   });	
 				
