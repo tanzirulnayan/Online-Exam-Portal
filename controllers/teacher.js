@@ -348,7 +348,6 @@ router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
 				E_ID 		: req.params.examId,
 				rankList : results
 			};
-			console.log('hehe');
 			res.render('teacher/rank', rank);
 		}
 		else{
@@ -502,7 +501,6 @@ router.get('/exam/myExams/view/:examId/:commentText', (req, res)=>{
 		time : new Date(),
 		examId : req.params.examId
 	};
-	console.log(comment);
 	forumModel.insert(comment, function(success){
 		if(success){
 			forumModel.getByExamId(req.params.examId, function(results){
