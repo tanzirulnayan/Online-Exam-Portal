@@ -1,5 +1,4 @@
 var express = require('express');
-var dateTime = require('date-time');
 var userModel = require.main.require('./model/user-model');
 var teacherModel = require.main.require('./model/teacher-model');
 var studentModel = require.main.require('./model/student-model');
