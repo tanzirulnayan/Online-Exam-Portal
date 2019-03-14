@@ -340,51 +340,6 @@ router.get('/exam/myExams/view/:id/notices', (req, res)=>{
 	});
 });
 
-router.get('/exam/myExams/view/:id/forum', (req, res)=>{
-	forumModel.getByExamId(req.params.id, function(results){
-		if(results.length > 0)
-		{
-			var comments = {
-				E_ID 		: req.params.id,
-				commentList : results
-			};
-			res.render('teacher/forum', comments);
-		}
-		else{
-			var comments = {
-				E_ID		: req.params.id,
-				commentList : ""
-			}
-			res.render('teacher/forum', comments);
-		}
-	});
-});
-
-//AJAX
-router.get('/exam/myExams/view/:examId/:commentText', (req, res)=>{
-	var comment ={
-		userId : req.session.uId,
-		commentText : req.params.commentText,
-		time : new Date(),
-		examId : req.params.examId
-	};
-	console.log(comment);
-	forumModel.insert(comment, function(success){
-		if(success){
-			forumModel.getByExamId(req.params.examId, function(results){
-				if(results.length > 0)
-				{
-					res.send(results);
-				}
-				else{
-					res.send(results);
-				}
-			});
-		}
-	});
-
-});
-
 router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
 	rankModel.getRankByExamId(req.params.examId, function(results){
 		if(results.length > 0)
@@ -393,6 +348,7 @@ router.get('/exam/myExams/view/:examId/rank', (req, res)=>{
 				E_ID 		: req.params.examId,
 				rankList : results
 			};
+			console.log('hehe');
 			res.render('teacher/rank', rank);
 		}
 		else{
@@ -516,6 +472,51 @@ router.get('/exam/myExams', (req, res)=>{
 			res.render('teacher/myExams', exam);
 		}
 	});
+});
+
+router.get('/exam/myExams/view/:id/forum', (req, res)=>{
+	forumModel.getByExamId(req.params.id, function(results){
+		if(results.length > 0)
+		{
+			var comments = {
+				E_ID 		: req.params.id,
+				commentList : results
+			};
+			res.render('teacher/forum', comments);
+		}
+		else{
+			var comments = {
+				E_ID		: req.params.id,
+				commentList : ""
+			}
+			res.render('teacher/forum', comments);
+		}
+	});
+});
+
+//AJAX
+router.get('/exam/myExams/view/:examId/:commentText', (req, res)=>{
+	var comment ={
+		userId : req.session.uId,
+		commentText : req.params.commentText,
+		time : new Date(),
+		examId : req.params.examId
+	};
+	console.log(comment);
+	forumModel.insert(comment, function(success){
+		if(success){
+			forumModel.getByExamId(req.params.examId, function(results){
+				if(results.length > 0)
+				{
+					res.send(results);
+				}
+				else{
+					res.send(results);
+				}
+			});
+		}
+	});
+
 });
 
 router.get('/addQuestion', (req, res)=>{
