@@ -11,9 +11,10 @@
 <link rel="stylesheet" type="text/css" href="/assets/student/dropdown.css">
 <link rel="stylesheet" href="/assets/student/countdown/flipclock.css">
 <script src="/assets/student/countdown/flipclock.js"></script>
+<script src="/assets/student/exam.js"></script>
 </head>
 <body>
-
+  <form name="exam">
 <ul>
     <li><a href="/student">Home</a></li>
     <li style="float:right"><a href="/logout">Log Out</a></li>
@@ -36,43 +37,53 @@
     </li>
 </ul>
 
-
-
 <p id="demo" align="right"></p>
 	
-
-
-
-<div class="container emp-profile">
-<form name="exam" method="POST">
-
-        
+<div class="container emp-profile" id="show">
     <% for(var i=0; i < qList.length; i++){ %>
         
-         <!-- <input type="text" name="Q_ID" value="<%=qList[i].Q_ID%>">  -->
-            <h1><%=qList[i].Q_ID%>. <%=qList[i].Q_TITLE%></h1>
-            <label class="container">&nbsp&nbsp&nbsp     <%=qList[i].Q_OPTION1%>
-                <input type="radio" name="radio<%=[i]%>" value="<%=qList[i].Q_OPTION1%>">
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">&nbsp&nbsp&nbsp   <%=qList[i].Q_OPTION2%>
-                <input type="radio" name="radio<%=[i]%>" value="<%=qList[i].Q_OPTION2%>">
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">&nbsp&nbsp&nbsp    <%=qList[i].Q_OPTION3%>
-                <input type="radio" name="radio<%=[i]%>" value="<%=qList[i].Q_OPTION3%>">
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">&nbsp&nbsp&nbsp    <%=qList[i].Q_OPTION4%>
-                <input type="radio" name="radio<%=[i]%>" value="<%=qList[i].Q_OPTION4%>">
-                <span class="checkmark"></span>
-              </label>
+      <input type="hidden" id="Q_ID" value="<%=qList[i].Q_ID%>"> 
+         <h1><%=qList[i].Q_TITLE%></h1>
+         <label class="container">&nbsp&nbsp&nbsp     <%=qList[i].Q_OPTION1%>
+             <input type="radio" name="radio" value="<%=qList[i].Q_OPTION1%>">
+             <span class="checkmark"></span>
+           </label>
+           <label class="container">&nbsp&nbsp&nbsp   <%=qList[i].Q_OPTION2%>
+             <input type="radio" name="radio" value="<%=qList[i].Q_OPTION2%>">
+             <span class="checkmark"></span>
+           </label>
+           <label class="container">&nbsp&nbsp&nbsp    <%=qList[i].Q_OPTION3%>
+             <input type="radio" name="radio" value="<%=qList[i].Q_OPTION3%>">
+             <span class="checkmark"></span>
+           </label>
+           <label class="container">&nbsp&nbsp&nbsp    <%=qList[i].Q_OPTION4%>
+             <input type="radio" name="radio" value="<%=qList[i].Q_OPTION4%>">
+             <span class="checkmark"></span>
+           </label>
+           <%break;%>
 
-    <% } %>
+
+ <% } %>
 </div>
 
-    <input type="submit" class="login100-form-btn" name="submit" id="#submit" value="Submit" 
-    style="float:right"/>
+<input id="getQuestion" type = 'button' value = 'Next' 
+style="width:100px;height:60px;float:right;margin-right:20px;font-size:25px"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <input type="submit" class="login100-form-btn" name="submit" id="#submit" value="Submit" 
+style="float:right"/> -->
 
 
 
